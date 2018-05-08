@@ -14,5 +14,6 @@ public class MotorhomesApplication {
 
 	public static void method() {
 		System.out.println("ssdfsdfaasfd");
+
 	}
 }
