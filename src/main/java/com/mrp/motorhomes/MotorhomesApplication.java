@@ -11,4 +11,8 @@ public class MotorhomesApplication {
 
 		SpringApplication.run(MotorhomesApplication.class, args);
 	}
+	
+	public static void testMarius(){
+		System.out.println("just a test");
+	}
 }
