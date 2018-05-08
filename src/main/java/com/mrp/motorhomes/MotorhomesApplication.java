@@ -9,7 +9,6 @@ public class MotorhomesApplication {
 	public static void main(String[] args) {
         System.out.println("razvan");
 
-
 		SpringApplication.run(MotorhomesApplication.class, args);
 	}
 }
