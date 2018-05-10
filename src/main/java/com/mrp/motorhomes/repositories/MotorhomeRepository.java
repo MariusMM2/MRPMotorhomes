@@ -27,6 +27,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 
 			preparedStatement.execute();
 
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
