@@ -17,13 +17,13 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		// TODO - implement MotorhomeRepository.create
 
 		try {
-			preparedStatement = connection.prepareStatement("INSERT INTO motorhomes(brand, type, model, year, lastService, basePrice) VALUES (?,?,?,?,?,?)");
+			preparedStatement = connection.prepareStatement("INSERT INTO motorhomes(brand, type, model, year, lastService, basePrice) VALUES (?, ?, ?, ?, ?, ?)");
 			preparedStatement.setString(1, item.getBrand());
 			preparedStatement.setString(2, item.getType());
 			preparedStatement.setString(3, item.getModel());
 			preparedStatement.setString(4, item.getYear());
-			preparedStatement.setDate(5,Date.valueOf(item.getLastService()));
-			preparedStatement.setDouble(6,item.getBasePrice());
+			preparedStatement.setDate(5, Date.valueOf(item.getLastService()));
+			preparedStatement.setDouble(6, item.getBasePrice());
 
 			preparedStatement.execute();
 
@@ -97,6 +97,22 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	@Override
 	public void update(Motorhome item) {
 		// TODO - implement MotorhomeRepository.update
+
+		try {
+			preparedStatement = connection.prepareStatement("UPDATE motorhomes SET brand = ?, type = ?, model = ?, year = ?, lastService = ?, basePrice = ? WHERE id = ?");
+			preparedStatement.setString(1, item.getBrand());
+			preparedStatement.setString(2, item.getType());
+			preparedStatement.setString(3, item.getModel());
+			preparedStatement.setString(4, item.getYear());
+			preparedStatement.setDate(5, Date.valueOf(item.getLastService()));
+			preparedStatement.setDouble(6, item.getBasePrice());
+			preparedStatement.setInt(7, item.getId());
+
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
