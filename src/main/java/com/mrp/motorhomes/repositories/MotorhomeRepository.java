@@ -70,7 +70,8 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		// TODO - implement MotorhomeRepository.read
 
 		try {
-			preparedStatement = connection.prepareStatement("SELECT * FROM motorhomes WHERE motorhomes.id = id");
+			preparedStatement = connection.prepareStatement("SELECT * FROM motorhomes WHERE id = ?");
+			preparedStatement.setInt(1, id);
 			resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
@@ -123,6 +124,16 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	@Override
 	public void delete(int id) {
 		// TODO - implement MotorhomeRepository.delete
+
+		try {
+			preparedStatement = connection.prepareStatement("DELETE FROM motorhomes WHERE id = ?");
+			preparedStatement.setInt(1, id);
+
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
