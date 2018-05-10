@@ -10,11 +10,13 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 * 
 	 * @param item
 	 */
+	@Override
 	public void create(Rental item) {
 		// TODO - implement RentalRepository.create
 		throw new UnsupportedOperationException();
 	}
-
+	
+	@Override
 	public ArrayList<Rental> readAll() {
 		// TODO - implement RentalRepository.readAll
 		throw new UnsupportedOperationException();
@@ -24,6 +26,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 * 
 	 * @param id
 	 */
+	@Override
 	public Rental read(int id) {
 		// TODO - implement RentalRepository.read
 		throw new UnsupportedOperationException();
@@ -33,6 +36,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 * 
 	 * @param item
 	 */
+	@Override
 	public void update(Rental item) {
 		// TODO - implement RentalRepository.update
 		throw new UnsupportedOperationException();
@@ -40,9 +44,9 @@ public class RentalRepository extends CrudRepository<Rental> {
 
 	/**
 	 * 
-	 * @param item
+	 * @param id
 	 */
-	public void delete(Rental item) {
+	public void delete(int id) {
 		// TODO - implement RentalRepository.delete
 		throw new UnsupportedOperationException();
 	}
