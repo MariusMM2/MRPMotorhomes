@@ -46,6 +46,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 * 
 	 * @param id
 	 */
+	@Override
 	public void delete(int id) {
 		// TODO - implement RentalRepository.delete
 		throw new UnsupportedOperationException();
