@@ -10,24 +10,27 @@ public class Customer {
 	private String phone;
 	private String ssn;
 	
-	public Customer() {
-		// TODO - implement Customer.Customer
-		throw new UnsupportedOperationException();
-	}
+	public Customer() {}
 	
 	/**
 	 *
-	 * @param id
-	 * @param firstName
-	 * @param lastName
-	 * @param email
-	 * @param address
-	 * @param phone
-	 * @param ssn
+	 * @param id Client id
+	 * @param firstName Client's first name
+	 * @param lastName Client's last name
+	 * @param email Client's email address
+	 * @param address Client's physical address
+	 * @param phone Client's phone number
+	 * @param ssn Client's social security number
 	 */
-	public Customer(int id, String firstName, String lastName, String email, String address, String phone, String ssn) {
-		// TODO - implement Customer.Customer
-		throw new UnsupportedOperationException();
+	public Customer(int id, String firstName, String lastName, String email, String address, String phone,
+					String ssn) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+		this.ssn = ssn;
 	}
 
 	public int getId() {
