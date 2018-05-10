@@ -11,17 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class MotorhomeController extends MainController {
-
-	private CrudRepository<Motorhome> motorhomeRepository;
+public class MotorhomeController extends MainController<Motorhome> {
 
 	public MotorhomeController() {
-		motorhomeRepository = new MotorhomeRepository();
+		repository = new MotorhomeRepository();
 	}
 
 	@GetMapping("/motorhomes")
 	public String index(Model model) {
-		model.addAttribute("moto", motorhomeRepository.readAll());
+		model.addAttribute("moto", repository.readAll());
 		return "index";
 	}
 
@@ -32,26 +30,26 @@ public class MotorhomeController extends MainController {
 
 	@PostMapping("/create")
 	public String create(@ModelAttribute Motorhome motorhome) {
-		motorhomeRepository.create(motorhome);
+		repository.create(motorhome);
 		return "redirect:/";
 	}
 
 	@GetMapping("/details")
 	public String details(@RequestParam("id") int id, Model model) {
-		Motorhome motorhome = motorhomeRepository.read(id);
+		Motorhome motorhome = repository.read(id);
 		model.addAttribute("moto", motorhome);
 		return "details";
 	}
 
 	@PostMapping("/update")
 	public String update(@ModelAttribute Motorhome motorhome) {
-        motorhomeRepository.update(motorhome);
+        repository.update(motorhome);
 	    return "redirect:/";
 	}
 
 	@PostMapping("/delete")
 	public String delete(@ModelAttribute Motorhome motorhome) {
-        motorhomeRepository.delete(motorhome.getId());
+        repository.delete(motorhome.getId());
         return "redirect:/";
 	}
 

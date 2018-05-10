@@ -1,9 +1,10 @@
 package com.mrp.motorhomes.controller;
 
+import com.mrp.motorhomes.model.Rental;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class RentalController extends MainController {
+public class RentalController extends MainController<Rental> {
 
 	public String create() {
 		// TODO - implement RentalController.create
