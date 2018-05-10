@@ -1,5 +1,10 @@
 package com.mrp.motorhomes.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class Rental {
 
 	private int id;
@@ -15,6 +20,28 @@ public class Rental {
 	private String pickup;
 	private String dropoff;
 	private ArrayList<Accessory> accessories;
+	
+	public Rental() {
+		// TODO - implement Rental.Rental
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 *
+	 * @param id
+	 * @param customerId
+	 * @param motorhomeId
+	 * @param price
+	 * @param startDate
+	 * @param endDate
+	 * @param pickup
+	 * @param dropoff
+	 * @param accessories
+	 */
+	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickup, String dropoff, ArrayList<Accessory> accessories) {
+		// TODO - implement Rental.Rental
+		throw new UnsupportedOperationException();
+	}
 
 	public int getId() {
 		return this.id;
@@ -87,27 +114,4 @@ public class Rental {
 	public void setAccessories(ArrayList<Accessory> accessories) {
 		this.accessories = accessories;
 	}
-
-	public Rental() {
-		// TODO - implement Rental.Rental
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param id
-	 * @param customerId
-	 * @param motorhomeId
-	 * @param price
-	 * @param startDate
-	 * @param endDate
-	 * @param pickup
-	 * @param dropoff
-	 * @param accessories
-	 */
-	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickup, String dropoff, ArrayList<Accessory> accessories) {
-		// TODO - implement Rental.Rental
-		throw new UnsupportedOperationException();
-	}
-
 }

@@ -1,8 +1,13 @@
 package com.mrp.motorhomes.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+
 public class Motorhome {
 
 	public static final String[] TYPES = {"Class A", "Class B", "Class C", "Truck Camper", "Popup Camper", "Travel Trailer", "Teardrop Trailer", "Hybrid Trailer"};
+	public final Accessory[] ALL_ACCESSORIES = {new Accessory("Bike rack"), new Accessory("Bed linen"), new Accessory("Picnic table and chairs"), new Accessory("Child seat"), new Accessory("TV"), new Accessory("Fishing tools")};
 	private int id;
 	private String brand;
 	private String type;
@@ -10,8 +15,25 @@ public class Motorhome {
 	private String year;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate lastService;
-	public final Accessory[] ALL_ACCESSORIES = {new Accessory("Bike rack"), new Accessory("Bed linen"), new Accessory("Picnic table and chairs"), new Accessory("Child seat"), new Accessory("TV"), new Accessory("Fishing tools")};
-	private final double basePrice;
+	private double basePrice;
+	
+	public Motorhome() {
+		// TODO - implement Motorhome.Motorhome
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 *
+	 * @param id
+	 * @param brand
+	 * @param type
+	 * @param model
+	 * @param year
+	 * @param basePrice
+	 */
+	public Motorhome(int id, String brand, String type, String model, String year, double basePrice) {
+	
+	}
 
 	public int getId() {
 		return this.id;
@@ -59,24 +81,6 @@ public class Motorhome {
 
 	public void setBasePrice(double basePrice) {
 		this.basePrice = basePrice;
-	}
-
-	public Motorhome() {
-		// TODO - implement Motorhome.Motorhome
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param id
-	 * @param brand
-	 * @param type
-	 * @param model
-	 * @param year
-	 * @param basePrice
-	 */
-	public Motorhome(int id, String brand, String type, String model, String year, double basePrice) {
-
 	}
 
 }

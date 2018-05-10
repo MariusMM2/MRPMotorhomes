@@ -1,6 +1,8 @@
 package com.mrp.motorhomes.repositories;
 
-import model.*;
+import com.mrp.motorhomes.model.Rental;
+
+import java.util.ArrayList;
 
 public class RentalRepository extends CrudRepository<Rental> {
 

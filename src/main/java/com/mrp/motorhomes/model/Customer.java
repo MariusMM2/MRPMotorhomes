@@ -9,6 +9,26 @@ public class Customer {
 	private String address;
 	private String phone;
 	private String ssn;
+	
+	public Customer() {
+		// TODO - implement Customer.Customer
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 *
+	 * @param id
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param address
+	 * @param phone
+	 * @param ssn
+	 */
+	public Customer(int id, String firstName, String lastName, String email, String address, String phone, String ssn) {
+		// TODO - implement Customer.Customer
+		throw new UnsupportedOperationException();
+	}
 
 	public int getId() {
 		return this.id;
@@ -64,26 +84,6 @@ public class Customer {
 
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
-	}
-
-	public Customer() {
-		// TODO - implement Customer.Customer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param id
-	 * @param firstName
-	 * @param lastName
-	 * @param email
-	 * @param address
-	 * @param phone
-	 * @param ssn
-	 */
-	public Customer(int id, String firstName, String lastName, String email, String address, String phone, String ssn) {
-		// TODO - implement Customer.Customer
-		throw new UnsupportedOperationException();
 	}
 
 }

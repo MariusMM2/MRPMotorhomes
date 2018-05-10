@@ -1,8 +1,13 @@
 package com.mrp.motorhomes.repositories;
 
+import com.mrp.motorhomes.repositories.util.DBConnection;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
 public abstract class CrudRepository<T> {
 
-	protected Connection connection = repositories.util.DBConnection.getConnection();
+	protected Connection connection = DBConnection.getConnection();
 
 	/**
 	 * 
