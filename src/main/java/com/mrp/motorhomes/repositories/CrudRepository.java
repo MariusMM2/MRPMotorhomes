@@ -3,12 +3,16 @@ package com.mrp.motorhomes.repositories;
 import com.mrp.motorhomes.repositories.util.DBConnection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public abstract class CrudRepository<T>{
 
 	protected static Connection connection;
+	protected PreparedStatement preparedStatement;
+	protected ResultSet resultSet;
 
 	//this scope is executed at the launch of the program
 	static {
