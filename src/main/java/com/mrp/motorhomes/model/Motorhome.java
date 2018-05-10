@@ -10,32 +10,42 @@ public class Motorhome {
 	public final Accessory[] ALL_ACCESSORIES = {new Accessory("Bike rack"), new Accessory("Bed linen"), new Accessory("Picnic table and chairs"), new Accessory("Child seat"), new Accessory("TV"), new Accessory("Fishing tools")};
 	private int id;
 	private String brand;
-	private String type;
+
+
+
+    private String type;
 	private String model;
 	private String year;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate lastService;
 	private double basePrice;
-	
-	public Motorhome() {
-		// TODO - implement Motorhome.Motorhome
-		throw new UnsupportedOperationException();
-	}
-	
-	/**
-	 *
-	 * @param id
-	 * @param brand
-	 * @param type
-	 * @param model
-	 * @param year
-	 * @param basePrice
-	 */
-	public Motorhome(int id, String brand, String type, String model, String year, double basePrice) {
-	
+
+    /**
+     *
+     * @param id
+     * @param brand
+     * @param type
+     * @param model
+     * @param year
+     * @param basePrice
+     */
+
+
+	public Motorhome(int id, String brand, String type, String model, String year, LocalDate lastService, double basePrice) {
+		this.id = id;
+		this.brand = brand;
+		this.type = type;
+		this.model = model;
+		this.year = year;
+		this.lastService = lastService;
+		this.basePrice = basePrice;
 	}
 
-	public int getId() {
+    public Motorhome(int id, String brand, String type, String model, int year, LocalDate lastService, int basePrice) {
+    }
+
+
+    public int getId() {
 		return this.id;
 	}
 
@@ -75,6 +85,13 @@ public class Motorhome {
 		this.year = year;
 	}
 
+    public LocalDate getLastService() {
+        return lastService;
+    }
+
+    public void setLastService(LocalDate lastService) {
+        this.lastService = lastService;
+    }
 	public double getBasePrice() {
 		return this.basePrice;
 	}
