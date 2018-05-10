@@ -47,7 +47,7 @@ public abstract class CrudRepository<T>{
 	
 	/**
 	 * Reads all the elements of the table
-	 * @return a list of all the elements
+	 * @return A list of all the elements
 	 */
 	public abstract ArrayList<T> readAll();
 
@@ -66,7 +66,7 @@ public abstract class CrudRepository<T>{
 
 	/**
 	 * Deletes an element from the table
-	 * @param item the element to be deleted
+	 * @param id The id of the element to be removed
 	 */
-	public abstract void delete(T item);
+	public abstract void delete(int id);
 }

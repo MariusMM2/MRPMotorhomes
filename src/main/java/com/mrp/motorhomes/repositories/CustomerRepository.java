@@ -10,11 +10,13 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	 * 
 	 * @param item
 	 */
+	@Override
 	public void create(Customer item) {
 		// TODO - implement CustomerRepository.create
 		throw new UnsupportedOperationException();
 	}
-
+	
+	@Override
 	public ArrayList<Customer> readAll() {
 		// TODO - implement CustomerRepository.readAll
 		throw new UnsupportedOperationException();
@@ -24,6 +26,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	 * 
 	 * @param id
 	 */
+	@Override
 	public Customer read(int id) {
 		// TODO - implement CustomerRepository.read
 		throw new UnsupportedOperationException();
@@ -33,6 +36,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	 * 
 	 * @param item
 	 */
+	@Override
 	public void update(Customer item) {
 		// TODO - implement CustomerRepository.update
 		throw new UnsupportedOperationException();
@@ -40,9 +44,10 @@ public class CustomerRepository extends CrudRepository<Customer> {
 
 	/**
 	 * 
-	 * @param item
+	 * @param id
 	 */
-	public void delete(Customer item) {
+	@Override
+	public void delete(int id) {
 		// TODO - implement CustomerRepository.delete
 		throw new UnsupportedOperationException();
 	}
