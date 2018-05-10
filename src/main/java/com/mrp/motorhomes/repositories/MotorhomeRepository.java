@@ -63,7 +63,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param id
 	 */
 	@Override
@@ -88,8 +88,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 	/**

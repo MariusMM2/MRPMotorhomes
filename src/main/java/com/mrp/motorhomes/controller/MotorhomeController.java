@@ -1,18 +1,46 @@
 package com.mrp.motorhomes.controller;
 
+import com.mrp.motorhomes.model.Motorhome;
+import com.mrp.motorhomes.repositories.CrudRepository;
+import com.mrp.motorhomes.repositories.MotorhomeRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MotorhomeController extends MainController {
 
-	public String create() {
-		// TODO - implement MotorhomeController.create
-		throw new UnsupportedOperationException();
+	private CrudRepository<Motorhome> motorhomeRepository;
+
+	public MotorhomeController() {
+		motorhomeRepository = new MotorhomeRepository();
 	}
 
-	public String details() {
-		// TODO - implement MotorhomeController.details
-		throw new UnsupportedOperationException();
+	@GetMapping("/")
+	public String index(Model model) {
+		model.addAttribute("moto", motorhomeRepository.readAll());
+		return "index";
+	}
+
+	@GetMapping("/create")
+	public String create() {
+		return "create";
+	}
+
+	@PostMapping("/create")
+	public String create(@ModelAttribute Motorhome motorhome) {
+		motorhomeRepository.create(motorhome);
+		return "redirect:/";
+	}
+
+	@GetMapping("/details")
+	public String details(@RequestParam("id") int id, Model model) {
+		Motorhome motorhome = motorhomeRepository.read(id);
+		model.addAttribute("moto", motorhome);
+		return "details";
 	}
 
 	public String update() {
