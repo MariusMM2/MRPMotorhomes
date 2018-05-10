@@ -19,7 +19,7 @@ public class MotorhomeController extends MainController {
 		motorhomeRepository = new MotorhomeRepository();
 	}
 
-	@GetMapping("/")
+	@GetMapping("/motorhomes")
 	public String index(Model model) {
 		model.addAttribute("moto", motorhomeRepository.readAll());
 		return "index";
@@ -43,14 +43,16 @@ public class MotorhomeController extends MainController {
 		return "details";
 	}
 
-	public String update() {
-		// TODO - implement MotorhomeController.update
-		throw new UnsupportedOperationException();
+	@PostMapping("/update")
+	public String update(@ModelAttribute Motorhome motorhome) {
+        motorhomeRepository.update(motorhome);
+	    return "redirect:/";
 	}
 
-	public String delete() {
-		// TODO - implement MotorhomeController.delete
-		throw new UnsupportedOperationException();
+	@PostMapping("/delete")
+	public String delete(@ModelAttribute Motorhome motorhome) {
+        motorhomeRepository.delete(motorhome.getId());
+        return "redirect:/";
 	}
 
 }
