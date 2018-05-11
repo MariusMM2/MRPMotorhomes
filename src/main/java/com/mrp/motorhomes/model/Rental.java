@@ -36,7 +36,7 @@ public class Rental {
 	 * @param endDate
 	 * @param pickUp
 	 * @param dropOff
-	 * @param accessories
+//	 * @param accessories
 	 */
 	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff) {
 		this.id = id;
