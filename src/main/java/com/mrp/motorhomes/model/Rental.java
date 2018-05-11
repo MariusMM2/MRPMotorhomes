@@ -17,8 +17,8 @@ public class Rental {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private String pickup;
-	private String dropoff;
+	private String pickUp;
+	private String dropOff;
 	private ArrayList<Accessory> accessories;
 	
 	public Rental() {
@@ -34,12 +34,32 @@ public class Rental {
 	 * @param price
 	 * @param startDate
 	 * @param endDate
-	 * @param pickup
-	 * @param dropoff
+	 * @param pickUp
+	 * @param dropOff
 	 * @param accessories
 	 */
-	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickup, String dropoff, ArrayList<Accessory> accessories) {
-		// TODO - implement Rental.Rental
+	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff) {
+		this.id = id;
+		this.customerId = customerId;
+		this.motorhomeId = motorhomeId;
+		this.price = price;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.pickUp = pickUp;
+		this.dropOff = dropOff;
+		throw new UnsupportedOperationException();
+	}
+
+	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, ArrayList<Accessory> accessories) {
+		this.id = id;
+		this.customerId = customerId;
+		this.motorhomeId = motorhomeId;
+		this.price = price;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.pickUp = pickUp;
+		this.dropOff = dropOff;
+		this.accessories = accessories;
 		throw new UnsupportedOperationException();
 	}
 
@@ -91,20 +111,20 @@ public class Rental {
 		this.endDate = endDate;
 	}
 
-	public String getPickup() {
-		return this.pickup;
+	public String getPickUp() {
+		return this.pickUp;
 	}
 
-	public void setPickup(String pickup) {
-		this.pickup = pickup;
+	public void setPickUp(String pickUp) {
+		this.pickUp = pickUp;
 	}
 
-	public String getDropoff() {
-		return this.dropoff;
+	public String getDropOff() {
+		return this.dropOff;
 	}
 
-	public void setDropoff(String dropoff) {
-		this.dropoff = dropoff;
+	public void setDropOff(String dropOff) {
+		this.dropOff = dropOff;
 	}
 
 	public ArrayList<Accessory> getAccessories() {
