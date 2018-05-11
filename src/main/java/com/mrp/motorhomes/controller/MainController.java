@@ -14,7 +14,7 @@ public class MainController {
 	 */
 	@GetMapping("/")
 	public String login(Model model) {
-		model.addAttribute("users", new User[]{User.ALL_USERS[1], User.ALL_USERS[2]});
+		model.addAttribute("users", User.ALL_USERS);
 		return "index";
 	}
 
