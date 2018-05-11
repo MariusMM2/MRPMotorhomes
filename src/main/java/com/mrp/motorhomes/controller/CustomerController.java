@@ -37,7 +37,7 @@ public class CustomerController {
 	
 	@GetMapping("/customers/details")
 	public String details(@RequestParam("id") int id, Model model){
-		model.addAttribute(repository.read(id));
+		model.addAttribute("customer", repository.read(id));
 		return "customers/details";
 	}
 }
