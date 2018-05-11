@@ -32,7 +32,7 @@ public class MotorhomeController {
 	@PostMapping("/motorhomes/create")
 	public String create(@ModelAttribute Motorhome motorhome) {
 		repository.create(motorhome);
-		return "redirect://motorhomes/";
+		return "redirect:/motorhomes/";
 	}
 
 	@GetMapping("/motorhomes/details")
@@ -45,13 +45,13 @@ public class MotorhomeController {
 	@PostMapping("/motorhomes/update")
 	public String update(@ModelAttribute Motorhome motorhome) {
         repository.update(motorhome);
-	    return "redirect://motorhomes/";
+	    return "redirect:/motorhomes/";
 	}
 
 	@PostMapping("/motorhomes/delete")
 	public String delete(@ModelAttribute Motorhome motorhome) {
         repository.delete(motorhome.getId());
-        return "redirect://motorhomes/";
+        return "redirect:/motorhomes/";
 	}
 
 }
