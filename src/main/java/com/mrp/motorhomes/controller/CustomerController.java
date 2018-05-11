@@ -6,6 +6,8 @@ import com.mrp.motorhomes.repositories.CustomerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CustomerController {
@@ -22,7 +24,13 @@ public class CustomerController {
 	}
 
 	@GetMapping("/customers/create")
-	public String create(Model model){
+	public String create(){
+		return "customers/create";
+	}
+	
+	@PostMapping("/customers/create")
+	public String create(@ModelAttribute Customer customer){
+		repository.create(customer);
 		return "redirect:/customers";
 	}
 }
