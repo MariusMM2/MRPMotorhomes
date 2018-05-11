@@ -21,37 +21,37 @@ public class MotorhomeController {
 	@GetMapping("/motorhomes")
 	public String index(Model model) {
 		model.addAttribute("moto", repository.readAll());
-		return "index";
+		return "motorhomes/index";
 	}
 
-	@GetMapping("/create")
+	@GetMapping("/motorhomes/create")
 	public String create() {
-		return "create";
+		return "motorhomes/create";
 	}
 
-	@PostMapping("/create")
+	@PostMapping("/motorhomes/create")
 	public String create(@ModelAttribute Motorhome motorhome) {
 		repository.create(motorhome);
-		return "redirect:/";
+		return "redirect://motorhomes/";
 	}
 
-	@GetMapping("/details")
+	@GetMapping("/motorhomes/details")
 	public String details(@RequestParam("id") int id, Model model) {
 		Motorhome motorhome = repository.read(id);
 		model.addAttribute("moto", motorhome);
-		return "details";
+		return "motorhomes/details";
 	}
 
-	@PostMapping("/update")
+	@PostMapping("/motorhomes/update")
 	public String update(@ModelAttribute Motorhome motorhome) {
         repository.update(motorhome);
-	    return "redirect:/";
+	    return "redirect://motorhomes/";
 	}
 
-	@PostMapping("/delete")
+	@PostMapping("/motorhomes/delete")
 	public String delete(@ModelAttribute Motorhome motorhome) {
         repository.delete(motorhome.getId());
-        return "redirect:/";
+        return "redirect://motorhomes/";
 	}
 
 }
