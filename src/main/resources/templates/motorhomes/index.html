@@ -30,10 +30,11 @@
             <td th:text="${motorhome.year}"></td>
             <td th:text="${motorhome.lastService}"></td>
             <td th:text="${motorhome.basePrice}"></td>
+            <td><a th:href="@{'details?id=' + ${motorhome.id}}">Details</a>
+                <a th:href="@{'delete?id=' + ${motorhome.id}}">Delete</a>
+            </td>
         </tr>
     </tbody>
 </table>
-
-
 </body>
 </html>
