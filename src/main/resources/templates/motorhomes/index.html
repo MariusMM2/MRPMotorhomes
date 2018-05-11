@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Motorhomes list</title>
 </head>
 <body>
+
+<h1>Motorhomes List</h1>
+<p><a href="/create">Add new motorhome</a></p>
+
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Brand</th>
+        <th>Type</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Last Service</th>
+        <th>Base Price</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="motorhome : ${moto}">
+            <td th:text="${motorhome.id}"></td>
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td th:text="${motorhome.year}"></td>
+            <td th:text="${motorhome.lastService}"></td>
+            <td th:text="${motorhome.basePrice}"></td>
+        </tr>
+    </tbody>
+</table>
+
 
 </body>
 </html>

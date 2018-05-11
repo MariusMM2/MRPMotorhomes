@@ -40,9 +40,10 @@ public class AccessoryRepository extends CrudRepository<Accessory> {
 
 	/**
 	 * 
-	 * @param item
+	 * @param id
 	 */
-	public void delete(Accessory item) {
+	@Override
+	public void delete(int id) {
 		// TODO - implement AccessoryRepository.delete
 		throw new UnsupportedOperationException();
 	}
