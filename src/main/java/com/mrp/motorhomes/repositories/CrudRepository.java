@@ -21,19 +21,19 @@ public abstract class CrudRepository<T>{
 			@Override
 			public void run() {
 				while(true) {
-					System.out.println("refreshing");
-					//closes the current connection
-					try {
-						connection.close();
-					} catch(SQLException e) {
-						e.printStackTrace();
-					}
+					//System.out.println("refreshing");
 					//reconnects to the database
 					connection = DBConnection.getConnection();
 					//sleeps for 10 minutes
 					try {
 						Thread.sleep(10 * 60 * 1000);
 					} catch(InterruptedException e) {
+						e.printStackTrace();
+					}
+					//closes the current connection
+					try {
+						connection.close();
+					} catch(SQLException e) {
 						e.printStackTrace();
 					}
 				}

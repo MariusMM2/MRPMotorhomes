@@ -8,9 +8,6 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class MainController<T> {
-
-	protected CrudRepository<T> repository;
-
 	/**
 	 * 
 	 * @param model

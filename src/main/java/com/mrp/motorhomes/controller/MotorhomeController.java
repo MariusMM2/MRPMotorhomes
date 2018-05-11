@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class MotorhomeController extends MainController<Motorhome> {
-
+public class MotorhomeController {
+	private CrudRepository<Motorhome> repository;
+	
 	public MotorhomeController() {
 		repository = new MotorhomeRepository();
 	}
@@ -36,7 +37,7 @@ public class MotorhomeController extends MainController<Motorhome> {
 
 	@GetMapping("/details")
 	public String details(@RequestParam("id") int id, Model model) {
-		Motorhome motorhome = repository.read(id);
+		Motorhome motorhome = (Motorhome)repository.read(id);
 		model.addAttribute("moto", motorhome);
 		return "details";
 	}

@@ -27,6 +27,7 @@ public class Motorhome {
      * @param type
      * @param model
      * @param year
+	 * @param lastService
      * @param basePrice
      */
 
@@ -41,8 +42,7 @@ public class Motorhome {
 		this.basePrice = basePrice;
 	}
 
-    public Motorhome(int id, String brand, String type, String model, int year, LocalDate lastService, int basePrice) {
-    }
+    public Motorhome() {}
 
 
     public int getId() {
