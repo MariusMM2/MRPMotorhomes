@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add new motorhome</title>
 </head>
 <body>
+
+<h1>Add new motorhome</h1>
+
+<form action="/create" method="post">
+    <p>Brand: <input type="text" name="brand" /></p>
+    <p>Type: <input type="text" name="type" /></p>
+    <p>Model: <input type="text" name="model" /></p>
+    <p>Year: <input type="text" name="year" /></p>
+    <p>Last Service: <input type="date" name="lastService" /></p>
+    <p>Base Price: <input type="text" name="basePrice" /></p>
+    <input type="submit" value="create">
+</form>
 
 </body>
 </html>
