@@ -22,8 +22,7 @@ public class Accessory {
 	}
 
 	public Accessory() {
-		// TODO - implement Accessory.Accessory
-		throw new UnsupportedOperationException();
+
 	}
 
 	/**
@@ -40,8 +39,7 @@ public class Accessory {
 	 * @param name
 	 */
 	public Accessory(String name) {
-		// TODO - implement Accessory.Accessory
-		throw new UnsupportedOperationException();
+
 	}
 
 }

@@ -16,15 +16,15 @@ public class Rental {
 	 */
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate startDate;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate endDate;
 	private String pickUp;
 	private String dropOff;
 	private ArrayList<Accessory> accessories;
 	
-//	public Rental() {
-//		// TODO - implement Rental.Rental
-//		throw new UnsupportedOperationException();
-//	}
+	public Rental() {
+
+	}
 	
 	/**
 	 *

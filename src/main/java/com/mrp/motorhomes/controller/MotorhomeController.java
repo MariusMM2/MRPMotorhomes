@@ -20,6 +20,7 @@ public class MotorhomeController {
 
 	@GetMapping("/motorhomes")
 	public String index(Model model) {
+
 		model.addAttribute("moto", repository.readAll());
 		return "motorhomes/index";
 	}

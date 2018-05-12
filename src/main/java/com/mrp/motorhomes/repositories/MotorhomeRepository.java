@@ -14,8 +14,6 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	 */
 	@Override
 	public void create(Motorhome item) {
-		// TODO - implement MotorhomeRepository.create
-
 		try {
 			preparedStatement = connection.prepareStatement("INSERT INTO motorhomes(brand, type, model, year, lastService, basePrice) VALUES (?, ?, ?, ?, ?, ?)");
 			preparedStatement.setString(1, item.getBrand());
@@ -32,8 +30,6 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 			e.printStackTrace();
 		}
 
-
-		throw new UnsupportedOperationException();
 	}
 	
 	@Override
@@ -55,12 +51,11 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 						resultSet.getDate("lastService").toLocalDate(),
 						resultSet.getDouble("basePrice")));
 			}
-			return motorhomes;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		throw new UnsupportedOperationException();
+		return motorhomes;
 	}
 
 	/**
@@ -115,7 +110,6 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 			e.printStackTrace();
 		}
 
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -134,8 +128,6 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		throw new UnsupportedOperationException();
 	}
 
 }

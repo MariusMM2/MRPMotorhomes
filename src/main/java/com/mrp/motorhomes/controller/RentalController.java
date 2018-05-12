@@ -28,7 +28,7 @@ public class RentalController {
 
 
 	@GetMapping("/rentals")
-	public String readAll(Model model) {
+	public String index(Model model) {
 		ArrayList<Rental> rentals = repository.readAll();
 		model.addAttribute("r", rentals);
 		return "rentals/index";
@@ -57,8 +57,8 @@ public class RentalController {
 	@PostMapping("/rentals/create")
 	public String create(@ModelAttribute Rental rental){
 		repository.create(rental);
-		System.out.println(rental);
-		return "rentals/";
+		//System.out.println(rental);
+		return "redirect:/rentals";
 	}
 
 
@@ -74,11 +74,5 @@ public class RentalController {
 		repository.delete(rental.getId());
 		return "redirect:/rentals";
 	}
-
-
-//
-
-
-
 
 }
