@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="'Details: ' + ${customer.firstName} + ' ' + ${customer.lastName}"></title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
+
+<div class="container">
+    <div class="details">
+        <h1>Customer Details</h1>
+        <p class="row"><span class="title">Id:</span><span th:text="${customer.id}" class="value"></span></p>
+        <p class="row"><span class="title">First Name:</span><span th:text="${customer.firstName}" class="value"></span></p>
+        <p class="row"><span class="title">Last Name:</span><span th:text="${customer.lastName}" class="value"></span></p>
+        <p class="row"><span class="title">Email:</span><span th:text="${customer.email}" class="value"></span></p>
+        <p class="row"><span class="title">Address:</span><span th:text="${customer.address}" class="value"></span></p>
+        <p class="row"><span class="title">Phone Number:</span><span th:text="${customer.phone}" class="value"></span></p>
+        <p class="row"><span class="title">SSN:</span><span th:text="${customer.ssn}" class="value"></span></p>
+    </div>
+</div>
 
 </body>
 </html>

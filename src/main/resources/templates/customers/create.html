@@ -2,9 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add New Customer</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
+
+<div class="container">
+    <div class="create">
+
+        <h1>Add New Customer</h1>
+
+        <form action="/customers/create" method="post">
+            <p class="row">
+                <span class="title">First Name</span>
+                <span class="value"><input type="text" name="firstName"></span>
+            </p>
+            <p class="row">
+                <span class="title">Last Name</span>
+                <span class="value"><input type="text" name="lastName"></span>
+            </p>
+            <p class="row">
+                <span class="title">Email</span>
+                <span class="value"><input type="text" name="email"></span>
+            </p>
+            <p class="row">
+                <span class="title">Address</span>
+                <span class="value"><input type="text" name="address"></span>
+            </p>
+            <p class="row">
+                <span class="title">Phone</span>
+                <span class="value"><input type="text" name="phone"></span>
+            </p>
+            <p class="row">
+                <span class="title">SSN</span>
+                <span class="value"><input type="text" name="ssn"></span>
+            </p>
+
+            <p class="buttons">
+                <input type="submit" value="Create Customer" class="btn create"/>
+            </p>
+
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
