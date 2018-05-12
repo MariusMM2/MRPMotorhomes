@@ -111,8 +111,13 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	 */
 	@Override
 	public void delete(int id) {
-		// TODO - implement CustomerRepository.delete
-		throw new UnsupportedOperationException();
+		try{
+			preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE id=?");
+			preparedStatement.setInt(1, id);
+			preparedStatement.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 
 }

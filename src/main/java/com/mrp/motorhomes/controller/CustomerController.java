@@ -40,4 +40,10 @@ public class CustomerController {
 		model.addAttribute("customer", repository.read(id));
 		return "customers/details";
 	}
+	
+	@GetMapping("/customers/delete")
+	public String delete(@RequestParam("id") int id){
+		repository.delete(id);
+		return "redirect:/customers";
+	}
 }
