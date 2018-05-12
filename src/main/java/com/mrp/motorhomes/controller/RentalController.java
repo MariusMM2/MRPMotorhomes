@@ -26,6 +26,7 @@ public class RentalController {
 	}
 
 
+
 	@GetMapping("/rentals")
 	public String readAll(Model model) {
 		ArrayList<Rental> rentals = repository.readAll();
