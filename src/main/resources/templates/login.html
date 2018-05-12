@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div class="container">
+    <h1 class="title">Users</h1>
+    <table class="mh-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Login Button</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text = "${users[0].name}"></td>
+            <td th:text = "${users[0].type}"></td>
+            <td>
+                <p class="row">
+                    <a href="/rentals">Login</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td th:text = "${users[1].name}"></td>
+            <td th:text = "${users[1].type}"></td>
+            <td>
+                <p class="row">
+                    <a href="/motorhomes">Login</a>
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

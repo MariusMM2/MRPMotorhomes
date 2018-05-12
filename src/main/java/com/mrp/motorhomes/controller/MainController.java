@@ -15,7 +15,7 @@ public class MainController {
 	@GetMapping("/")
 	public String login(Model model) {
 		model.addAttribute("users", User.ALL_USERS);
-		return "index";
+		return "login";
 	}
 
 }
