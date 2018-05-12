@@ -55,6 +55,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 						resultSet.getDate("lastService").toLocalDate(),
 						resultSet.getDouble("basePrice")));
 			}
+			return motorhomes;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

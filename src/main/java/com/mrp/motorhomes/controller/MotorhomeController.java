@@ -41,12 +41,12 @@ public class MotorhomeController {
 		model.addAttribute("moto", motorhome);
 		return "motorhomes/details";
 	}
-
+/*
 	@PostMapping("/motorhomes/update")
 	public String update(@ModelAttribute Motorhome motorhome) {
         repository.update(motorhome);
 	    return "redirect:/motorhomes/";
-	}
+	}*/
 
 	@PostMapping("/motorhomes/delete")
 	public String delete(@ModelAttribute Motorhome motorhome) {
