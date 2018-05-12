@@ -33,7 +33,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		}
 
 
-		throw new UnsupportedOperationException();
+//		throw new UnsupportedOperationException();
 	}
 	
 	@Override
@@ -55,6 +55,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 						resultSet.getDate("lastService").toLocalDate(),
 						resultSet.getDouble("basePrice")));
 			}
+//			return rentals;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

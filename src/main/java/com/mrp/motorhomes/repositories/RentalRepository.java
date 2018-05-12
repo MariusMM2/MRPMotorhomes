@@ -1,8 +1,11 @@
 package com.mrp.motorhomes.repositories;
 
+import com.mrp.motorhomes.model.Customer;
 import com.mrp.motorhomes.model.Motorhome;
 import com.mrp.motorhomes.model.Rental;
+import com.mrp.motorhomes.repositories.util.DBConnection;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,7 +18,6 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public void create(Rental item) {
-
 		try {
 			preparedStatement = connection.prepareStatement("INSERT INTO rentals(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1, item.getCustomerId());
@@ -25,27 +27,20 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement.setDate(5, Date.valueOf(item.getEndDate()));
 			preparedStatement.setString(6, item.getPickUp());
 			preparedStatement.setString(7, item.getDropOff());
-
 			preparedStatement.execute();
-
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-//		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	public ArrayList<Rental> readAll() {
-
 		ArrayList<Rental> rentals = new ArrayList<>();
-
 		try {
 			preparedStatement = connection.prepareStatement("SELECT * FROM rentals");
 			resultSet = preparedStatement.executeQuery();
-			while(resultSet.next())
-			{
+			System.out.println("after prepS");
+			while(resultSet.next()){
 				rentals.add(new Rental(
 						resultSet.getInt("id"),
 						resultSet.getInt("customerId"),
@@ -56,12 +51,13 @@ public class RentalRepository extends CrudRepository<Rental> {
 						resultSet.getString("pickUp"),
 						resultSet.getString("dropOff")));
 			}
+			System.out.println(rentals);
+			return rentals;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
-
-
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -70,9 +66,8 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public Rental read(int id) {
-
 		try {
-			preparedStatement = connection.prepareStatement("SELECT * FROM motorhomes WHERE id = ?");
+			preparedStatement = connection.prepareStatement("SELECT * FROM rentals WHERE id = ?");
 			preparedStatement.setInt(1, id);
 			resultSet = preparedStatement.executeQuery();
 
@@ -92,8 +87,6 @@ public class RentalRepository extends CrudRepository<Rental> {
 			e.printStackTrace();
 		}
 		return null;
-
-		//		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -102,8 +95,21 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public void update(Rental item) {
-		// TODO - implement RentalRepository.update
-		throw new UnsupportedOperationException();
+
+		try {
+			preparedStatement = connection.prepareStatement(
+					"UPDATE rentals SET customerId=?, motorhomeId=?, price=?, startDate=?, endDate=?, pickUp=?, dropOff=? WHERE id=?");
+			preparedStatement.setInt(1, item.getCustomerId());
+			preparedStatement.setInt(2, item.getMotorhomeId());
+			preparedStatement.setDouble(3, item.getPrice());
+			preparedStatement.setDate(4, Date.valueOf(item.getStartDate()));
+			preparedStatement.setDate(5, Date.valueOf(item.getEndDate()));
+			preparedStatement.setString(6, item.getPickUp());
+			preparedStatement.setString(7, item.getDropOff());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -112,8 +118,14 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public void delete(int id) {
-		// TODO - implement RentalRepository.delete
-		throw new UnsupportedOperationException();
+		try {
+			preparedStatement = connection.prepareStatement("DELETE FROM rentals WHERE id = ?");
+			preparedStatement.setInt(1, id);
+
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

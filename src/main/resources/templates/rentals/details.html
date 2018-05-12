@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Rental Details</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
+
+<div class="container">
+    <div class="details">
+        <h1>Rental Details</h1>
+        <p class="row"><span class="title">Id:</span><span th:text="${rental.id}" class="value"></span></p>
+        <p class="row"><span class="title">Customer Id:</span><span th:text="${rental.customerId}" class="value"></span></p>
+        <p class="row"><span class="title">Motorhome Id:</span><span th:text="${rental.motorhomeId}" class="value"></span></p>
+        <p class="row"><span class="title">Price:</span><span th:text="${rental.price}" class="value"></span></p>
+        <p class="row"><span class="title">Start Date:</span><span th:text="${rental.startDate}" class="value"></span></p>
+        <p class="row"><span class="title">End Date:</span><span th:text="${rental.endDate}" class="value"></span></p>
+        <p class="row"><span class="title">Pick Up:</span><span th:text="${rental.pickUp}" class="value"></span></p>
+        <p class="row"><span class="title">Drop Off:</span><span th:text="${rental.dropOff}" class="value"></span></p>
+        <!--<p class="row"><span class="highlight">Accessories</span><span th:text="${rental.id}" class="value"></span></p>-->
+    </div>
+</div>
 
 </body>
 </html>

@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add New Rental</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
+
+
+<div class="container">
+    <div class="create">
+
+        <h1>Add New Rental</h1>
+
+        <form action="/rentals/create" method="post">
+            <!--<p>Id: <input type="text" name="id" /></p>-->
+            <!--<p class="row">-->
+                <!--<span class="title">Id:</span>-->
+                <!--<span class="value"><input type="number" name="id"/></span>-->
+            <!--</p>-->
+            <p class="row">
+                <span class="title">Customer Id:</span>
+                <span class="value"><input type="number" name="customerId"/></span>
+            </p>
+            <p class="row">
+                <span class="title">Motorhome Id:</span>
+                <span class="value"><input type="number" name="motorhomeId"/></span>
+            </p>
+            <p class="row">
+                <span class="title">Price:</span>
+                <span class="value"><input type="number" name="price"/></span>
+            </p>
+            <p class="row">
+                <span class="title">Start Date:</span>
+                <span class="value"><input type="date" name="startDate"/></span>
+            </p>
+            <p class="row">
+                <span class="title">End Date:</span>
+                <span class="value"><input type="date" name="endDate"/></span>
+            </p>
+            <p class="row">
+                <span class="title">Pick Up:</span>
+                <span class="value"><input type="text" name="pickUp"/></span>
+            </p>
+            <p class="row">
+                <span class="title">Drop Off:</span>
+                <span class="value"><input type="text" name="dropOff"/></span>
+            </p>
+
+            <p class="buttons">
+                <input type="submit" value="Create Rental" class="btn create"/>
+            </p>
+
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
