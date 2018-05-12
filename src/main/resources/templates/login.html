@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 <div class="container">
@@ -21,7 +21,7 @@
             <td th:text = "${users[0].type}"></td>
             <td>
                 <p class="row">
-                    <a href="/rentals">Login</a>
+                    <a href="/rentals/" class="btn details" >Login</a>
                 </p>
             </td>
         </tr>
@@ -30,7 +30,7 @@
             <td th:text = "${users[1].type}"></td>
             <td>
                 <p class="row">
-                    <a href="/motorhomes">Login</a>
+                    <a href="/motorhomes/" class="btn details">Login</a>
                 </p>
             </td>
         </tr>

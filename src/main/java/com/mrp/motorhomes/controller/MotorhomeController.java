@@ -49,7 +49,8 @@ public class MotorhomeController {
 	    return "redirect:/motorhomes/";
 	}
 
-	@PostMapping("/motorhomes/delete")
+
+	@GetMapping("/motorhomes/delete")
 	public String delete(@ModelAttribute Motorhome motorhome) {
         repository.delete(motorhome.getId());
         return "redirect:/motorhomes/";

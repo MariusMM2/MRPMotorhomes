@@ -2,13 +2,12 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Motorhomes list</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
-
+<div class="container">
 <h1>Motorhomes List</h1>
-<p><a href="/customers/create">Add new motorhome</a></p>
-
-<table style="width:100%">
+<table class="mh-table">
     <thead>
     <tr>
         <th>Id</th>
@@ -18,7 +17,7 @@
         <th>Year</th>
         <th>Last Service</th>
         <th>Base Price</th>
-        <th></th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -30,11 +29,24 @@
             <td th:text="${motorhome.year}"></td>
             <td th:text="${motorhome.lastService}"></td>
             <td th:text="${motorhome.basePrice}"></td>
-            <td><a th:href="@{'details?id=' + ${motorhome.id}}">Details</a>
-                <a th:href="@{'delete?id=' + ${motorhome.id}}">Delete</a>
+            <td>
+            <p class="row">
+                <a th:href="@{'details?id=' + ${motorhome.id}}">
+                    <span class="btn details">Details</span>
+                </a>
+                <a th:href="@{'delete?id=' + ${motorhome.id}}">
+                    <span class="btn delete">Delete</span>
+                </a>
+            </p>
             </td>
         </tr>
     </tbody>
 </table>
+    <p class="buttons">
+        <a href="/motorhomes/create" class="btn create">
+            <span>Add new motorhome</span>
+        </a>
+    </p>
+</div>
 </body>
 </html>

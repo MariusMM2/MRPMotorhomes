@@ -64,8 +64,6 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	 */
 	@Override
 	public Motorhome read(int id) {
-		// TODO - implement MotorhomeRepository.read
-
 		try {
 			preparedStatement = connection.prepareStatement("SELECT * FROM motorhomes WHERE id = ?");
 			preparedStatement.setInt(1, id);
@@ -118,8 +116,6 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	 */
 	@Override
 	public void delete(int id) {
-		// TODO - implement MotorhomeRepository.delete
-
 		try {
 			preparedStatement = connection.prepareStatement("DELETE FROM motorhomes WHERE id = ?");
 			preparedStatement.setInt(1, id);

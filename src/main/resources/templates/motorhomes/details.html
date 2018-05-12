@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title th:text="'Motorhome id' + ${motorhome.id} + ' details:'"></title>
+    <title th:text="'Motorhome id' + ${moto.id} + ' details:'"></title>
 </head>
 <body>
 
-<h1 th:text="'Motorhome id' + ${motorhome.id} + ' details:'"></h1>
+<h1 th:text="'Motorhome id' + ${moto.id} + ' details:'"></h1>
 <ul style="list-style-type:disc">
-    <p><li th:text="'Id: ' + ${motorhome.id}'"></li></p>
-    <p><li th:text="'Brand: ' + ${motorhome.brand}'"></li></p>
-    <p><li th:text="'Type: ' + ${motorhome.tyoe}'"></li></p>
-    <p><li th:text="'Model: ' + ${motorhome.model}'"></li></p>
-    <p><li th:text="'Year: ' + ${motorhome.year}'"></li></p>
-    <p><li th:text="'Last Service' + ${motorhome.lastService}'"></li></p>
-    <p><li th:text="'Base Price' + ${motorhome.basePrice}'"></li></p>
+    <p><li th:text="'Id: ' + ${moto.id}"></li></p>
+    <p><li th:text="'Brand: ' + ${moto.brand}"></li></p>
+    <p><li th:text="'Type: ' + ${moto.type}"></li></p>
+    <p><li th:text="'Model: ' + ${moto.model}"></li></p>
+    <p><li th:text="'Year: ' + ${moto.year}"></li></p>
+    <p><li th:text="'Last Service: ' + ${moto.lastService}"></li></p>
+    <p><li th:text="'Base Price: ' + ${moto.basePrice}"></li></p>
 </ul>
 </body>
 </html>

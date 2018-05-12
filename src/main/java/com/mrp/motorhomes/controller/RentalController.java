@@ -66,13 +66,13 @@ public class RentalController {
 	@PostMapping("/rentals/update")
 	public String update(@ModelAttribute Rental rental) {
 		repository.update(rental);
-		return "redirect:/rentals";
+		return "redirect:/rentals/";
 	}
 
-	@PostMapping("/rentals/delete")
+	@GetMapping("/rentals/delete")
 	public String delete(@ModelAttribute Rental rental) {
 		repository.delete(rental.getId());
-		return "redirect:/rentals";
+		return "redirect:/rentals/";
 	}
 
 }
