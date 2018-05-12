@@ -21,10 +21,10 @@ public class Rental {
 	private String dropOff;
 	private ArrayList<Accessory> accessories;
 	
-	public Rental() {
-		// TODO - implement Rental.Rental
-		throw new UnsupportedOperationException();
-	}
+//	public Rental() {
+//		// TODO - implement Rental.Rental
+//		throw new UnsupportedOperationException();
+//	}
 	
 	/**
 	 *
@@ -47,21 +47,20 @@ public class Rental {
 		this.endDate = endDate;
 		this.pickUp = pickUp;
 		this.dropOff = dropOff;
-		throw new UnsupportedOperationException();
 	}
 
-	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, ArrayList<Accessory> accessories) {
-		this.id = id;
-		this.customerId = customerId;
-		this.motorhomeId = motorhomeId;
-		this.price = price;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.pickUp = pickUp;
-		this.dropOff = dropOff;
-		this.accessories = accessories;
-		throw new UnsupportedOperationException();
-	}
+//	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, ArrayList<Accessory> accessories) {
+//		this.id = id;
+//		this.customerId = customerId;
+//		this.motorhomeId = motorhomeId;
+//		this.price = price;
+//		this.startDate = startDate;
+//		this.endDate = endDate;
+//		this.pickUp = pickUp;
+//		this.dropOff = dropOff;
+//		this.accessories = accessories;
+//		throw new UnsupportedOperationException();
+//	}
 
 	public int getId() {
 		return this.id;

@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--<html lang="en">-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>View All Rentals</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
+
+<div class="container">
+
+    <h1 class="title">View All Rentals</h1>
+    <table class="mh-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer Id</th>
+                <th>Motorhome Id</th>
+                <th>Price</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Pick Up</th>
+                <th>Drop Off</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="rental : ${r}">
+                <td th:text="${rental.id}"></td>
+                <td th:text="${rental.customerId}"></td>
+                <td th:text="${rental.motorhomeId}"></td>
+                <td th:text="${rental.price}"></td>
+                <td th:text="${rental.startDate}"></td>
+                <td th:text="${rental.endDate}"></td>
+                <td th:text="${rental.pickUp}"></td>
+                <td th:text="${rental.dropOff}"></td>
+                <td>
+                    <p class="row">
+                        <a th:href="@{'details?id=' + ${rental.id}}">
+                            <span class="btn details">Details</span>
+                        </a>
+                        <a th:href="@{'delete?id=' + ${rental.id}}">
+                            <span class="btn delete">Delete</span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="buttons">
+        <a href="/rentals/create" class="btn create">
+            <span>Create New Rental</span>
+        </a>
+    </p>
+
+
+</div>
+
 
 </body>
 </html>
