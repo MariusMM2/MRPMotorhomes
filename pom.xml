@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>motorhomes</name>
+	<title>motorhomes</title>
 	<description>1st year assignment</description>
 
 	<parent>

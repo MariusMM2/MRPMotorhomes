@@ -47,8 +47,9 @@ public class RentalRepository extends CrudRepository<Rental> {
 		ArrayList<Rental> rentals = new ArrayList<>();
 		try {
 			preparedStatement = connection.prepareStatement(
-					"SELECT rentals.id, customers.firstName, customers.lastName, motorhomes.brand, motorhomes.model, " +
-							"rentals.price, rentals.startDate, rentals.endDate, rentals.pickUp, rentals.dropOff FROM rentals " +
+					"SELECT rentals.id, rentals.customerId, customers.firstName, customers.lastName, " +
+							"rentals.motorhomeId, motorhomes.brand, motorhomes.model, rentals.price, rentals.startDate, " +
+							"rentals.endDate, rentals.pickUp, rentals.dropOff FROM rentals " +
 							"INNER JOIN customers ON rentals.customerId=customers.id " +
 							"INNER JOIN motorhomes ON rentals.motorhomeId=motorhomes.id");
 			resultSet = preparedStatement.executeQuery();
@@ -56,7 +57,9 @@ public class RentalRepository extends CrudRepository<Rental> {
 			while(resultSet.next()){
 				rentals.add(new RentalView(
 						resultSet.getInt("id"),
+						resultSet.getInt("customerId"),
 						resultSet.getString("firstName") + " " + resultSet.getString("lastName"),
+						resultSet.getInt("motorhomeId"),
 						resultSet.getString("brand") + " " + resultSet.getString("model"),
 						resultSet.getDouble("price"),
 						resultSet.getDate("startDate").toLocalDate(),
@@ -64,9 +67,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 						resultSet.getString("pickUp"),
 						resultSet.getString("dropOff")));
 			}
-			System.out.println(rentals);
 			return rentals;
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -79,27 +80,37 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public Rental read(int id) {
+		Rental rental = null;
 		try {
-			preparedStatement = connection.prepareStatement("SELECT * FROM rentals WHERE id = ?");
+			preparedStatement = connection.prepareStatement(
+					"SELECT rentals.id, rentals.customerId, customers.firstName, customers.lastName, " +
+							"rentals.motorhomeId, motorhomes.brand, motorhomes.model, rentals.price, rentals.startDate, " +
+							"rentals.endDate, rentals.pickUp, rentals.dropOff FROM rentals " +
+							"INNER JOIN customers ON rentals.customerId=customers.id " +
+							"INNER JOIN motorhomes ON rentals.motorhomeId=motorhomes.id WHERE rentals.id=?");
 			preparedStatement.setInt(1, id);
 			resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
-				return new Rental(
+				rental = new RentalView(
 						resultSet.getInt("id"),
 						resultSet.getInt("customerId"),
+						resultSet.getString("firstName") + " " + resultSet.getString("lastName"),
 						resultSet.getInt("motorhomeId"),
+						resultSet.getString("brand") + " " + resultSet.getString("model"),
 						resultSet.getDouble("price"),
 						resultSet.getDate("startDate").toLocalDate(),
 						resultSet.getDate("endDate").toLocalDate(),
 						resultSet.getString("pickUp"),
 						resultSet.getString("dropOff"));
+				
+				rental.setAccessories(AccessoryRepository.getInstance().read(rental.getId()));
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return rental;
 	}
 
 	/**

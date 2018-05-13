@@ -37,6 +37,7 @@ public class RentalController {
 	@GetMapping("/rentals/details")
 	public String details(@RequestParam("id") int id, Model model) {
 		Rental rental = repository.read(id);
+		System.out.println(rental);
 		model.addAttribute("rental", rental);
 //		model.addAttribute("rental", rental);
 		return "rentals/details";

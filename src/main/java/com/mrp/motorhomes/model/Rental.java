@@ -7,20 +7,20 @@ import java.util.ArrayList;
 
 public class Rental {
 
-	private int id;
-	private int customerId;
-	private int motorhomeId;
-	private double price;
+	protected int id;
+	protected int customerId;
+	protected int motorhomeId;
+	protected double price;
 	/**
 	 * @DateTimeFormat(pattern = "yyyy-MM-dd")
 	 */
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private LocalDate startDate;
+	protected LocalDate startDate;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private LocalDate endDate;
-	private String pickUp;
-	private String dropOff;
-	private ArrayList<Accessory> accessories;
+	protected LocalDate endDate;
+	protected String pickUp;
+	protected String dropOff;
+	protected ArrayList<Accessory> accessories;
 	
 	public Rental() {
 
@@ -132,5 +132,20 @@ public class Rental {
 
 	public void setAccessories(ArrayList<Accessory> accessories) {
 		this.accessories = accessories;
+	}
+	
+	@Override
+	public String toString() {
+		return "Rental{" +
+					   "id=" + id +
+					   ", customerId=" + customerId +
+					   ", motorhomeId=" + motorhomeId +
+					   ", price=" + price +
+					   ", startDate=" + startDate +
+					   ", endDate=" + endDate +
+					   ", pickUp='" + pickUp + '\'' +
+					   ", dropOff='" + dropOff + '\'' +
+					   ", accessories=" + accessories +
+					   '}';
 	}
 }

@@ -2,23 +2,23 @@ package com.mrp.motorhomes.model;
 
 public class Accessory {
 
-	private String name;
-	private int rentId;
+	private String title;
+	private int rentalId;
 
-	public String getName() {
-		return this.name;
+	public String getTitle() {
+		return this.title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public int getRentId() {
-		return this.rentId;
+	public int getRentalId() {
+		return this.rentalId;
 	}
 
-	public void setRentId(int rentId) {
-		this.rentId = rentId;
+	public void setRentalId(int rentalId) {
+		this.rentalId = rentalId;
 	}
 
 	public Accessory() {
@@ -27,19 +27,19 @@ public class Accessory {
 
 	/**
 	 * 
-	 * @param name
-	 * @param rentId
+	 * @param title
+	 * @param rentalId
 	 */
-	public Accessory(String name, int rentId) {
-
+	public Accessory(String title, int rentalId) {
+		this.title = title;
+		this.rentalId = rentalId;
 	}
-
-	/**
-	 * 
-	 * @param name
-	 */
-	public Accessory(String name) {
-
+	
+	@Override
+	public String toString() {
+		return "Accessory{" +
+					   "title='" + title + '\'' +
+					   ", rentalId=" + rentalId +
+					   '}';
 	}
-
 }
