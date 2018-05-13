@@ -88,5 +88,9 @@ public class Customer {
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
+	
+	public String getFullName(){
+		return firstName + " " + lastName;
+	}
 
 }

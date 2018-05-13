@@ -7,11 +7,8 @@ import java.time.LocalDate;
 public class Motorhome {
 
 	public static final String[] TYPES = {"Class A", "Class B", "Class C", "Truck Camper", "Popup Camper", "Travel Trailer", "Teardrop Trailer", "Hybrid Trailer"};
-	public static final Accessory[] ALL_ACCESSORIES = {new Accessory("Bike rack"), new Accessory("Bed linen"), new Accessory("Picnic table and chairs"), new Accessory("Child seat"), new Accessory("TV"), new Accessory("Fishing tools")};
 	private int id;
 	private String brand;
-
-
 
     private String type;
 	private String model;
@@ -19,18 +16,6 @@ public class Motorhome {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate lastService;
 	private double basePrice;
-
-    /**
-     *
-     * @param id
-     * @param brand
-     * @param type
-     * @param model
-     * @param year
-	 * @param lastService
-     * @param basePrice
-     */
-
 
 	public Motorhome(int id, String brand, String type, String model, String year, LocalDate lastService, double basePrice) {
 		this.id = id;
@@ -43,7 +28,6 @@ public class Motorhome {
 	}
 
     public Motorhome() {}
-
 
     public int getId() {
 		return this.id;
@@ -92,7 +76,8 @@ public class Motorhome {
     public void setLastService(LocalDate lastService) {
         this.lastService = lastService;
     }
-	public double getBasePrice() {
+	
+    public double getBasePrice() {
 		return this.basePrice;
 	}
 

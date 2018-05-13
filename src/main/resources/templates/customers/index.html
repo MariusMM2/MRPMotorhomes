@@ -34,10 +34,10 @@
                 <td th:text="${customer.ssn}"></td>
                 <td>
                     <p class="row">
-                        <a th:href="@{'details?id=' + ${customer.id}}">
+                        <a th:href="@{'../customers/details?id=' + ${customer.id}}">
                             <span class="btn details">Details</span>
                         </a>
-                        <a th:href="@{'delete?id=' + ${customer.id}}">
+                        <a th:href="@{'../customers/delete?id=' + ${customer.id}}">
                             <span class="btn delete">Delete</span>
                         </a>
                     </p>

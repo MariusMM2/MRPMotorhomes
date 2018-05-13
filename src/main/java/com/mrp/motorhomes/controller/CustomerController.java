@@ -32,7 +32,7 @@ public class CustomerController {
 	@PostMapping("/customers/create")
 	public String create(@ModelAttribute Customer customer){
 		repository.create(customer);
-		return "redirect:/customers";
+		return "redirect:/customers/";
 	}
 	
 	@GetMapping("/customers/details")
@@ -44,6 +44,6 @@ public class CustomerController {
 	@GetMapping("/customers/delete")
 	public String delete(@RequestParam("id") int id){
 		repository.delete(id);
-		return "redirect:/customers";
+		return "redirect:/customers/";
 	}
 }

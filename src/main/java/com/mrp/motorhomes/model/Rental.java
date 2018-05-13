@@ -11,9 +11,6 @@ public class Rental {
 	protected int customerId;
 	protected int motorhomeId;
 	protected double price;
-	/**
-	 * @DateTimeFormat(pattern = "yyyy-MM-dd")
-	 */
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	protected LocalDate startDate;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -48,8 +45,8 @@ public class Rental {
 		this.pickUp = pickUp;
 		this.dropOff = dropOff;
 	}
-
-//	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, ArrayList<Accessory> accessories) {
+	
+	//	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, ArrayList<Accessory> accessories) {
 //		this.id = id;
 //		this.customerId = customerId;
 //		this.motorhomeId = motorhomeId;

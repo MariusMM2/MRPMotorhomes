@@ -21,7 +21,7 @@
 
         <p class="row"><span class="title">Accessories:</span>
             <th:block  th:each="accessory : ${rental.accessories}">
-                <span th:text="${accessory.title} ', '"></span>
+                <span th:text="${accessory.title} + ', '"></span>
             </th:block>
         </p>
         <!--

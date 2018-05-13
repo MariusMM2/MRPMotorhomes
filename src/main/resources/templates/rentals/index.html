@@ -37,10 +37,10 @@
                 <td th:text="${rental.dropOff}"></td>
                 <td>
                     <p class="row">
-                        <a th:href="@{'details?id=' + ${rental.id}}">
+                        <a th:href="@{'../rentals/details?id=' + ${rental.id}}">
                             <span class="btn details">Details</span>
                         </a>
-                        <a th:href="@{'delete?id=' + ${rental.id}}">
+                        <a th:href="@{'../rentals/delete?id=' + ${rental.id}}">
                             <span class="btn delete">Delete</span>
                         </a>
                     </p>

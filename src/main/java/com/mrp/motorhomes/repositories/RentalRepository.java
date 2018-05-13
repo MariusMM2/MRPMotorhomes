@@ -1,12 +1,8 @@
 package com.mrp.motorhomes.repositories;
 
-import com.mrp.motorhomes.model.Customer;
-import com.mrp.motorhomes.model.Motorhome;
 import com.mrp.motorhomes.model.Rental;
 import com.mrp.motorhomes.model.RentalView;
-import com.mrp.motorhomes.repositories.util.DBConnection;
 
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;

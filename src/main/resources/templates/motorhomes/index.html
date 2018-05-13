@@ -31,10 +31,10 @@
             <td th:text="${motorhome.basePrice}"></td>
             <td>
             <p class="row">
-                <a th:href="@{'details?id=' + ${motorhome.id}}">
+                <a th:href="@{'../motorhomes/details?id=' + ${motorhome.id}}">
                     <span class="btn details">Details</span>
                 </a>
-                <a th:href="@{'delete?id=' + ${motorhome.id}}">
+                <a th:href="@{'../motorhomes/delete?id=' + ${motorhome.id}}">
                     <span class="btn delete">Delete</span>
                 </a>
             </p>

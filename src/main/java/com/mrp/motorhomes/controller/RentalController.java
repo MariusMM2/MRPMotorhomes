@@ -2,10 +2,12 @@ package com.mrp.motorhomes.controller;
 
 import java.util.*;
 
+import com.mrp.motorhomes.model.Accessory;
 import com.mrp.motorhomes.model.Rental;
 import com.mrp.motorhomes.model.RentalView;
 import com.mrp.motorhomes.repositories.CrudRepository;
 import com.mrp.motorhomes.repositories.CustomerRepository;
+import com.mrp.motorhomes.repositories.MotorhomeRepository;
 import com.mrp.motorhomes.repositories.RentalRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,15 +53,18 @@ public class RentalController {
 //	}
 
 	@GetMapping("/rentals/create")
-	public String create(){
+	public String create(Model model){
+		model.addAttribute("customers", CustomerRepository.getInstance().readAll());
+		model.addAttribute("motorhomes", MotorhomeRepository.getInstance().readAll());
+		model.addAttribute("accessories", Accessory.ALL_ACCESSORIES);
 		return "rentals/create";
 	}
 
 	@PostMapping("/rentals/create")
 	public String create(@ModelAttribute Rental rental){
+		System.out.println(rental);
 		repository.create(rental);
-		//System.out.println(rental);
-		return "redirect:/rentals";
+		return "redirect:/rentals/";
 	}
 
 

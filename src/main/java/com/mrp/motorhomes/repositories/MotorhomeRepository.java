@@ -42,8 +42,6 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	
 	@Override
 	public ArrayList<Motorhome> readAll() {
-		// TODO - implement MotorhomeRepository.readAll
-
 		ArrayList<Motorhome> motorhomes = new ArrayList<>();
 
 		try {
