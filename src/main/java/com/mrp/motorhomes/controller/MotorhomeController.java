@@ -26,7 +26,8 @@ public class MotorhomeController {
 	}
 
 	@GetMapping("/motorhomes/create")
-	public String create() {
+	public String create(Model model) {
+		model.addAttribute("types", Motorhome.TYPES);
 		return "motorhomes/create";
 	}
 
