@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Add New Rental</title>
@@ -20,9 +20,15 @@
                 <!--<span class="value"><input type="number" title="id"/></span>-->
             <!--</p>-->
             <p class="row">
-                <span class="title">Customer Id:</span>
-                <span class="value"><input type="number" title="customerId"/></span>
+
             </p>
+            <!--<p class="row">-->
+                <!--<span class="title">Customer:</span>-->
+                <!--&lt;!&ndash;<span class="value"><input type="number" title="customerId"/></span>&ndash;&gt;-->
+                <!--<select>-->
+                    <!--<option th:each="customer : ${customers}" title="customerId" th:value="${customer.id}" th:text="${customer.fullName}"></option>-->
+                <!--</select>-->
+            <!--</p>-->
             <p class="row">
                 <span class="title">Motorhome Id:</span>
                 <span class="value"><input type="number" title="motorhomeId"/></span>
