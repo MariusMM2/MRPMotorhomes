@@ -85,4 +85,7 @@ public class Motorhome {
 		this.basePrice = basePrice;
 	}
 
+	public String getFullName(){
+		return brand + " " + model;
+	}
 }

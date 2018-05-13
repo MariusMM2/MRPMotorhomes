@@ -14,37 +14,35 @@
         <h1>Add New Rental</h1>
 
         <form action="/rentals/create" method="post">
-            <!--<p>Id: <input type="text" title="id" /></p>-->
-            <!--<p class="row">-->
-                <!--<span class="title">Id:</span>-->
-                <!--<span class="value"><input type="number" title="id"/></span>-->
-            <!--</p>-->
             <p class="row">
-
+                <table>
+                    <tr>
+                        <td>Customer:</td>
+                        <td>
+                            <select name="customerId">
+                                <option value="-1">--</option>
+                                <option th:each="customer : ${customers}"
+                                        th:value="${customer.id}"
+                                        th:text="${customer.fullName}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </p>
             <p class="row">
-                <!--<span class="title">Customer:</span>-->
-                <!--<span class="value"><input type="number" title="customerId"/></span>-->
-                <!--<select>-->
-                    <!--<option th:each="customer : ${customers}" name="customerId" th:value="${customer.id}" th:text="${customer.fullName}"></option>-->
-                <!--</select>-->
-                <table>
+            <table>
                 <tr>
-                    <td>Customer:</td>
+                    <td>Motorhome:</td>
                     <td>
-                        <select name="customerId">
-                            <option value="">--</option>
-                            <option th:each="customer : ${customers}"
-                            th:value="${customer.id}"
-                            th:text="${customer.fullName}"></option>
+                        <select name="motorhomeId">
+                            <option value="-1">--</option>
+                            <option th:each="motorhome : ${motorhomes}"
+                                    th:value="${motorhome.id}"
+                                    th:text="${motorhome.fullName}"></option>
                         </select>
                     </td>
                 </tr>
-        </table>
-            </p>
-            <p class="row">
-                <span class="title">Motorhome Id:</span>
-                <span class="value"><input type="number" name="motorhomeId"/></span>
+            </table>
             </p>
             <p class="row">
                 <span class="title">Price:</span>
