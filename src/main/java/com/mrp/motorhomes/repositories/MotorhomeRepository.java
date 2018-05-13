@@ -7,6 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MotorhomeRepository extends CrudRepository<Motorhome> {
+	
+	private static MotorhomeRepository instance;
+	public static MotorhomeRepository getInstance(){
+		if(instance == null){
+			instance = new MotorhomeRepository();
+		}
+		return instance;
+	}
 
 	/**
 	 * 

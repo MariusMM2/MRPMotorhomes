@@ -2,9 +2,8 @@ package com.mrp.motorhomes.controller;
 
 import java.util.*;
 
-import com.mrp.motorhomes.model.Customer;
-import com.mrp.motorhomes.model.Motorhome;
 import com.mrp.motorhomes.model.Rental;
+import com.mrp.motorhomes.model.RentalView;
 import com.mrp.motorhomes.repositories.CrudRepository;
 import com.mrp.motorhomes.repositories.CustomerRepository;
 import com.mrp.motorhomes.repositories.RentalRepository;
@@ -22,7 +21,7 @@ public class RentalController {
 	private CrudRepository<Rental> repository;
 
 	public RentalController(){
-		repository = new RentalRepository();
+		repository = RentalRepository.getInstance();
 	}
 
 
@@ -30,6 +29,7 @@ public class RentalController {
 	@GetMapping("/rentals")
 	public String index(Model model) {
 		ArrayList<Rental> rentals = repository.readAll();
+		
 		model.addAttribute("r", rentals);
 		return "rentals/index";
 	}

@@ -3,6 +3,7 @@ package com.mrp.motorhomes.repositories;
 import com.mrp.motorhomes.model.Customer;
 import com.mrp.motorhomes.model.Motorhome;
 import com.mrp.motorhomes.model.Rental;
+import com.mrp.motorhomes.model.RentalView;
 import com.mrp.motorhomes.repositories.util.DBConnection;
 
 import java.sql.Connection;
@@ -11,6 +12,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RentalRepository extends CrudRepository<Rental> {
+	
+	private static RentalRepository instance;
+	public static RentalRepository getInstance(){
+		if(instance == null){
+			instance = new RentalRepository();
+		}
+		return instance;
+	}
 
 	/**
 	 * 
@@ -37,14 +46,18 @@ public class RentalRepository extends CrudRepository<Rental> {
 	public ArrayList<Rental> readAll() {
 		ArrayList<Rental> rentals = new ArrayList<>();
 		try {
-			preparedStatement = connection.prepareStatement("SELECT * FROM rentals");
+			preparedStatement = connection.prepareStatement(
+					"SELECT rentals.id, customers.firstName, customers.lastName, motorhomes.brand, motorhomes.model, " +
+							"rentals.price, rentals.startDate, rentals.endDate, rentals.pickUp, rentals.dropOff FROM rentals " +
+							"INNER JOIN customers ON rentals.customerId=customers.id " +
+							"INNER JOIN motorhomes ON rentals.motorhomeId=motorhomes.id");
 			resultSet = preparedStatement.executeQuery();
 			System.out.println("after prepS");
 			while(resultSet.next()){
-				rentals.add(new Rental(
+				rentals.add(new RentalView(
 						resultSet.getInt("id"),
-						resultSet.getInt("customerId"),
-						resultSet.getInt("motorhomeId"),
+						resultSet.getString("firstName") + " " + resultSet.getString("lastName"),
+						resultSet.getString("brand") + " " + resultSet.getString("model"),
 						resultSet.getDouble("price"),
 						resultSet.getDate("startDate").toLocalDate(),
 						resultSet.getDate("endDate").toLocalDate(),

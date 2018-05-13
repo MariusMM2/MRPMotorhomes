@@ -6,6 +6,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerRepository extends CrudRepository<Customer> {
+	
+	private static CustomerRepository instance;
+	public static CustomerRepository getInstance(){
+		if(instance == null){
+			instance = new CustomerRepository();
+		}
+		return instance;
+	}
 
 	/**
 	 * 

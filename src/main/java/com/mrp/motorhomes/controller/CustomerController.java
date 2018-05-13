@@ -15,7 +15,7 @@ public class CustomerController {
 	private CrudRepository<Customer> repository;
 	
 	public CustomerController(){
-		repository = new CustomerRepository();
+		repository = CustomerRepository.getInstance();
 	}
 
 	@GetMapping("/customers")

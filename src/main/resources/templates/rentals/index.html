@@ -15,8 +15,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Customer Id</th>
-                <th>Motorhome Id</th>
+                <th>Customer</th>
+                <th>Motorhome</th>
                 <th>Price</th>
                 <th>Start Date</th>
                 <th>End Date</th>
@@ -28,8 +28,8 @@
         <tbody>
             <tr th:each="rental : ${r}">
                 <td th:text="${rental.id}"></td>
-                <td th:text="${rental.customerId}"></td>
-                <td th:text="${rental.motorhomeId}"></td>
+                <td th:text="${rental.customerName}"></td>
+                <td th:text="${rental.motorhomeName}"></td>
                 <td th:text="${rental.price}"></td>
                 <td th:text="${rental.startDate}"></td>
                 <td th:text="${rental.endDate}"></td>

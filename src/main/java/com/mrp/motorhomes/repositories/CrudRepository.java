@@ -26,7 +26,7 @@ public abstract class CrudRepository<T>{
 					connection = DBConnection.getConnection();
 					//sleeps for 10 minutes
 					try {
-						Thread.sleep(10 * 60 * 1000);
+						Thread.sleep(2 * 60 * 1000);
 					} catch(InterruptedException e) {
 						e.printStackTrace();
 					}

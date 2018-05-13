@@ -15,7 +15,7 @@ public class MotorhomeController {
 	private CrudRepository<Motorhome> repository;
 	
 	public MotorhomeController() {
-		repository = new MotorhomeRepository();
+		repository = MotorhomeRepository.getInstance();
 	}
 
 	@GetMapping("/motorhomes")

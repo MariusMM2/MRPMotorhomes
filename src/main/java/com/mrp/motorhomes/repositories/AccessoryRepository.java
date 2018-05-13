@@ -6,6 +6,14 @@ import java.util.ArrayList;
 
 public class AccessoryRepository extends CrudRepository<Accessory> {
 
+	private static AccessoryRepository instance;
+	public static AccessoryRepository getInstance(){
+		if(instance == null){
+			instance = new AccessoryRepository();
+		}
+		return instance;
+	}
+	
 	/**
 	 * 
 	 * @param item
