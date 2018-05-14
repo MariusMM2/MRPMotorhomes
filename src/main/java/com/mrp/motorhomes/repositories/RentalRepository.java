@@ -1,7 +1,6 @@
 package com.mrp.motorhomes.repositories;
 
 import com.mrp.motorhomes.model.Rental;
-import com.mrp.motorhomes.model.RentalForm;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -25,7 +24,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	public void create(Rental item) {
 		refreshConnection();
 		try {
-			preparedStatement = connection.prepareStatement("INSERT INTO rentals(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff, isPaid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+			preparedStatement = connection.prepareStatement("INSERT INTO rentals(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff, paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1, item.getCustomerId());
 			preparedStatement.setInt(2, item.getMotorhomeId());
 			preparedStatement.setDouble(3, item.getPrice());
@@ -48,13 +47,13 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement = connection.prepareStatement(
 					"SELECT rentals.id, rentals.customerId, customers.firstName, customers.lastName, " +
 							"rentals.motorhomeId, motorhomes.brand, motorhomes.model, rentals.price, rentals.startDate, " +
-							"rentals.endDate, rentals.pickUp, rentals.dropOff, rentals.isPaid FROM rentals " +
+							"rentals.endDate, rentals.pickUp, rentals.dropOff, rentals.paid FROM rentals " +
 							"INNER JOIN customers ON rentals.customerId=customers.id " +
 							"INNER JOIN motorhomes ON rentals.motorhomeId=motorhomes.id");
 			resultSet = preparedStatement.executeQuery();
 			System.out.println("after prepS");
 			while(resultSet.next()){
-				rentals.add(new RentalForm(
+				rentals.add(new Rental(
 						resultSet.getInt("id"),
 						resultSet.getInt("customerId"),
 						resultSet.getString("firstName") + " " + resultSet.getString("lastName"),
@@ -65,7 +64,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 						resultSet.getDate("endDate").toLocalDate(),
 						resultSet.getString("pickUp"),
 						resultSet.getString("dropOff"),
-						resultSet.getBoolean("isPaid")));
+						resultSet.getBoolean("paid")));
 			}
 			return rentals;
 		} catch (SQLException e) {
@@ -86,14 +85,14 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement = connection.prepareStatement(
 					"SELECT rentals.id, rentals.customerId, customers.firstName, customers.lastName, " +
 							"rentals.motorhomeId, motorhomes.brand, motorhomes.model, rentals.price, rentals.startDate, " +
-							"rentals.endDate, rentals.pickUp, rentals.dropOff, rentals.isPaid FROM rentals " +
+							"rentals.endDate, rentals.pickUp, rentals.dropOff, rentals.paid FROM rentals " +
 							"INNER JOIN customers ON rentals.customerId=customers.id " +
 							"INNER JOIN motorhomes ON rentals.motorhomeId=motorhomes.id WHERE rentals.id=?");
 			preparedStatement.setInt(1, id);
 			resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
-				rental = new RentalForm(
+				rental = new Rental(
 						resultSet.getInt("id"),
 						resultSet.getInt("customerId"),
 						resultSet.getString("firstName") + " " + resultSet.getString("lastName"),
@@ -104,7 +103,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 						resultSet.getDate("endDate").toLocalDate(),
 						resultSet.getString("pickUp"),
 						resultSet.getString("dropOff"),
-						resultSet.getBoolean("isPaid"));
+						resultSet.getBoolean("paid"));
 				
 				rental.setAccessories(AccessoryRepository.getInstance().read(rental.getId()));
 			}
@@ -125,7 +124,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 
 		try {
 			preparedStatement = connection.prepareStatement(
-					"UPDATE rentals SET customerId=?, motorhomeId=?, price=?, startDate=?, endDate=?, pickUp=?, dropOff=?, isPaid=? WHERE id=?");
+					"UPDATE rentals SET customerId=?, motorhomeId=?, price=?, startDate=?, endDate=?, pickUp=?, dropOff=?, paid=? WHERE id=?");
 			preparedStatement.setInt(1, item.getCustomerId());
 			preparedStatement.setInt(2, item.getMotorhomeId());
 			preparedStatement.setDouble(3, item.getPrice());

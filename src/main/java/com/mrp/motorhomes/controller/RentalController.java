@@ -37,10 +37,11 @@ public class RentalController {
 	@PostMapping("/rentals/create")
 	public String create(@ModelAttribute Rental rental) {
 		System.out.println(rental);
-		Motorhome motorhome = motorhomeCrudRepository.read(rental.getId());
+		Motorhome motorhome = motorhomeCrudRepository.read(rental.getMotorhomeId());
 		motorhome.setCleaned(false);
 		motorhome.setServiced(false);
 		motorhomeCrudRepository.update(motorhome);
+		
 		rentalCrudRepository.create(rental);
 		return "redirect:/rentals/";
 	}
@@ -55,7 +56,7 @@ public class RentalController {
 	
 	@GetMapping("/rentals/history")
 	public String history(Model model) {
-		model.addAttribute("r", rentalCrudRepository.readAll());
+		model.addAttribute("rentals", rentalCrudRepository.readAll());
 		return "rentals/index";
 	}
 	
@@ -69,7 +70,7 @@ public class RentalController {
 			}
 		}
 		
-		model.addAttribute("r", rentals);
+		model.addAttribute("rentals", rentals);
 		return "rentals/index";
 	}
 	
