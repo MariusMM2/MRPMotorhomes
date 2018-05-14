@@ -17,6 +17,7 @@ public class Rental {
 	protected LocalDate endDate;
 	protected String pickUp;
 	protected String dropOff;
+	protected boolean isPaid;
 	protected ArrayList<Accessory> accessories;
 	
 	public Rental() {
@@ -33,9 +34,10 @@ public class Rental {
 	 * @param endDate
 	 * @param pickUp
 	 * @param dropOff
+	 * @param isPaid
 //	 * @param accessories
 	 */
-	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff) {
+	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, boolean isPaid) {
 		this.id = id;
 		this.customerId = customerId;
 		this.motorhomeId = motorhomeId;
@@ -44,6 +46,7 @@ public class Rental {
 		this.endDate = endDate;
 		this.pickUp = pickUp;
 		this.dropOff = dropOff;
+		this.isPaid = isPaid;
 	}
 	
 	//	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, ArrayList<Accessory> accessories) {
@@ -123,6 +126,14 @@ public class Rental {
 		this.dropOff = dropOff;
 	}
 
+	public boolean getIsPaid() {
+		return this.isPaid;
+	}
+
+	public void setIsPaid(boolean isPaid) {
+		this.isPaid = isPaid;
+	}
+
 	public ArrayList<Accessory> getAccessories() {
 		return this.accessories;
 	}
@@ -141,7 +152,8 @@ public class Rental {
 					   ", startDate=" + startDate +
 					   ", endDate=" + endDate +
 					   ", pickUp='" + pickUp + '\'' +
-					   ", dropOff='" + dropOff + '\'' +
+						", dropOff='" + dropOff + '\'' +
+						", isPaid='" + isPaid + '\'' +
 					   ", accessories=" + accessories +
 					   '}';
 	}

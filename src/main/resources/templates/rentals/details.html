@@ -18,12 +18,24 @@
         <p class="row"><span class="title">End Date:</span><span th:text="${rental.endDate}" class="value"></span></p>
         <p class="row"><span class="title">Pick Up:</span><span th:text="${rental.pickUp}" class="value"></span></p>
         <p class="row"><span class="title">Drop Off:</span><span th:text="${rental.dropOff}" class="value"></span></p>
+        <p class="row"><span class="title">Is Paid:</span><span th:text="${rental.isPaid}" class="value"></span></p>
 
         <p class="row"><span class="title">Accessories:</span>
             <th:block  th:each="accessory : ${rental.accessories}">
                 <span th:text="${accessory.title} + ', '"></span>
             </th:block>
         </p>
+
+        <p class="buttons">
+            <input th:if="${rental.isPaid}" type="submit" value="Pay Rental" class="btn create"/>
+        <!--<p>rental.isPaid: </p>    -->
+        <!--<p th:text="${rental.isPaid}"></p>-->
+        <!--<p>rental.isPaid: </p>-->
+        <!--<p th:text="${user.getType()}"></p>-->
+        </p>
+
+
+
         <!--
         <table class="mh-table">
             <tbody>

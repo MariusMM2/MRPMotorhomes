@@ -25,7 +25,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	public void create(Rental item) {
 		refreshConnection();
 		try {
-			preparedStatement = connection.prepareStatement("INSERT INTO rentals(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			preparedStatement = connection.prepareStatement("INSERT INTO rentals(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff, isPaid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1, item.getCustomerId());
 			preparedStatement.setInt(2, item.getMotorhomeId());
 			preparedStatement.setDouble(3, item.getPrice());
@@ -33,6 +33,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement.setDate(5, Date.valueOf(item.getEndDate()));
 			preparedStatement.setString(6, item.getPickUp());
 			preparedStatement.setString(7, item.getDropOff());
+			preparedStatement.setBoolean(8, item.getIsPaid());
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -47,7 +48,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement = connection.prepareStatement(
 					"SELECT rentals.id, rentals.customerId, customers.firstName, customers.lastName, " +
 							"rentals.motorhomeId, motorhomes.brand, motorhomes.model, rentals.price, rentals.startDate, " +
-							"rentals.endDate, rentals.pickUp, rentals.dropOff FROM rentals " +
+							"rentals.endDate, rentals.pickUp, rentals.dropOff, rentals.isPaid FROM rentals " +
 							"INNER JOIN customers ON rentals.customerId=customers.id " +
 							"INNER JOIN motorhomes ON rentals.motorhomeId=motorhomes.id");
 			resultSet = preparedStatement.executeQuery();
@@ -63,7 +64,8 @@ public class RentalRepository extends CrudRepository<Rental> {
 						resultSet.getDate("startDate").toLocalDate(),
 						resultSet.getDate("endDate").toLocalDate(),
 						resultSet.getString("pickUp"),
-						resultSet.getString("dropOff")));
+						resultSet.getString("dropOff"),
+						resultSet.getBoolean("isPaid")));
 			}
 			return rentals;
 		} catch (SQLException e) {
@@ -84,7 +86,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement = connection.prepareStatement(
 					"SELECT rentals.id, rentals.customerId, customers.firstName, customers.lastName, " +
 							"rentals.motorhomeId, motorhomes.brand, motorhomes.model, rentals.price, rentals.startDate, " +
-							"rentals.endDate, rentals.pickUp, rentals.dropOff FROM rentals " +
+							"rentals.endDate, rentals.pickUp, rentals.dropOff, rentals.isPaid FROM rentals " +
 							"INNER JOIN customers ON rentals.customerId=customers.id " +
 							"INNER JOIN motorhomes ON rentals.motorhomeId=motorhomes.id WHERE rentals.id=?");
 			preparedStatement.setInt(1, id);
@@ -101,7 +103,8 @@ public class RentalRepository extends CrudRepository<Rental> {
 						resultSet.getDate("startDate").toLocalDate(),
 						resultSet.getDate("endDate").toLocalDate(),
 						resultSet.getString("pickUp"),
-						resultSet.getString("dropOff"));
+						resultSet.getString("dropOff"),
+						resultSet.getBoolean("isPaid"));
 				
 				rental.setAccessories(AccessoryRepository.getInstance().read(rental.getId()));
 			}
@@ -122,7 +125,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 
 		try {
 			preparedStatement = connection.prepareStatement(
-					"UPDATE rentals SET customerId=?, motorhomeId=?, price=?, startDate=?, endDate=?, pickUp=?, dropOff=? WHERE id=?");
+					"UPDATE rentals SET customerId=?, motorhomeId=?, price=?, startDate=?, endDate=?, pickUp=?, dropOff=?, isPaid=? WHERE id=?");
 			preparedStatement.setInt(1, item.getCustomerId());
 			preparedStatement.setInt(2, item.getMotorhomeId());
 			preparedStatement.setDouble(3, item.getPrice());
@@ -130,6 +133,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement.setDate(5, Date.valueOf(item.getEndDate()));
 			preparedStatement.setString(6, item.getPickUp());
 			preparedStatement.setString(7, item.getDropOff());
+			preparedStatement.setBoolean(8, item.getIsPaid());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

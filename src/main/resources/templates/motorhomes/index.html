@@ -29,6 +29,8 @@
             <td th:text="${motorhome.year}"></td>
             <td th:text="${motorhome.lastService}"></td>
             <td th:text="${motorhome.basePrice}"></td>
+            <td th:text="${motorhome.isCleaned}"></td>
+            <td th:text="${motorhome.isServiced}"></td>
             <td>
             <p class="row">
                 <a th:href="@{'../motorhomes/details?id=' + ${motorhome.id}}">

@@ -34,6 +34,25 @@
                 </p>
             </td>
         </tr>
+        <tr>
+            <td th:text = "${users[2].name}"></td>
+            <td th:text = "${users[2].type}"></td>
+            <td>
+                <p class="row">
+                    <a href="/rentals/" class="btn details" >Login</a>
+                    <!--<a href="/rentals/" th:onclick="${'user.setType(2);'}" class="btn details" >Login</a>-->
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td th:text = "${users[3].name}"></td>
+            <td th:text = "${users[3].type}"></td>
+            <td>
+                <p class="row">
+                    <a href="/motorhomes/" class="btn details">Login</a>
+                </p>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>

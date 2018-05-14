@@ -10,8 +10,8 @@ public class RentalView extends Rental {
 	private ArrayList<Accessory> accessories;
 	
 	public RentalView(int id, int customersId, String customerName, int motorhomeId, String motorhomeName,
-					  double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff) {
-		super(id, customersId,motorhomeId, price, startDate, endDate, pickUp, dropOff);
+					  double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, boolean isPaid) {
+		super(id, customersId,motorhomeId, price, startDate, endDate, pickUp, dropOff, isPaid);
 		this.customerName = customerName;
 		this.motorhomeName = motorhomeName;
 	}
@@ -56,6 +56,7 @@ public class RentalView extends Rental {
 					   ", endDate=" + endDate +
 					   ", pickUp='" + pickUp + '\'' +
 					   ", dropOff='" + dropOff + '\'' +
+						", isPaid='" + isPaid + '\'' +
 					   ", accessories=" + accessories +
 					   '}';
 	}
