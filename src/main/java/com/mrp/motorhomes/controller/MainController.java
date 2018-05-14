@@ -1,39 +1,32 @@
 package com.mrp.motorhomes.controller;
 
+import com.mrp.motorhomes.model.Customer;
 import com.mrp.motorhomes.model.User;
+import com.mrp.motorhomes.repositories.CrudRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
-	
-	public static User currentUser = null;
-	
+	/**
+	 * 
+	 * @param model
+	 */
+
+//	Users Types:
+//	-1 - null
+// 	0 - salesAssistant
+//	1 - mechanic
+//	2 - bookkeeper
+//	3 - cleanStaff
+
+	public static int currentUser;
+
 	@GetMapping("/")
 	public String login(Model model) {
 		model.addAttribute("users", User.ALL_USERS);
 		return "login";
 	}
-	
-	@GetMapping("/login")
-	public String login(@RequestParam("type") String type){
-		for(User user : User.ALL_USERS) {
-			if(user.getType().equals(type)){
-				currentUser = user;
-			}
-		}
-		
-		System.out.println(currentUser);
-		if(currentUser.getType().equals(User.TYPES[0])){
-			return "redirect:/customers/";
-		}
-		else if(currentUser.getType().equals(User.TYPES[2])){
-			return "redirect:/rentals/";
-		}
-		else{
-			return "redirect:/motorhomes/";
-		}
-	}
+
 }

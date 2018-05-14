@@ -16,43 +16,43 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="user : ${users}">
-            <td th:text = "${user.name}"></td>
-            <td th:text = "${user.type}"></td>
+        <tr>
+            <td th:text = "${users[0].name}"></td>
+            <td th:text = "${users[0].type}"></td>
             <td>
                 <p class="row">
-                    <a th:href="@{'/login?type=' + ${user.type}}" class="btn details">Login</a>
+                    <a href="/rentals/" th:onclick="${currentUser + '=0'}" name="automechanic" class="btn details" >Login</a>
                 </p>
             </td>
         </tr>
-        <!--<tr>-->
-            <!--<td th:text = "${users[1].name}"></td>-->
-            <!--<td th:text = "${users[1].type}"></td>-->
-            <!--<td>-->
-                <!--<p class="row">-->
-                    <!--<a href="/motorhomes/" class="btn details">Login</a>-->
-                <!--</p>-->
-            <!--</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td th:text = "${users[2].name}"></td>-->
-            <!--<td th:text = "${users[2].type}"></td>-->
-            <!--<td>-->
-                <!--<p class="row">-->
+        <tr>
+            <td th:text = "${users[1].name}"></td>
+            <td th:text = "${users[1].type}"></td>
+            <td>
+                <p class="row">
+                    <a href="/motorhomes/" th:onclick="${'currentUser = 1'}" class="btn details">Login</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td th:text = "${users[2].name}"></td>
+            <td th:text = "${users[2].type}"></td>
+            <td>
+                <p class="row">
                     <!--<a href="/rentals/" class="btn details" >Login</a>-->
-                    <!--&lt;!&ndash;<a href="/rentals/" th:onclick="${'user.setType(2);'}" class="btn details" >Login</a>&ndash;&gt;-->
-                <!--</p>-->
-            <!--</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td th:text = "${users[3].name}"></td>-->
-            <!--<td th:text = "${users[3].type}"></td>-->
-            <!--<td>-->
-                <!--<p class="row">-->
-                    <!--<a href="/motorhomes/" class="btn details">Login</a>-->
-                <!--</p>-->
-            <!--</td>-->
-        <!--</tr>-->
+                    <a href="/rentals/" th:onclick="${'currentUser = 2'}" class="btn details" >Login</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td th:text = "${users[3].name}"></td>
+            <td th:text = "${users[3].type}"></td>
+            <td>
+                <p class="row">
+                    <a href="/motorhomes/" th:onclick="${'currentUser = 3'}" class="btn details">Login</a>
+                </p>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
