@@ -22,6 +22,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	 */
 	@Override
 	public void create(Motorhome item) {
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement("INSERT INTO motorhomes(brand, type, model, year, lastService, basePrice) VALUES (?, ?, ?, ?, ?, ?)");
 			preparedStatement.setString(1, item.getBrand());
@@ -42,6 +43,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	
 	@Override
 	public ArrayList<Motorhome> readAll() {
+		refreshConnection();
 		ArrayList<Motorhome> motorhomes = new ArrayList<>();
 
 		try {
@@ -70,6 +72,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	 */
 	@Override
 	public Motorhome read(int id) {
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement("SELECT * FROM motorhomes WHERE id = ?");
 			preparedStatement.setInt(1, id);
@@ -97,8 +100,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	 */
 	@Override
 	public void update(Motorhome item) {
-		// TODO - implement MotorhomeRepository.update
-
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement("UPDATE motorhomes SET brand = ?, type = ?, model = ?, year = ?, lastService = ?, basePrice = ? WHERE id = ?");
 			preparedStatement.setString(1, item.getBrand());
@@ -113,7 +115,6 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -122,6 +123,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	 */
 	@Override
 	public void delete(int id) {
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement("DELETE FROM motorhomes WHERE id = ?");
 			preparedStatement.setInt(1, id);

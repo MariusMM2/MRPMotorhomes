@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class CustomerRepository extends CrudRepository<Customer> {
 	
 	private static CustomerRepository instance;
+	
 	public static CustomerRepository getInstance(){
 		if(instance == null){
 			instance = new CustomerRepository();
@@ -21,6 +22,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	 */
 	@Override
 	public void create(Customer item) {
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement(
 					"INSERT INTO customers(firstName, lastName, email, address, phone, ssn) VALUES (? ,? ,? ,? ,? ,?)");
@@ -38,6 +40,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	
 	@Override
 	public ArrayList<Customer> readAll() {
+		refreshConnection();
 		ArrayList<Customer> customers = new ArrayList<>();
 		
 		try {
@@ -68,6 +71,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	 */
 	@Override
 	public Customer read(int id) {
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement("SELECT  * FROM customers WHERE  id=?");
 			preparedStatement.setInt(1, id);
@@ -97,6 +101,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	 */
 	@Override
 	public void update(Customer item) {
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement(
 					"UPDATE customers SET firstName=?, lastName=?, email=?, address=?, phone=?, ssn=? WHERE id=?");
@@ -119,6 +124,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	 */
 	@Override
 	public void delete(int id) {
+		refreshConnection();
 		try{
 			preparedStatement = connection.prepareStatement("DELETE FROM customers WHERE id=?");
 			preparedStatement.setInt(1, id);

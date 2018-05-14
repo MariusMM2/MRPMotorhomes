@@ -23,6 +23,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public void create(Rental item) {
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement("INSERT INTO rentals(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1, item.getCustomerId());
@@ -40,6 +41,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	
 	@Override
 	public ArrayList<Rental> readAll() {
+		refreshConnection();
 		ArrayList<Rental> rentals = new ArrayList<>();
 		try {
 			preparedStatement = connection.prepareStatement(
@@ -76,6 +78,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public Rental read(int id) {
+		refreshConnection();
 		Rental rental = null;
 		try {
 			preparedStatement = connection.prepareStatement(
@@ -115,6 +118,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public void update(Rental item) {
+		refreshConnection();
 
 		try {
 			preparedStatement = connection.prepareStatement(
@@ -138,6 +142,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	 */
 	@Override
 	public void delete(int id) {
+		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement("DELETE FROM rentals WHERE id = ?");
 			preparedStatement.setInt(1, id);

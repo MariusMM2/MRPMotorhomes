@@ -2,46 +2,17 @@ package com.mrp.motorhomes.repositories;
 
 import com.mrp.motorhomes.repositories.util.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public abstract class CrudRepository<T>{
 
 	protected static Connection connection;
-	protected PreparedStatement preparedStatement;
-	protected ResultSet resultSet;
-
-	//this scope is executed at the launch of the program
-	static {
-		//creates a Runnable object to hold the instructions for the refreshing thread
-		Runnable runnable = new Runnable() {
-			@Override
-			public void run() {
-				while(true) {
-					//System.out.println("refreshing");
-					//reconnects to the database
-					connection = DBConnection.getConnection();
-					//sleeps for 10 minutes
-					try {
-						Thread.sleep(2 * 60 * 1000);
-					} catch(InterruptedException e) {
-						e.printStackTrace();
-					}
-					//closes the current connection
-					try {
-						connection.close();
-					} catch(SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		};
-		//starts the thread on the runnable object
-		new Thread(runnable, "Refresh Thread").start();
-	}
+	private   static long lastConnRefresh;
+	protected static PreparedStatement preparedStatement;
+	protected static ResultSet resultSet;
+	
+	protected CrudRepository(){}
 	
 	/**
 	 * Adds a new element in the table
@@ -73,4 +44,19 @@ public abstract class CrudRepository<T>{
 	 * @param id The id of the element to be removed
 	 */
 	public abstract void delete(int id);
+	
+	/**
+	 * Is called each time the application is accessing the database.
+	 * On the first call, creates the connection and stores the time when created.
+	 * Every time the method is called, if the time since the last refresh was more than five minute, rebuilds the
+	 * connection.
+	 */
+	protected static void refreshConnection(){
+		long currentTime = System.currentTimeMillis();
+		//If the time since the last refresh is more than 5 minutes
+		if( currentTime - lastConnRefresh > 1000*60*5){
+			lastConnRefresh = currentTime;
+			connection = DBConnection.getConnection();
+		}
+	}
 }
