@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title th:text="'Details: ' + ${customer.firstName} + ' ' + ${customer.lastName}"></title>
@@ -19,10 +20,6 @@
         <p class="row"><span class="title">SSN:</span><span th:text="${customer.ssn}" class="value"></span></p>
     </div>
 </div>
-
-
-<p>currentUser </p>
-<p th:text="${currentUser}"></p>
 
 </body>
 </html>
