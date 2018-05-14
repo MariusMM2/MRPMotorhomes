@@ -142,6 +142,10 @@ public class Rental {
 		this.accessories = accessories;
 	}
 	
+	public boolean isEnded(){
+		return endDate.isBefore(LocalDate.now());
+	}
+	
 	@Override
 	public String toString() {
 		return "Rental{" +

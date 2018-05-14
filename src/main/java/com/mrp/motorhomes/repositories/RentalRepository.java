@@ -1,7 +1,7 @@
 package com.mrp.motorhomes.repositories;
 
 import com.mrp.motorhomes.model.Rental;
-import com.mrp.motorhomes.model.RentalView;
+import com.mrp.motorhomes.model.RentalForm;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -54,7 +54,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			resultSet = preparedStatement.executeQuery();
 			System.out.println("after prepS");
 			while(resultSet.next()){
-				rentals.add(new RentalView(
+				rentals.add(new RentalForm(
 						resultSet.getInt("id"),
 						resultSet.getInt("customerId"),
 						resultSet.getString("firstName") + " " + resultSet.getString("lastName"),
@@ -93,7 +93,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()) {
-				rental = new RentalView(
+				rental = new RentalForm(
 						resultSet.getInt("id"),
 						resultSet.getInt("customerId"),
 						resultSet.getString("firstName") + " " + resultSet.getString("lastName"),

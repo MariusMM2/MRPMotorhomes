@@ -3,13 +3,13 @@ package com.mrp.motorhomes.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class RentalView extends Rental {
+public class RentalForm extends Rental {
 	
 	private String customerName;
 	private String motorhomeName;
 	private ArrayList<Accessory> accessories;
 	
-	public RentalView(int id, int customersId, String customerName, int motorhomeId, String motorhomeName,
+	public RentalForm(int id, int customersId, String customerName, int motorhomeId, String motorhomeName,
 					  double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, boolean isPaid) {
 		super(id, customersId,motorhomeId, price, startDate, endDate, pickUp, dropOff, isPaid);
 		this.customerName = customerName;
@@ -44,10 +44,9 @@ public class RentalView extends Rental {
 	
 	@Override
 	public String toString() {
-		return "RentalView{" +
+		return "RentalForm{" +
 					   "customerName='" + customerName + '\'' +
 					   ", motorhomeName='" + motorhomeName + '\'' +
-					   ", accessories=" + accessories +
 					   ", id=" + id +
 					   ", customerId=" + customerId +
 					   ", motorhomeId=" + motorhomeId +

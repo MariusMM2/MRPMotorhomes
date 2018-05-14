@@ -24,4 +24,12 @@ public class User {
 	public String getType() {
 		return type;
 	}
+	
+	@Override
+	public String toString() {
+		return "User{" +
+					   "name='" + name + '\'' +
+					   ", type='" + type + '\'' +
+					   '}';
+	}
 }

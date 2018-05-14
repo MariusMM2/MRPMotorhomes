@@ -6,6 +6,7 @@ public class Accessory {
 
 	private String title;
 	private int rentalId;
+	private boolean added;
 
 	public String getTitle() {
 		return this.title;
@@ -35,6 +36,7 @@ public class Accessory {
 	public Accessory(String title, int rentalId) {
 		this.title = title;
 		this.rentalId = rentalId;
+		added = false;
 	}
 
 	/**
@@ -43,6 +45,14 @@ public class Accessory {
 	 */
 	public Accessory(String title) {
 		this.title = title;
+	}
+	
+	public boolean isAdded() {
+		return added;
+	}
+	
+	public void setAdded(boolean added) {
+		this.added = added;
 	}
 	
 	@Override
