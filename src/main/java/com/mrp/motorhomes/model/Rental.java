@@ -17,27 +17,17 @@ public class Rental {
 	protected LocalDate endDate;
 	protected String pickUp;
 	protected String dropOff;
-	protected boolean isPaid;
+	protected boolean paid;
+	private String customerName;
+	private String motorhomeName;
 	protected ArrayList<Accessory> accessories;
 	
 	public Rental() {
 
 	}
 	
-	/**
-	 *
-	 * @param id
-	 * @param customerId
-	 * @param motorhomeId
-	 * @param price
-	 * @param startDate
-	 * @param endDate
-	 * @param pickUp
-	 * @param dropOff
-	 * @param isPaid
-//	 * @param accessories
-	 */
-	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, boolean isPaid) {
+	public Rental(int id, int customersId, String customerName, int motorhomeId, String motorhomeName,
+				  double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, boolean paid) {
 		this.id = id;
 		this.customerId = customerId;
 		this.motorhomeId = motorhomeId;
@@ -46,21 +36,10 @@ public class Rental {
 		this.endDate = endDate;
 		this.pickUp = pickUp;
 		this.dropOff = dropOff;
-		this.isPaid = isPaid;
+		this.paid = paid;
+		this.customerName = customerName;
+		this.motorhomeName = motorhomeName;
 	}
-	
-	//	public Rental(int id, int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, ArrayList<Accessory> accessories) {
-//		this.id = id;
-//		this.customerId = customerId;
-//		this.motorhomeId = motorhomeId;
-//		this.price = price;
-//		this.startDate = startDate;
-//		this.endDate = endDate;
-//		this.pickUp = pickUp;
-//		this.dropOff = dropOff;
-//		this.accessories = accessories;
-//		throw new UnsupportedOperationException();
-//	}
 
 	public int getId() {
 		return this.id;
@@ -127,11 +106,11 @@ public class Rental {
 	}
 
 	public boolean getIsPaid() {
-		return this.isPaid;
+		return this.paid;
 	}
 
 	public void setIsPaid(boolean isPaid) {
-		this.isPaid = isPaid;
+		this.paid = isPaid;
 	}
 
 	public ArrayList<Accessory> getAccessories() {
@@ -157,8 +136,24 @@ public class Rental {
 					   ", endDate=" + endDate +
 					   ", pickUp='" + pickUp + '\'' +
 						", dropOff='" + dropOff + '\'' +
-						", isPaid='" + isPaid + '\'' +
+						", paid='" + paid + '\'' +
 					   ", accessories=" + accessories +
 					   '}';
+	}
+	
+	public String getCustomerName() {
+		return customerName;
+	}
+	
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+	
+	public String getMotorhomeName() {
+		return motorhomeName;
+	}
+	
+	public void setMotorhomeName(String motorhomeName) {
+		this.motorhomeName = motorhomeName;
 	}
 }

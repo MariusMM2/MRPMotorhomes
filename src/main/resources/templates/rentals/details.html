@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Rental Details</title>
@@ -18,7 +18,7 @@
         <p class="row"><span class="title">End Date:</span><span th:text="${rental.endDate}" class="value"></span></p>
         <p class="row"><span class="title">Pick Up:</span><span th:text="${rental.pickUp}" class="value"></span></p>
         <p class="row"><span class="title">Drop Off:</span><span th:text="${rental.dropOff}" class="value"></span></p>
-        <p class="row"><span class="title">Is Paid:</span><span th:text="${rental.isPaid}" class="value"></span></p>
+        <p class="row"><span class="title">Is Paid:</span><span th:text="${rental.paid}" class="value"></span></p>
 
         <p class="row"><span class="title">Accessories:</span>
             <th:block  th:each="accessory : ${rental.accessories}">
@@ -27,16 +27,13 @@
         </p>
 
         <p class="buttons">
-            <input th:if="${rental.isPaid}" type="submit" value="Pay Rental" class="btn create"/>
+            <input th:if="${rental.paid}" type="submit" value="Pay Rental" class="btn create"/>
+        <!--<p>rental.paid: </p>    -->
+        <!--<p th:text="${rental.paid}"></p>-->
+        <!--<p>rental.paid: </p>-->
+        <!--<p th:text="${user.getType()}"></p>-->
         </p>
 
-
-        <p>currentUser </p>
-        <p th:text="${currentUser}"></p>
-
-
-        <!--<p>User: </p>-->
-        <!--<p th:text="${user.getType()}"></p>-->
 
 
         <!--
