@@ -8,22 +8,6 @@ public class Accessory {
 	private int rentalId;
 	private boolean added;
 
-	public String getTitle() {
-		return this.title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public int getRentalId() {
-		return this.rentalId;
-	}
-
-	public void setRentalId(int rentalId) {
-		this.rentalId = rentalId;
-	}
-
 	public Accessory() {
 
 	}
@@ -45,6 +29,22 @@ public class Accessory {
 	 */
 	public Accessory(String title) {
 		this.title = title;
+	}
+	
+	public String getTitle() {
+		return this.title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public int getRentalId() {
+		return this.rentalId;
+	}
+	
+	public void setRentalId(int rentalId) {
+		this.rentalId = rentalId;
 	}
 	
 	public boolean isAdded() {

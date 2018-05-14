@@ -1,5 +1,7 @@
 package com.mrp.motorhomes.model;
 
+import com.mrp.motorhomes.repositories.CustomerRepository;
+import com.mrp.motorhomes.repositories.MotorhomeRepository;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -7,17 +9,17 @@ import java.util.ArrayList;
 
 public class Rental {
 
-	protected int id;
-	protected int customerId;
-	protected int motorhomeId;
+	private int id;
+	private int customerId;
+	private int motorhomeId;
 	protected double price;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	protected LocalDate startDate;
+	private LocalDate startDate;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	protected LocalDate endDate;
-	protected String pickUp;
-	protected String dropOff;
-	protected boolean paid;
+	private LocalDate endDate;
+	private String pickUp;
+	private String dropOff;
+	private boolean paid;
 	private String customerName;
 	private String motorhomeName;
 	protected ArrayList<Accessory> accessories;
@@ -41,6 +43,17 @@ public class Rental {
 		this.motorhomeName = motorhomeName;
 	}
 
+	public boolean validate(){
+		boolean customerId 	= CustomerRepository.getInstance().read(this.customerId) != null;
+		boolean motorhomeId = MotorhomeRepository.getInstance().read(this.motorhomeId) != null;
+		boolean price 		= this.price > 0;
+		boolean startDate 	= this.startDate != null && !this.startDate.isBefore(LocalDate.now());
+		boolean endDate 	= startDate && this.endDate != null  && this.startDate.isBefore(this.endDate);
+		boolean pickUp 		= this.pickUp != null && this.pickUp.length() > 0;
+		boolean dropOff 	= this.dropOff != null && this.dropOff.length() > 0;
+		return customerId && motorhomeId && price && startDate && endDate && pickUp && dropOff;
+	}
+	
 	public int getId() {
 		return this.id;
 	}

@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 @Controller
 public class RentalController {
+	private static final String ERROR_MESSAGE = "All fields are required. Start date cannot be before today's " +
+													   "date, and end date cannot be before start date.";
 	private CrudRepository<Rental> rentalCrudRepository;
 	private CrudRepository<Motorhome> motorhomeCrudRepository;
 	
@@ -28,15 +30,26 @@ public class RentalController {
 	
 	@GetMapping("/rentals/create")
 	public String create(Model model) {
+		Rental rental = new Rental();
+		ArrayList<Motorhome> motorhomes = getAvailableMotorhomes();
+		
+		model.addAttribute("rental", rental);
 		model.addAttribute("customers", CustomerRepository.getInstance().readAll());
-		model.addAttribute("motorhomes", motorhomeCrudRepository.readAll());
+		model.addAttribute("motorhomes",motorhomes);
 		model.addAttribute("accessories", Accessory.ALL_ACCESSORIES);
 		return "rentals/create";
 	}
 	
 	@PostMapping("/rentals/create")
-	public String create(@ModelAttribute Rental rental) {
+	public String create(Model model, @ModelAttribute("rental") Rental rental, @ModelAttribute("accessories")
+						 ArrayList<Accessory> accessories) {
 		System.out.println(rental);
+		System.out.println(accessories);
+		if(!rental.validate()){
+			model.addAttribute("errorMessage", ERROR_MESSAGE);
+			return "rentals/create";
+		}
+		
 		Motorhome motorhome = motorhomeCrudRepository.read(rental.getMotorhomeId());
 		motorhome.setCleaned(false);
 		motorhome.setServiced(false);
@@ -63,14 +76,7 @@ public class RentalController {
 	
 	@GetMapping("/rentals")
 	public String index(Model model) {
-		ArrayList<Rental> rentals = rentalCrudRepository.readAll();
-		for(int i = 0; i < rentals.size(); i++) {
-			if(rentals.get(i).isEnded()) {
-				rentals.remove(i);
-			}
-		}
-		
-		model.addAttribute("rentals", rentals);
+		model.addAttribute("rentals", getActiveRentals());
 		return "rentals/index";
 	}
 	
@@ -85,5 +91,30 @@ public class RentalController {
 	public String delete(@RequestParam("id") int id) {
 		rentalCrudRepository.delete(id);
 		return "redirect:/rentals/";
+	}
+	
+	private ArrayList<Rental> getActiveRentals(){
+		ArrayList<Rental> rentals = rentalCrudRepository.readAll();
+		for(int i = 0; i < rentals.size(); i++) {
+			if(rentals.get(i).isEnded()) {
+				rentals.remove(i);
+			}
+		}
+		
+		return rentals;
+	}
+	
+	private ArrayList<Motorhome> getAvailableMotorhomes(){
+		ArrayList<Rental> rentals = getActiveRentals();
+		ArrayList<Motorhome> motorhomes = motorhomeCrudRepository.readAll();
+		for(int i = 0; i < rentals.size(); i++) {
+			for(int j = 0; j < motorhomes.size(); j++) {
+				if(motorhomes.get(j).getId() == rentals.get(i).getMotorhomeId()){
+					motorhomes.remove(j);
+					break;
+				}
+			}
+		}
+		return motorhomes;
 	}
 }
