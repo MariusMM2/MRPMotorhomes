@@ -108,4 +108,5 @@ public class Motorhome {
     public void setServiced(boolean serviced) {
         this.serviced = serviced;
     }
+
 }
