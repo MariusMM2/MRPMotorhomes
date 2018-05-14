@@ -15,7 +15,6 @@
         <th>Type</th>
         <th>Model</th>
         <th>Year</th>
-        <th>Last Service</th>
         <th>Base Price</th>
         <th>Actions</th>
     </tr>
@@ -27,10 +26,7 @@
             <td th:text="${motorhome.type}"></td>
             <td th:text="${motorhome.model}"></td>
             <td th:text="${motorhome.year}"></td>
-            <td th:text="${motorhome.lastService}"></td>
             <td th:text="${motorhome.basePrice}"></td>
-            <td th:text="${motorhome.isCleaned}"></td>
-            <td th:text="${motorhome.isServiced}"></td>
             <td>
             <p class="row">
                 <a th:href="@{'../motorhomes/details?id=' + ${motorhome.id}}">

@@ -13,19 +13,18 @@ public class Motorhome {
     private String type;
 	private String model;
 	private String year;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private LocalDate lastService;
+	//@DateTimeFormat(pattern="yyyy-MM-dd")
+	//private LocalDate lastService;
 	private double basePrice;
     private boolean cleaned;
     private boolean serviced;
 
-	public Motorhome(int id, String brand, String type, String model, String year, LocalDate lastService, double basePrice, boolean cleaned, boolean serviced) {
+	public Motorhome(int id, String brand, String type, String model, String year, double basePrice, boolean cleaned, boolean serviced) {
 		this.id = id;
 		this.brand = brand;
 		this.type = type;
 		this.model = model;
 		this.year = year;
-		this.lastService = lastService;
 		this.basePrice = basePrice;
 		this.cleaned = cleaned;
 		this.serviced = serviced;
@@ -72,14 +71,6 @@ public class Motorhome {
 	public void setYear(String year) {
 		this.year = year;
 	}
-
-    public LocalDate getLastService() {
-        return lastService;
-    }
-
-    public void setLastService(LocalDate lastService) {
-        this.lastService = lastService;
-    }
 	
     public double getBasePrice() {
 		return this.basePrice;
