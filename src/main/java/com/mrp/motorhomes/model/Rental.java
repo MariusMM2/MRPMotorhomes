@@ -104,15 +104,15 @@ public class Rental {
 	public void setDropOff(String dropOff) {
 		this.dropOff = dropOff;
 	}
-
-	public boolean getIsPaid() {
-		return this.paid;
+	
+	public boolean isPaid() {
+		return paid;
 	}
-
-	public void setIsPaid(boolean isPaid) {
-		this.paid = isPaid;
+	
+	public void setPaid(boolean paid) {
+		this.paid = paid;
 	}
-
+	
 	public ArrayList<Accessory> getAccessories() {
 		return this.accessories;
 	}

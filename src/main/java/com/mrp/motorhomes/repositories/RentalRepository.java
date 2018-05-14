@@ -32,7 +32,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement.setDate(5, Date.valueOf(item.getEndDate()));
 			preparedStatement.setString(6, item.getPickUp());
 			preparedStatement.setString(7, item.getDropOff());
-			preparedStatement.setBoolean(8, item.getPaid());
+			preparedStatement.setBoolean(8, item.isPaid());
 			preparedStatement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -132,7 +132,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement.setDate(5, Date.valueOf(item.getEndDate()));
 			preparedStatement.setString(6, item.getPickUp());
 			preparedStatement.setString(7, item.getDropOff());
-			preparedStatement.setBoolean(8, item.getPaid());
+			preparedStatement.setBoolean(8, item.isPaid());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
