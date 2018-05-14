@@ -17,18 +17,20 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 	
 	@Override
 	public void create(ArrayList<Accessory> item) {
+		refreshConnection();
 		// TODO - implement AccessoryRepository.create
 		throw new UnsupportedOperationException();
 	}
 	
 	@Override
+	@Deprecated
 	public ArrayList<ArrayList<Accessory>> readAll() {
-		// TODO - implement AccessoryRepository.create
 		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	public ArrayList<Accessory> read(int id) {
+		refreshConnection();
 		ArrayList<Accessory> accessories = new ArrayList<>();
 		try {
 			preparedStatement = connection.prepareStatement("SELECT * FROM rented_accessories WHERE rentalId=?");
@@ -49,12 +51,14 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 	
 	@Override
 	public void update(ArrayList<Accessory> item) {
+		refreshConnection();
 		// TODO - implement AccessoryRepository.create
 		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	public void delete(int id) {
+		refreshConnection();
 		// TODO - implement AccessoryRepository.create
 		throw new UnsupportedOperationException();
 	}
