@@ -13,13 +13,13 @@
 
         <h1>Add New Rental</h1>
 
-        <form action="/rentals/create" method="post">
+        <form th:action="@{/rentals/create}" th:object="${rental}" method="post">
             <p class="row">
                 <table>
                     <tr>
                         <td>Customer:</td>
                         <td>
-                            <select name="customerId">
+                            <select th:field="*{customerId}">
                                 <option value="-1">--</option>
                                 <option th:each="customer : ${customers}"
                                         th:value="${customer.id}"
@@ -30,48 +30,53 @@
                 </table>
             </p>
             <p class="row">
-            <table>
-                <tr>
-                    <td>Motorhome:</td>
-                    <td>
-                        <select name="motorhomeId">
-                            <option value="-1">--</option>
-                            <option th:each="motorhome : ${motorhomes}"
-                                    th:value="${motorhome.id}"
-                                    th:text="${motorhome.fullName}"></option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+                <table>
+                    <tr>
+                        <td>Motorhome:</td>
+                        <td>
+                            <select th:field="*{motorhomeId}">
+                                <option value="-1">--</option>
+                                <option th:each="motorhome : ${motorhomes}"
+                                        th:value="${motorhome.id}"
+                                        th:text="${motorhome.fullName}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </p>
             <p class="row">
                 <span class="title">Price:</span>
-                <span class="value"><input type="number" name="price"/></span>
+                <span class="value"><input type="number" th:field="*{price}"/></span>
             </p>
             <p class="row">
                 <span class="title">Start Date:</span>
-                <span class="value"><input type="date" name="startDate"/></span>
+                <span class="value"><input type="date" th:field="*{startDate}"/></span>
             </p>
             <p class="row">
                 <span class="title">End Date:</span>
-                <span class="value"><input type="date" name="endDate"/></span>
+                <span class="value"><input type="date" th:field="*{endDate}"/></span>
             </p>
             <p class="row">
                 <span class="title">Pick Up:</span>
-                <span class="value"><input type="text" name="pickUp"/></span>
+                <span class="value"><input type="text" th:field="*{pickUp}"/></span>
             </p>
             <p class="row">
                 <span class="title">Drop Off:</span>
-                <span class="value"><input type="text" name="dropOff"/></span>
+                <span class="value"><input type="text" th:field="*{dropOff}"/></span>
             </p>
-            <p class="row">
-                <span class="title">Is Paid:</span>
-                <span class="value"><input type="text" name="paid"/></span>
-            </p>
+            <!--<p class="row">-->
+                <!--<span class="title">Is Paid:</span>-->
+                <!--<span class="value"><input type="text" name="paid"/></span>-->
+            <!--</p>-->
 
             <p class="buttons">
                 <input type="submit" value="Create Rental" class="btn create"/>
             </p>
+
+            <div th:if="${errorMessage}" th:utext="${errorMessage}"
+                 style="color:red;font-style:italic;">
+                ...
+            </div>
 
         </form>
     </div>
