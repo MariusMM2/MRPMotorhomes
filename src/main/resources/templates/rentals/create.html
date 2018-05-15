@@ -15,7 +15,6 @@
 
         <div th:if="${errorMessage}" th:utext="${errorMessage}"
              style="color:red;font-style:italic;">
-            ...
         </div>
 
         <form th:action="@{/rentals/create}" th:object="${rentalForm}" method="post">
