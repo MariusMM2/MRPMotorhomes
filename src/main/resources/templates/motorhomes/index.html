@@ -7,6 +7,12 @@
 
 <body>
     <div class="container">
+        <div class="nav-bar">
+            <a href="../" class="page"><span>Home</span></a>
+            <a href="/motorhomes/" class="page"><span>Motorhomes</span></a>
+            <a href="/customers/" th:if="${currentUser.getType().equals('salesAssistant')}" class="page"><span>Customers</span></a>
+            <a href="/rentals/" th:if="${currentUser.getType().equals('salesAssistant')}" class="page"><span>Rentals</span></a>
+        </div>
         <h1>Motorhomes List</h1>
         <table class="mh-table">
             <thead>
@@ -21,7 +27,7 @@
             </tr>
             </thead>
             <tbody>
-                <tr th:each="motorhome : ${moto}">
+                <tr th:each="motorhome : ${motorhomes}">
                     <td th:text="${motorhome.id}"></td>
                     <td th:text="${motorhome.brand}"></td>
                     <td th:text="${motorhome.type}"></td>
@@ -32,6 +38,7 @@
                     <p class="row">
                         <a th:href="@{'../motorhomes/details?id=' + ${motorhome.id}}">
                             <span class="btn details">Details</span>
+
                         </a>
                         <a th:href="@{'../motorhomes/delete?id=' + ${motorhome.id}}">
                             <span class="btn delete">Delete</span>
@@ -42,7 +49,7 @@
             </tbody>
         </table>
         <p class="buttons">
-            <a href="/motorhomes/create" class="btn create">
+            <a href="/motorhomes/create" th:if="${currentUser.getType().equals('salesAssistant')}" class="btn create">
                 <span>Add new motorhome</span>
             </a>
         </p>

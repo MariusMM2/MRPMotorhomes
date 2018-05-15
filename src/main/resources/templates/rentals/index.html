@@ -8,6 +8,12 @@
 
 <body>
     <div class="container">
+        <div class="nav-bar">
+            <a href="../" class="page"><span>Home</span></a>
+            <a href="/motorhomes/" th:if="${!currentUser.getType().equals('bookkeeper')}" class="page"><span>Motorhomes</span></a>
+            <a href="/customers/" th:if="${!currentUser.getType().equals('bookkeeper')}" class="page"><span>Customers</span></a>
+            <a href="/rentals/" class="page"><span>Rentals</span></a>
+        </div>
         <h1 class="title">View All Rentals</h1>
         <table class="mh-table">
             <thead>

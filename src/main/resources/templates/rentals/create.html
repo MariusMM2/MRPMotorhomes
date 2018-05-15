@@ -9,6 +9,11 @@
 
 
 <div class="container">
+    <div class="nav-bar">
+        <a href="../" class="page"><span>Home</span></a>
+        <a href="/rentals/" class="page"><span>Rentals</span></a>
+        <a href="/rentals/create" class="page"><span>Create</span></a>
+    </div>
     <div class="create">
         <h1>Add New Rental</h1>
         <div th:if="${errorMessage}" th:utext="${errorMessage}"
