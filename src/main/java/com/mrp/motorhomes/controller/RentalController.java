@@ -22,8 +22,6 @@ import static com.mrp.motorhomes.controller.MainController.currentUser;
 
 @Controller
 public class RentalController {
-	private static final String ERROR_MESSAGE = "All fields are required. Start date cannot be before today's " +
-													   "date, and end date cannot be before start date.";
 	private CrudRepository<Rental> rentalCrudRepository;
 	private CrudRepository<Motorhome> motorhomeCrudRepository;
 	
@@ -45,7 +43,7 @@ public class RentalController {
 		System.out.println(rentalForm);
 		System.out.println(Arrays.toString(rentalForm.getAccessories()));
 		if(!rentalForm.validate()){
-			model.addAttribute("errorMessage", ERROR_MESSAGE);
+			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE);
 			prepareForm(model);
 			return "rentals/create";
 		}

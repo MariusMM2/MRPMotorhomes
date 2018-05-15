@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 	
+	public static final String ERROR_MESSAGE = "All fields are required. Start date cannot be before today's " +
+													   "date, and end date cannot be before start date.";
 	public static User currentUser = null;
 	
 	@GetMapping("/")
