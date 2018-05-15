@@ -13,7 +13,12 @@
 
         <h1>Add New Rental</h1>
 
-        <form th:action="@{/rentals/create}" th:object="${rental}" method="post">
+        <div th:if="${errorMessage}" th:utext="${errorMessage}"
+             style="color:red;font-style:italic;">
+            ...
+        </div>
+
+        <form th:action="@{/rentals/create}" th:object="${rentalForm}" method="post">
             <p class="row">
                 <table>
                     <tr>
@@ -65,18 +70,37 @@
                 <span class="value"><input type="text" th:field="*{dropOff}"/></span>
             </p>
             <!--<p class="row">-->
-                <!--<span class="title">Is Paid:</span>-->
-                <!--<span class="value"><input type="text" name="paid"/></span>-->
+                <!--<label class="title" th:for="testbool" th:text="'Test'"></label>-->
+                <!--<input type="checkbox" th:field="*{testbool}">-->
             <!--</p>-->
+            <!--<p class="row">-->
+                <!--<span class="title">Is Paid:</span>-->
+                <!--<span class="value"><input type="checkbox" name="paid"/></span>-->
+            <!--</p>-->
+
+            <!--<p class="row">-->
+                <!--<span class="title">Accessories:</span>-->
+                    <!--<span th:each="accessory : *{accessories}">-->
+                        <!--<div  >-->
+                            <!--<label class="title" th:for="added" th:text="${accessory.title}"></label>-->
+                            <!--<input type="checkbox" th:object="${accessory}" th:field="*{added}"/>-->
+                        <!--</div>-->
+                    <!--</span>-->
+            <!--</p>-->
+            <ul>
+                <li th:each="accessory: ${allAccessories}">
+                    <input type="checkbox"
+                    th:field="*{accessories}"
+                    th:value="${accessory}"/>
+
+                    <label th:for="${#ids.prev('accessories')}"
+                           th:text="${accessory}"></label>
+                </li>
+            </ul>
 
             <p class="buttons">
                 <input type="submit" value="Create Rental" class="btn create"/>
             </p>
-
-            <div th:if="${errorMessage}" th:utext="${errorMessage}"
-                 style="color:red;font-style:italic;">
-                ...
-            </div>
 
         </form>
     </div>

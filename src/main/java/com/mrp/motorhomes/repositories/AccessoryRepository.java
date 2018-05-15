@@ -39,8 +39,7 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 			
 			while(resultSet.next()){
 				accessories.add(new Accessory(
-						resultSet.getString("title"),
-						resultSet.getInt("rentalId")));
+						resultSet.getString("title")));
 			}
 			return accessories;
 		} catch(SQLException e) {

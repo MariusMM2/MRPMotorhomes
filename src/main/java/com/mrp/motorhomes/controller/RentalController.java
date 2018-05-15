@@ -1,5 +1,6 @@
 package com.mrp.motorhomes.controller;
 
+import com.mrp.motorhomes.form.RentalForm;
 import com.mrp.motorhomes.model.Accessory;
 import com.mrp.motorhomes.model.Motorhome;
 import com.mrp.motorhomes.model.Rental;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Controller
 public class RentalController {
@@ -30,33 +32,32 @@ public class RentalController {
 	
 	@GetMapping("/rentals/create")
 	public String create(Model model) {
-		Rental rental = new Rental();
-		ArrayList<Motorhome> motorhomes = getAvailableMotorhomes();
-		
-		model.addAttribute("rental", rental);
-		model.addAttribute("customers", CustomerRepository.getInstance().readAll());
-		model.addAttribute("motorhomes",motorhomes);
-		model.addAttribute("accessories", Accessory.ALL_ACCESSORIES);
+		RentalForm rentalForm = new RentalForm();
+		model.addAttribute("rentalForm", rentalForm);
+		prepareForm(model);
 		return "rentals/create";
 	}
 	
 	@PostMapping("/rentals/create")
-	public String create(Model model, @ModelAttribute("rental") Rental rental, @ModelAttribute("accessories")
-						 ArrayList<Accessory> accessories) {
-		System.out.println(rental);
-		System.out.println(accessories);
-		if(!rental.validate()){
+	public String create(Model model, @ModelAttribute("rentalForm") RentalForm rentalForm) {
+		System.out.println(rentalForm);
+		System.out.println(Arrays.toString(rentalForm.getAccessories()));
+		if(!rentalForm.validate()){
 			model.addAttribute("errorMessage", ERROR_MESSAGE);
+			prepareForm(model);
 			return "rentals/create";
 		}
+		else{
+			Rental rental = rentalForm.toRental();
+			Motorhome motorhome = motorhomeCrudRepository.read(rental.getMotorhomeId());
+			motorhome.setCleaned(false);
+			motorhome.setServiced(false);
+			motorhomeCrudRepository.update(motorhome);
+			
+			rentalCrudRepository.create(rental);
+			return "redirect:/rentals/";
+		}
 		
-		Motorhome motorhome = motorhomeCrudRepository.read(rental.getMotorhomeId());
-		motorhome.setCleaned(false);
-		motorhome.setServiced(false);
-		motorhomeCrudRepository.update(motorhome);
-		
-		rentalCrudRepository.create(rental);
-		return "redirect:/rentals/";
 	}
 	
 	@GetMapping("/rentals/details")
@@ -116,5 +117,11 @@ public class RentalController {
 			}
 		}
 		return motorhomes;
+	}
+	
+	private void prepareForm(Model model){
+		model.addAttribute("customers", CustomerRepository.getInstance().readAll());
+		model.addAttribute("motorhomes",getAvailableMotorhomes());
+		model.addAttribute("allAccessories", Accessory.ALL_ACCESSORIES);
 	}
 }

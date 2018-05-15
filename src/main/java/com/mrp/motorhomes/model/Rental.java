@@ -1,7 +1,5 @@
 package com.mrp.motorhomes.model;
 
-import com.mrp.motorhomes.repositories.CustomerRepository;
-import com.mrp.motorhomes.repositories.MotorhomeRepository;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -22,13 +20,13 @@ public class Rental {
 	private boolean paid;
 	private String customerName;
 	private String motorhomeName;
-	protected ArrayList<Accessory> accessories;
+	private ArrayList<Accessory> accessories;
 	
 	public Rental() {
 
 	}
 	
-	public Rental(int id, int customersId, String customerName, int motorhomeId, String motorhomeName,
+	public Rental(int id, int customerId, String customerName, int motorhomeId, String motorhomeName,
 				  double price, LocalDate startDate, LocalDate endDate, String pickUp, String dropOff, boolean paid) {
 		this.id = id;
 		this.customerId = customerId;
@@ -42,16 +40,19 @@ public class Rental {
 		this.customerName = customerName;
 		this.motorhomeName = motorhomeName;
 	}
-
-	public boolean validate(){
-		boolean customerId 	= CustomerRepository.getInstance().read(this.customerId) != null;
-		boolean motorhomeId = MotorhomeRepository.getInstance().read(this.motorhomeId) != null;
-		boolean price 		= this.price > 0;
-		boolean startDate 	= this.startDate != null && !this.startDate.isBefore(LocalDate.now());
-		boolean endDate 	= startDate && this.endDate != null  && this.startDate.isBefore(this.endDate);
-		boolean pickUp 		= this.pickUp != null && this.pickUp.length() > 0;
-		boolean dropOff 	= this.dropOff != null && this.dropOff.length() > 0;
-		return customerId && motorhomeId && price && startDate && endDate && pickUp && dropOff;
+	
+	public Rental(int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate,
+				  String pickUp, String dropOff, boolean paid,
+				  ArrayList<Accessory> accessories) {
+		this.customerId = customerId;
+		this.motorhomeId = motorhomeId;
+		this.price = price;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.pickUp = pickUp;
+		this.dropOff = dropOff;
+		this.paid = paid;
+		this.accessories = accessories;
 	}
 	
 	public int getId() {
