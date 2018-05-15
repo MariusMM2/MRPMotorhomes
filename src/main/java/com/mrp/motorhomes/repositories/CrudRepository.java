@@ -2,7 +2,9 @@ package com.mrp.motorhomes.repositories;
 
 import com.mrp.motorhomes.repositories.util.DBConnection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public abstract class CrudRepository<T>{

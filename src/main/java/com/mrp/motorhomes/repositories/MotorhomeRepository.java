@@ -2,7 +2,6 @@ package com.mrp.motorhomes.repositories;
 
 import com.mrp.motorhomes.model.Motorhome;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

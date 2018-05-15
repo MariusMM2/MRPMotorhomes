@@ -1,9 +1,5 @@
 package com.mrp.motorhomes.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.time.LocalDate;
-
 public class Motorhome {
 
 	public static final String[] TYPES = {"Class A", "Class B", "Class C", "Truck Camper", "Popup Camper", "Travel Trailer", "Teardrop Trailer", "Hybrid Trailer"};
