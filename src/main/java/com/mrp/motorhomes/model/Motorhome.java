@@ -5,17 +5,15 @@ public class Motorhome {
 	public static final String[] TYPES = {"Class A", "Class B", "Class C", "Truck Camper", "Popup Camper", "Travel Trailer", "Teardrop Trailer", "Hybrid Trailer"};
 	private int id;
 	private String brand;
-
     private String type;
 	private String model;
-	private String year;
-	//@DateTimeFormat(pattern="yyyy-MM-dd")
-	//private LocalDate lastService;
+	private int year;
 	private double basePrice;
     private boolean cleaned;
     private boolean serviced;
 
-	public Motorhome(int id, String brand, String type, String model, String year, double basePrice, boolean cleaned, boolean serviced) {
+	public Motorhome(int id, String brand, String type, String model, int year, double basePrice, boolean cleaned,
+	                 boolean serviced) {
 		this.id = id;
 		this.brand = brand;
 		this.type = type;
@@ -60,11 +58,11 @@ public class Motorhome {
 		this.model = model;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return this.year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 	

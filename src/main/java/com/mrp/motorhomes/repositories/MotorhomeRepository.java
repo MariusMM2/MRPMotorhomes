@@ -28,7 +28,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 			preparedStatement.setString(1, item.getBrand());
 			preparedStatement.setString(2, item.getType());
 			preparedStatement.setString(3, item.getModel());
-			preparedStatement.setString(4, item.getYear());
+			preparedStatement.setInt(4, item.getYear());
 			preparedStatement.setDouble(5, item.getBasePrice());
 			preparedStatement.setBoolean(6, true);
 			preparedStatement.setBoolean(7, true);
@@ -56,7 +56,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 						resultSet.getString("brand"),
 						resultSet.getString("type"),
 						resultSet.getString("model"),
-						resultSet.getString("year"),
+						resultSet.getInt("year"),
 						resultSet.getDouble("basePrice"),
 						resultSet.getBoolean("cleaned"),
 						resultSet.getBoolean("serviced")));
@@ -85,7 +85,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 						resultSet.getString("brand"),
 						resultSet.getString("type"),
 						resultSet.getString("model"),
-						resultSet.getString("year"),
+						resultSet.getInt("year"),
 						resultSet.getDouble("basePrice"),
 						resultSet.getBoolean("cleaned"),
 						resultSet.getBoolean("serviced"));
@@ -109,7 +109,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 			preparedStatement.setString(1, item.getBrand());
 			preparedStatement.setString(2, item.getType());
 			preparedStatement.setString(3, item.getModel());
-			preparedStatement.setString(4, item.getYear());
+			preparedStatement.setInt(4, item.getYear());
 			preparedStatement.setDouble(5, item.getBasePrice());
 			preparedStatement.setBoolean(6, item.isCleaned());
 			preparedStatement.setBoolean(7, item.isServiced());

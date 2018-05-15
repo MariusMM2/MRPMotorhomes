@@ -65,14 +65,14 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 	@Override
 	public void update(ArrayList<Accessory> item) {
 		refreshConnection();
-		// TODO - implement AccessoryRepository.create
+		// TODO - implement AccessoryRepository.update
 		throw new UnsupportedOperationException();
 	}
 	
 	@Override
 	public void delete(int id) {
 		refreshConnection();
-		// TODO - implement AccessoryRepository.create
+		// TODO - implement AccessoryRepository.delete
 		throw new UnsupportedOperationException();
 	}
 }

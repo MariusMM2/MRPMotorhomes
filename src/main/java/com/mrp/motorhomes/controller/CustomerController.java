@@ -45,8 +45,8 @@ public class CustomerController {
 			Customer customer = customerForm.toCustomer();
 			
 			repository.create(customer);
+			return "redirect:/customers/";
 		}
-		return "redirect:/customers/";
 	}
 	
 	@GetMapping("/customers/details")

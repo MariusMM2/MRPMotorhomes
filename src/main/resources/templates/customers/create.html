@@ -13,7 +13,6 @@
         <div th:if="${errorMessage}" th:utext="${errorMessage}"
              style="color:red;font-style:italic;">
         </div>
-
         <form th:action="@{/customers/create}" th:object="${customerForm}" method="post">
             <p class="row">
                 <span class="title">First Name</span>

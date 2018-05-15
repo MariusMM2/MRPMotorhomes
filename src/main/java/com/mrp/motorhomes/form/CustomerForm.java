@@ -2,7 +2,7 @@ package com.mrp.motorhomes.form;
 
 import com.mrp.motorhomes.model.Customer;
 
-public class CustomerForm {
+public class CustomerForm implements Form {
     private String firstName;
     private String lastName;
     private String email;
@@ -10,6 +10,7 @@ public class CustomerForm {
     private String phone;
     private String ssn;
     
+    @Override
     public boolean validate(){
         boolean firstName 	= this.firstName != null && this.firstName.length() > 0;
         boolean lastName 	= this.lastName != null && this.lastName.length() > 0;

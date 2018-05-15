@@ -1,5 +1,6 @@
 package com.mrp.motorhomes.controller;
 
+import com.mrp.motorhomes.form.MotorhomeForm;
 import com.mrp.motorhomes.model.Motorhome;
 import com.mrp.motorhomes.repositories.CrudRepository;
 import com.mrp.motorhomes.repositories.MotorhomeRepository;
@@ -29,14 +30,27 @@ public class MotorhomeController {
 
 	@GetMapping("/motorhomes/create")
 	public String create(Model model) {
+		MotorhomeForm motorhomeForm = new MotorhomeForm();
+		model.addAttribute("motorhomeForm", motorhomeForm);
 		model.addAttribute("types", Motorhome.TYPES);
 		return "motorhomes/create";
 	}
 
 	@PostMapping("/motorhomes/create")
-	public String create(@ModelAttribute Motorhome motorhome) {
-		repository.create(motorhome);
-		return "redirect:/motorhomes/";
+	public String create(Model model, @ModelAttribute("motorhomeForm") MotorhomeForm motorhomeForm) {
+		System.out.println(motorhomeForm);
+		
+		if(!motorhomeForm.validate()){
+			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE + " " + MainController.ERROR_MOTORHOME);
+			model.addAttribute("types", Motorhome.TYPES);
+			return "motorhomes/create";
+		}
+		else {
+			Motorhome motorhome = motorhomeForm.toMotorhome();
+			
+			repository.create(motorhome);
+			return "redirect:/motorhomes/";
+		}
 	}
 
 	@GetMapping("/motorhomes/details")

@@ -8,9 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class RentalForm {
+public class RentalForm implements Form {
 	private int customerId;
 	private int motorhomeId;
 	protected double price;
@@ -22,6 +21,7 @@ public class RentalForm {
 	private String dropOff;
 	private String[] accessories;
 	
+	@Override
 	public boolean validate(){
 		boolean customerId 	= CustomerRepository.getInstance().read(this.customerId) != null;
 		boolean motorhomeId = MotorhomeRepository.getInstance().read(this.motorhomeId) != null;

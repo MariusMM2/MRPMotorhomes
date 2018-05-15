@@ -9,10 +9,13 @@
     <div class="container">
         <div class="create">
             <h1>Add New Motorhome</h1>
-            <form action="/motorhomes/create" method="post">
+            <div th:if="${errorMessage}" th:utext="${errorMessage}"
+                 style="color:red;font-style:italic;">
+            </div>
+            <form th:action="@{/motorhomes/create}" th:object="${motorhomeForm}" method="post">
                 <p class="row">
                     <span class="title">Brand</span>
-                    <span class="value"><input type="text" name="brand"></span>
+                    <span class="value"><input type="text" th:field="*{brand}" minlength="3" maxlength="25"></span>
                 </p>
                 <p class="row">
                     <table>
@@ -31,15 +34,15 @@
                 </p>
                 <p class="row">
                     <span class="title">Model</span>
-                    <span class="value"><input type="text" name="model"></span>
+                    <span class="value"><input type="text" th:field="*{model}" minlength="3" maxlength="25"></span>
                 </p>
                 <p class="row">
                     <span class="title">Year</span>
-                    <span class="value"><input type="text" name="year"></span>
+                    <span class="value"><input type="number" th:field="*{year}" min="1950" max="2018"></span>
                 </p>
                 <p class="row">
                     <span class="title">Base Price</span>
-                    <span class="value"><input type="text" name="basePrice"></span>
+                    <span class="value"><input type="number" th:field="*{basePrice}" min="100"></span>
                 </p>
                 <p class="buttons">
                     <input type="submit" value="Create Motorhome" class="btn create"/>
