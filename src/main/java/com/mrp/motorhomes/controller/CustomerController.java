@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static com.mrp.motorhomes.controller.MainController.currentUser;
+
 @Controller
 public class CustomerController {
 	private CrudRepository<Customer> repository;
@@ -21,6 +23,7 @@ public class CustomerController {
 	@GetMapping("/customers")
 	public String index(Model model){
 		model.addAttribute("customers", repository.readAll());
+		model.addAttribute("currentUser", currentUser);
 		return "customers/index";
 	}
 

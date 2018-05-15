@@ -8,6 +8,11 @@
 <body>
 
 <div class="container">
+    <div class="nav-bar">
+        <a href="../" class="page"><span>Home</span></a>
+        <a href="/customers/" class="page"><span>Customers</span></a>
+        <a th:href="@{'/customers/details?id=' + ${customer.id}}"  class="page"><span>Details</span></a>
+    </div>
     <div class="details">
         <h1>Customer Details</h1>
         <p class="row"><span class="title">Id:</span><span th:text="${customer.id}" class="value"></span></p>

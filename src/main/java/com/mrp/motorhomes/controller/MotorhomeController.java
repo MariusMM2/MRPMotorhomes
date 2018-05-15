@@ -22,8 +22,8 @@ public class MotorhomeController {
 
 	@GetMapping("/motorhomes")
 	public String index(Model model) {
-
 		model.addAttribute("motorhomes", repository.readAll());
+		model.addAttribute("currentUser", currentUser);
 		return "motorhomes/index";
 	}
 

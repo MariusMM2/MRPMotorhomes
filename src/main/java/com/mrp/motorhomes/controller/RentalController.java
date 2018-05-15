@@ -91,6 +91,7 @@ public class RentalController {
 	@GetMapping("/rentals")
 	public String index(Model model) {
 		model.addAttribute("rentals", getActiveRentals());
+		model.addAttribute("currentUser", currentUser);
 		return "rentals/index";
 	}
 	

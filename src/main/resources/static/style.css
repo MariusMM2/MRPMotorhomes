@@ -269,4 +269,14 @@ button:focus {
 
 
 
-/**/
+/* Navigation */
+
+
+.container .nav-bar .page span{
+    corder: 1px solid #325091;
+    background-color: #327ebf;
+    color: #ffff;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: right;
+}

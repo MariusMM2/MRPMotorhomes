@@ -7,6 +7,11 @@
 <body>
 
 <div class="container">
+    <div class="nav-bar">
+        <a href="../" class="page"><span>Home</span></a>
+        <a href="/motorhomes/" class="page"><span>Motorhomes</span></a>
+        <a th:href="@{'/motorhomes/details?id=' + ${motorhome.id}}" class="page"><span>Details</span></a>
+    </div>
     <div class="details">
         <h1>Motorhome Details</h1>
         <p class="row"><span class="title">Id:</span><span th:text="${motorhome.id}" class="value"></span></p>
