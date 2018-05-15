@@ -10,9 +10,7 @@
 
 <div class="container">
     <div class="create">
-
         <h1>Add New Rental</h1>
-
         <div th:if="${errorMessage}" th:utext="${errorMessage}"
              style="color:red;font-style:italic;">
         </div>
@@ -50,23 +48,23 @@
             </p>
             <p class="row">
                 <span class="title">Price:</span>
-                <span class="value"><input type="number" th:field="*{price}"/></span>
+                <span class="value"><input type="number" th:field="*{price}" min="100"/></span>
             </p>
             <p class="row">
                 <span class="title">Start Date:</span>
-                <span class="value"><input type="date" th:field="*{startDate}"/></span>
+                <span class="value"><input type="date" th:field="*{startDate}" th:min="${minStartDate}"/></span>
             </p>
             <p class="row">
                 <span class="title">End Date:</span>
-                <span class="value"><input type="date" th:field="*{endDate}"/></span>
+                <span class="value"><input type="date" th:field="*{endDate}" th:min="${minEndDate}"/></span>
             </p>
             <p class="row">
                 <span class="title">Pick Up:</span>
-                <span class="value"><input type="text" th:field="*{pickUp}"/></span>
+                <span class="value"><input type="text" th:field="*{pickUp}" minlength="5" maxlength="20"/></span>
             </p>
             <p class="row">
                 <span class="title">Drop Off:</span>
-                <span class="value"><input type="text" th:field="*{dropOff}"/></span>
+                <span class="value"><input type="text" th:field="*{dropOff}" minlength="5" maxlength="20"/></span>
             </p>
             <!--<p class="row">-->
                 <!--<label class="title" th:for="testbool" th:text="'Test'"></label>-->

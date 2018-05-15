@@ -33,6 +33,15 @@ public class RentalForm {
 		return customerId && motorhomeId && price && startDate && endDate && pickUp && dropOff;
 	}
 	
+	public Rental toRental(){
+		ArrayList<Accessory> accessories = new ArrayList<>();
+		for(String accessory: this.accessories) {
+			accessories.add(new Accessory(accessory));
+		}
+		return new Rental(customerId, motorhomeId, price, startDate,
+		                  endDate, pickUp, dropOff, false, accessories);
+	}
+	
 	@Override
 	public String toString() {
 		return "RentalForm{" +
@@ -108,14 +117,5 @@ public class RentalForm {
 	
 	public void setAccessories(String[] accessories) {
 		this.accessories = accessories;
-	}
-	
-	public Rental toRental(){
-		ArrayList<Accessory> accessories = new ArrayList<>();
-		for(String accessory: this.accessories) {
-			accessories.add(new Accessory(accessory));
-		}
-		return new Rental(customerId, motorhomeId, price, startDate,
-						  endDate, pickUp, dropOff, false, accessories);
 	}
 }

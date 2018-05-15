@@ -1,5 +1,6 @@
 package com.mrp.motorhomes.controller;
 
+import com.mrp.motorhomes.form.CustomerForm;
 import com.mrp.motorhomes.model.Customer;
 import com.mrp.motorhomes.repositories.CrudRepository;
 import com.mrp.motorhomes.repositories.CustomerRepository;
@@ -25,13 +26,26 @@ public class CustomerController {
 	}
 
 	@GetMapping("/customers/create")
-	public String create(){
+	public String create(Model model){
+		CustomerForm customerForm = new CustomerForm();
+		model.addAttribute("customerForm", customerForm);
 		return "customers/create";
 	}
 	
 	@PostMapping("/customers/create")
-	public String create(@ModelAttribute Customer customer){
-		repository.create(customer);
+	public String create(Model model, @ModelAttribute("customerForm") CustomerForm customerForm){
+		System.out.println(customerForm);
+		
+		if(!customerForm.validate()){
+			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE + " " + MainController.ERROR_CUSTOMER);
+			return "customers/create";
+		}
+		else
+		{
+			Customer customer = customerForm.toCustomer();
+			
+			repository.create(customer);
+		}
 		return "redirect:/customers/";
 	}
 	

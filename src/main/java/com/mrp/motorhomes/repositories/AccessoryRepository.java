@@ -2,6 +2,7 @@ package com.mrp.motorhomes.repositories;
 
 import com.mrp.motorhomes.model.Accessory;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -16,10 +17,22 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 	}
 	
 	@Override
-	public void create(ArrayList<Accessory> item) {
+	public void create(ArrayList<Accessory> accessories) {
 		refreshConnection();
 		// TODO - implement AccessoryRepository.create
-		throw new UnsupportedOperationException();
+		
+		try {
+			preparedStatement = connection.prepareStatement(
+					"INSERT INTO rented_accessories(title, rentalId) VALUES (?, ?)");
+			for(Accessory accessory : accessories){
+				preparedStatement.setString(1, accessory.getTitle());
+				preparedStatement.setInt(2, accessory.getRentalId());
+				preparedStatement.addBatch();
+			}
+			preparedStatement.executeBatch();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -39,7 +52,8 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 			
 			while(resultSet.next()){
 				accessories.add(new Accessory(
-						resultSet.getString("title")));
+						resultSet.getString("title"),
+						id));
 			}
 			return accessories;
 		} catch(SQLException e) {

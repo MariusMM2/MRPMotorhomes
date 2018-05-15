@@ -24,7 +24,9 @@ public class RentalRepository extends CrudRepository<Rental> {
 	public void create(Rental item) {
 		refreshConnection();
 		try {
-			preparedStatement = connection.prepareStatement("INSERT INTO rentals(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff, paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+			preparedStatement = connection.prepareStatement(
+					"INSERT INTO rentals(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff, paid) " +
+						 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1, item.getCustomerId());
 			preparedStatement.setInt(2, item.getMotorhomeId());
 			preparedStatement.setDouble(3, item.getPrice());

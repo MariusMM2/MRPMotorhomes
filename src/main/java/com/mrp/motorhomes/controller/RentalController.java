@@ -4,10 +4,7 @@ import com.mrp.motorhomes.form.RentalForm;
 import com.mrp.motorhomes.model.Accessory;
 import com.mrp.motorhomes.model.Motorhome;
 import com.mrp.motorhomes.model.Rental;
-import com.mrp.motorhomes.repositories.CrudRepository;
-import com.mrp.motorhomes.repositories.CustomerRepository;
-import com.mrp.motorhomes.repositories.MotorhomeRepository;
-import com.mrp.motorhomes.repositories.RentalRepository;
+import com.mrp.motorhomes.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +12,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import static com.mrp.motorhomes.controller.MainController.currentUser;
 
 @Controller
 public class RentalController {
+
+	
 	private CrudRepository<Rental> rentalCrudRepository;
 	private CrudRepository<Motorhome> motorhomeCrudRepository;
 	
@@ -43,18 +44,43 @@ public class RentalController {
 		System.out.println(rentalForm);
 		System.out.println(Arrays.toString(rentalForm.getAccessories()));
 		if(!rentalForm.validate()){
-			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE);
+			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE + " " + MainController.ERROR_RENTAL);
 			prepareForm(model);
 			return "rentals/create";
 		}
 		else{
 			Rental rental = rentalForm.toRental();
+			
+			rentalCrudRepository.create(rental);
+			ArrayList<Rental> rentals = rentalCrudRepository.readAll();
+			boolean found = false;
+			for(Rental bRental : rentals) {
+				if(bRental.equals(rental)){
+					rental.setId(bRental.getId());
+					found = true;
+					break;
+				}
+			}
+			
+			if(found){
+				for(Accessory accessory :
+						rental.getAccessories()) {
+					accessory.setRentalId(rental.getId());
+				}
+			}
+			else{
+				model.addAttribute("errorMessage", MainController.ERROR_MESSAGE);
+				prepareForm(model);
+				return "rentals/create";
+			}
+			
 			Motorhome motorhome = motorhomeCrudRepository.read(rental.getMotorhomeId());
 			motorhome.setCleaned(false);
 			motorhome.setServiced(false);
 			motorhomeCrudRepository.update(motorhome);
 			
-			rentalCrudRepository.create(rental);
+			AccessoryRepository.getInstance().create(rental.getAccessories());
+			
 			return "redirect:/rentals/";
 		}
 		
@@ -84,6 +110,7 @@ public class RentalController {
 	@GetMapping("/rentals/history")
 	public String history(Model model) {
 		model.addAttribute("rentals", rentalCrudRepository.readAll());
+		model.addAttribute("readsAll", true);
 		return "rentals/index";
 	}
 	
@@ -137,5 +164,7 @@ public class RentalController {
 		model.addAttribute("customers", CustomerRepository.getInstance().readAll());
 		model.addAttribute("motorhomes",getAvailableMotorhomes());
 		model.addAttribute("allAccessories", Accessory.ALL_ACCESSORIES);
+		model.addAttribute("minStartDate", LocalDate.now().plusWeeks(1));
+		model.addAttribute("minEndDate", LocalDate.now().plusWeeks(1).plusDays(1));
 	}
 }

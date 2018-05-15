@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Add New Customer</title>
@@ -10,30 +10,34 @@
 <div class="container">
     <div class="create">
         <h1>Add New Customer</h1>
-        <form action="/customers/create" method="post">
+        <div th:if="${errorMessage}" th:utext="${errorMessage}"
+             style="color:red;font-style:italic;">
+        </div>
+
+        <form th:action="@{/customers/create}" th:object="${customerForm}" method="post">
             <p class="row">
                 <span class="title">First Name</span>
-                <span class="value"><input type="text" name="firstName"></span>
+                <span class="value"><input type="text" th:field="*{firstName}" minlength="3" maxlength="20"></span>
             </p>
             <p class="row">
                 <span class="title">Last Name</span>
-                <span class="value"><input type="text" name="lastName"></span>
+                <span class="value"><input type="text" th:field="*{lastName}" minlength="3" maxlength="20"></span>
             </p>
             <p class="row">
                 <span class="title">Email</span>
-                <span class="value"><input type="text" name="email"></span>
+                <span class="value"><input type="text" th:field="*{email}" minlength="10" maxlength="30"></span>
             </p>
             <p class="row">
                 <span class="title">Address</span>
-                <span class="value"><input type="text" name="address"></span>
+                <span class="value"><input type="text" th:field="*{address}" minlength="6" maxlength="40"></span>
             </p>
             <p class="row">
                 <span class="title">Phone</span>
-                <span class="value"><input type="text" name="phone"></span>
+                <span class="value"><input type="text" th:field="*{phone}" maxlength="8"></span>
             </p>
             <p class="row">
                 <span class="title">SSN</span>
-                <span class="value"><input type="text" name="ssn"></span>
+                <span class="value"><input type="text" th:field="*{ssn}" maxlength="10"></span>
             </p>
 
             <p class="buttons">

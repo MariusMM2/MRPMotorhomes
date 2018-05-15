@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Rental {
 
@@ -169,5 +170,21 @@ public class Rental {
 	
 	public void setMotorhomeName(String motorhomeName) {
 		this.motorhomeName = motorhomeName;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(this == o) return true;
+		if(o == null || getClass() != o.getClass()) return false;
+		Rental rental = (Rental)o;
+		return customerId == rental.customerId &&
+				startDate.equals(rental.startDate) &&
+				endDate.equals(rental.endDate);
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return Objects.hash(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff);
 	}
 }

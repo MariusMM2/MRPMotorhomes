@@ -46,11 +46,14 @@
                 </tr>
             </tbody>
         </table>
-        <p class="buttons">
-            <a href="/rentals/create" class="btn create">
-                <span>Create New Rental</span>
-            </a>
-        </p>
+        <div th:if="!${readsAll}">
+            <p class="buttons">
+                <a href="/rentals/create" class="btn create">
+                    <span>Create New Rental</span>
+                </a>
+            </p>
+
+        </div>
     </div>
 
 </body>
