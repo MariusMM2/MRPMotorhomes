@@ -23,7 +23,7 @@ public class MotorhomeController {
 	@GetMapping("/motorhomes")
 	public String index(Model model) {
 
-		model.addAttribute("moto", repository.readAll());
+		model.addAttribute("motorhomes", repository.readAll());
 		return "motorhomes/index";
 	}
 
@@ -42,7 +42,7 @@ public class MotorhomeController {
 	@GetMapping("/motorhomes/details")
 	public String details(@RequestParam("id") int id, Model model) {
 		Motorhome motorhome = repository.read(id);
-		model.addAttribute("moto", motorhome);
+		model.addAttribute("motorhome", motorhome);
 		model.addAttribute("currentUser", currentUser);
 		return "motorhomes/details";
 	}
