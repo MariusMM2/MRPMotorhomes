@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add new motorhome</title>
+    <title>Add New Motorhome</title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 
-<h1>Add new motorhome</h1>
-
-<form action="/motorhomes/create" method="post">
-    <p>Brand: <input type="text" name="brand" /></p>
-
-
-    <!--<p class="row">-->
-    <table>
-        <tr>
-            <td>Type:</td>
-            <td>
-                <select name="type">
-                    <option value="">--</option>
-                    <option th:each="type : ${types}"
-                            th:value="${type}"
-                            th:text="${type}"></option>
-                </select>
-            </td>
-        </tr>
-    </table>
-    <!--</p>-->
-
-    <!--<p>Type: <input type="text" name="type" /></p>-->
-
-
-    <p>Model: <input type="text" name="model" /></p>
-    <p>Year: <input type="text" name="year" /></p>
-    <p>Base Price: <input type="text" name="basePrice" /></p>
-    <input type="submit" value="create">
-</form>
+    <div class="container">
+        <div class="create">
+            <h1>Add New Motorhome</h1>
+            <form action="/motorhomes/create" method="post">
+                <p class="row">
+                    <span class="title">Brand</span>
+                    <span class="value"><input type="text" name="brand"></span>
+                </p>
+                <p class="row">
+                    <table>
+                        <tr>
+                            <td>Type:</td>
+                            <td>
+                                <select name="type">
+                                    <option value="">--</option>
+                                    <option th:each="type : ${types}"
+                                            th:value="${type}"
+                                            th:text="${type}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </p>
+                <p class="row">
+                    <span class="title">Model</span>
+                    <span class="value"><input type="text" name="model"></span>
+                </p>
+                <p class="row">
+                    <span class="title">Year</span>
+                    <span class="value"><input type="text" name="year"></span>
+                </p>
+                <p class="row">
+                    <span class="title">Base Price</span>
+                    <span class="value"><input type="text" name="basePrice"></span>
+                </p>
+                <p class="buttons">
+                    <input type="submit" value="Create Motorhome" class="btn create"/>
+                </p>
+            </form>
+        </div>
+    </div>
 
 </body>
 </html>

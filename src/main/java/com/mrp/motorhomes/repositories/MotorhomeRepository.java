@@ -112,9 +112,9 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 			preparedStatement.setString(3, item.getModel());
 			preparedStatement.setString(4, item.getYear());
 			preparedStatement.setDouble(5, item.getBasePrice());
-			preparedStatement.setInt(6, item.getId());
-			preparedStatement.setBoolean(7, item.isCleaned());
-			preparedStatement.setBoolean(8, item.isServiced());
+			preparedStatement.setBoolean(6, item.isCleaned());
+			preparedStatement.setBoolean(7, item.isServiced());
+			preparedStatement.setInt(8, item.getId());
 
 			preparedStatement.execute();
 		} catch (SQLException e) {

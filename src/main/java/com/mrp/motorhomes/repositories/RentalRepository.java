@@ -111,6 +111,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("rental repository - read rental: " + rental);
 		return rental;
 	}
 
@@ -121,7 +122,6 @@ public class RentalRepository extends CrudRepository<Rental> {
 	@Override
 	public void update(Rental item) {
 		refreshConnection();
-
 		try {
 			preparedStatement = connection.prepareStatement(
 					"UPDATE rentals SET customerId=?, motorhomeId=?, price=?, startDate=?, endDate=?, pickUp=?, dropOff=?, paid=? WHERE id=?");
@@ -133,6 +133,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			preparedStatement.setString(6, item.getPickUp());
 			preparedStatement.setString(7, item.getDropOff());
 			preparedStatement.setBoolean(8, item.isPaid());
+            preparedStatement.setInt(9, item.getId());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

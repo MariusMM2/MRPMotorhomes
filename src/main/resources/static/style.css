@@ -152,6 +152,26 @@ a:hover{
     text-align: right;
 }
 
+.details .row .value.green {
+    border: 1px solid #10a422;
+    background-color: #10c724;
+    color: #ffff;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: right;
+}
+
+.details .row .value.orange {
+    border: 1px solid #d1640a;
+    background-color: #de7226;
+    color: #ffff;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: right;
+}
+
+
+
 /* Create Page */
 
 .create input {
@@ -215,6 +235,38 @@ button:focus {
     margin: 20px auto;
     height: 50px;
 }
+
+
+/* Login */
+
+.container .login {
+    width: 450px;
+    margin: 40px auto;
+    border-radius: 3px;
+    padding: 10px 10px;
+}
+
+.container .login .user {
+    width: 300px;
+    margin: 10px auto;
+    border-radius: 5px;
+    padding: 15px 15px;
+    display: block;
+    border: 1px solid #10123d;
+    background-color: #327ebf;
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.container .login .user:hover {
+    background-color: #518eca;
+    cursor: pointer;
+}
+
 
 
 /**/

@@ -5,50 +5,47 @@
     <title>Rental history</title>
     <link rel="stylesheet" href="/style.css"/>
 </head>
+
 <body>
-
-<div class="container">
-
-    <h1 class="title">View All Rentals</h1>
-    <table class="mh-table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Customer</th>
-            <th>Motorhome</th>
-            <th>Price</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Pick Up</th>
-            <th>Drop Off</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="rental : ${rentals}">
-            <td th:text="${rental.id}"></td>
-            <td th:text="${rental.customerName}"></td>
-            <td th:text="${rental.motorhomeName}"></td>
-            <td th:text="${rental.price}"></td>
-            <td th:text="${rental.startDate}"></td>
-            <td th:text="${rental.endDate}"></td>
-            <td th:text="${rental.pickUp}"></td>
-            <td th:text="${rental.dropOff}"></td>
-            <td>
-                <p class="row">
-                    <a th:href="@{'../rentals/details?id=' + ${rental.id}}">
-                        <span class="btn details">Details</span>
-                    </a>
-                    <a th:href="@{'../rentals/delete?id=' + ${rental.id}}">
-                        <span class="btn delete">Delete</span>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-
+    <div class="container">
+        <h1 class="title">View All Rentals</h1>
+        <table class="mh-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer</th>
+                <th>Motorhome</th>
+                <th>Price</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Pick Up</th>
+                <th>Drop Off</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rental : ${rentals}">
+                <td th:text="${rental.id}"></td>
+                <td th:text="${rental.customerName}"></td>
+                <td th:text="${rental.motorhomeName}"></td>
+                <td th:text="${rental.price}"></td>
+                <td th:text="${rental.startDate}"></td>
+                <td th:text="${rental.endDate}"></td>
+                <td th:text="${rental.pickUp}"></td>
+                <td th:text="${rental.dropOff}"></td>
+                <td>
+                    <p class="row">
+                        <a th:href="@{'../rentals/details?id=' + ${rental.id}}">
+                            <span class="btn details">Details</span>
+                        </a>
+                        <a th:href="@{'../rentals/delete?id=' + ${rental.id}}">
+                            <span class="btn delete">Delete</span>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

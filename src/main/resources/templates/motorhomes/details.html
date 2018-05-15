@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="'Motorhome id' + ${moto.id} + ' details:'"></title>
+    <title th:text="'Motorhome id' + ${moto.id} + ' details'"></title>
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 
-<h1 th:text="'Motorhome id' + ${moto.id} + ' details:'"></h1>
-<ul style="list-style-type:disc">
-    <p><li th:text="'Id: ' + ${moto.id}"></li></p>
-    <p><li th:text="'Brand: ' + ${moto.brand}"></li></p>
-    <p><li th:text="'Type: ' + ${moto.type}"></li></p>
-    <p><li th:text="'Model: ' + ${moto.model}"></li></p>
-    <p><li th:text="'Year: ' + ${moto.year}"></li></p>
-    <p><li th:text="'Base Price: ' + ${moto.basePrice}"></li></p>
-    <p><li th:text="'Clean status: ' + ${moto.cleaned}"></li></p>
-    <p><li th:text="'Service status: ' + ${moto.serviced}"></li></p>
-</ul>
+<div class="container">
+    <div class="details">
+        <h1>Motorhome Details</h1>
+        <p class="row"><span class="title">Id:</span><span th:text="${moto.id}" class="value"></span></p>
+        <p class="row"><span class="title">Brand:</span><span th:text="${moto.brand}" class="value"></span></p>
+        <p class="row"><span class="title">Type:</span><span th:text="${moto.type}" class="value"></span></p>
+        <p class="row"><span class="title">Model:</span><span th:text="${moto.model}" class="value"></span></p>
+        <p class="row"><span class="title">Year:</span><span th:text="${moto.year}" class="value"></span></p>
+        <p class="row"><span class="title">Base Price:</span><span th:text="${moto.basePrice}" class="value"></span></p>
+        <p class="row"><span class="title">Clean Status:</span><span th:text="${moto.cleaned}" class="value" th:classappend="${moto.cleaned} ? green : orange"></span></p>
+        <p class="row"><span class="title">Service Status:</span><span th:text="${moto.serviced}" class="value" th:classappend="${moto.serviced} ? green : orange"></span></p>
+        <p class="buttons">
+            <a th:href="@{'../motorhomes/clean?id=' + ${moto.id}}" th:if="${currentUser.getType().equals('cleanStaff')}" class="btn create">
+                <span th:if="${moto.isCleaned() == false}">Motorhome - Cleaned</span>
+                <span th:if="${moto.isCleaned() == true}">Motorhome - Not Cleaned</span>
+            </a>
+            <a th:href="@{'../motorhomes/service?id=' + ${moto.id}}" th:if="${currentUser.getType().equals('mechanic')}" class="btn create">
+                <span th:if="${moto.isServiced() == false}">Motorhome - Serviced</span>
+                <span th:if="${moto.isServiced() == true}">Motorhome - Not Serviced</span>
+            </a>
+        </p>
+    </div>
+</div>
+
 </body>
 </html>

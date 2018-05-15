@@ -40,7 +40,7 @@ public class Rental {
 		this.customerName = customerName;
 		this.motorhomeName = motorhomeName;
 	}
-	
+
 	public Rental(int customerId, int motorhomeId, double price, LocalDate startDate, LocalDate endDate,
 				  String pickUp, String dropOff, boolean paid,
 				  ArrayList<Accessory> accessories) {
@@ -54,7 +54,7 @@ public class Rental {
 		this.paid = paid;
 		this.accessories = accessories;
 	}
-	
+
 	public int getId() {
 		return this.id;
 	}
@@ -118,15 +118,15 @@ public class Rental {
 	public void setDropOff(String dropOff) {
 		this.dropOff = dropOff;
 	}
-	
+
 	public boolean isPaid() {
 		return paid;
 	}
-	
+
 	public void setPaid(boolean paid) {
 		this.paid = paid;
 	}
-	
+
 	public ArrayList<Accessory> getAccessories() {
 		return this.accessories;
 	}

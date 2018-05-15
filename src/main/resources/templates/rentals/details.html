@@ -18,34 +18,18 @@
         <p class="row"><span class="title">End Date:</span><span th:text="${rental.endDate}" class="value"></span></p>
         <p class="row"><span class="title">Pick Up:</span><span th:text="${rental.pickUp}" class="value"></span></p>
         <p class="row"><span class="title">Drop Off:</span><span th:text="${rental.dropOff}" class="value"></span></p>
-        <p class="row"><span class="title">Is Paid:</span><span th:text="${rental.paid}" class="value"></span></p>
-
+        <p class="row"><span class="title">Paid:</span><span th:text="${rental.paid}" class="value" th:classappend="${rental.paid} ? green : orange"></span></p>
         <p class="row"><span class="title">Accessories:</span>
             <th:block  th:each="accessory : ${rental.accessories}">
                 <span th:text="${accessory.title} + ', '"></span>
             </th:block>
         </p>
-
         <p class="buttons">
-            <input th:if="${rental.paid}" type="submit" value="Pay Rental" class="btn create"/>
-        <!--<p>rental.paid: </p>    -->
-        <!--<p th:text="${rental.paid}"></p>-->
-        <!--<p>rental.paid: </p>-->
-        <!--<p th:text="${user.getType()}"></p>-->
+            <a th:href="@{'../rentals/pay?id=' + ${rental.id}}" th:if="${currentUser.getType().equals('bookkeeper')}" class="btn create">
+                <span th:if="${rental.isPaid() == false}">Pay Rental</span>
+                <span th:if="${rental.isPaid() == true}">Unpay Rental</span>
+            </a>
         </p>
-
-
-
-        <!--
-        <table class="mh-table">
-            <tbody>
-                <tr th:each="accessory : ${rental.accessories}">
-                    <td th:text="${accessory.title}"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!--<p class="row"><span class="highlight">Accessories</span><span th:text="${rental.id}" class="value"></span></p>-->
     </div>
 </div>
 

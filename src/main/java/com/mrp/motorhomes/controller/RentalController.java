@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.mrp.motorhomes.controller.MainController.currentUser;
+
 @Controller
 public class RentalController {
 	private static final String ERROR_MESSAGE = "All fields are required. Start date cannot be before today's " +
@@ -63,9 +65,22 @@ public class RentalController {
 	@GetMapping("/rentals/details")
 	public String details(@RequestParam("id") int id, Model model) {
 		Rental rental = rentalCrudRepository.read(id);
-		System.out.println(rental);
+		System.out.println("details - rental " + rental);
 		model.addAttribute("rental", rental);
+		model.addAttribute("currentUser", currentUser);
 		return "rentals/details";
+	}
+
+	@GetMapping("/rentals/pay")
+	public String pay(@RequestParam("id") int id) {
+		Rental rental = rentalCrudRepository.read(id);
+		if (rental.isPaid() == true) {
+			rental.setPaid(false);
+		} else {
+			rental.setPaid(true);
+		}
+		rentalCrudRepository.update(rental);
+		return "redirect:/rentals/";
 	}
 	
 	@GetMapping("/rentals/history")
@@ -82,10 +97,11 @@ public class RentalController {
 	}
 	
 	
-	@PostMapping("/rentals/update")
+	@PostMapping("/rentals/details/update")
 	public String update(@ModelAttribute Rental rental) {
+		rental.setPaid(true);
 		rentalCrudRepository.update(rental);
-		return "redirect:/rentals/";
+		return "redirect:/rentals/details/";
 	}
 	
 	@GetMapping("/rentals/delete")

@@ -4,58 +4,15 @@
     <title>Title</title>
     <link rel="stylesheet" href="/style.css"/>
 </head>
-<body>
-<div class="container">
-    <h1 class="title">Users</h1>
-    <table class="mh-table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Login Button</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="user : ${users}">
-            <td th:text = "${user.name}"></td>
-            <td th:text = "${user.type}"></td>
-            <td>
-                <p class="row">
-                    <a th:href="@{'/login?type=' + ${user.type}}" class="btn details">Login</a>
-                </p>
-            </td>
-        </tr>
-        <!--<tr>-->
-            <!--<td th:text = "${users[1].name}"></td>-->
-            <!--<td th:text = "${users[1].type}"></td>-->
-            <!--<td>-->
-                <!--<p class="row">-->
-                    <!--<a href="/motorhomes/" class="btn details">Login</a>-->
-                <!--</p>-->
-            <!--</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td th:text = "${users[2].name}"></td>-->
-            <!--<td th:text = "${users[2].type}"></td>-->
-            <!--<td>-->
-                <!--<p class="row">-->
-                    <!--<a href="/rentals/" class="btn details" >Login</a>-->
-                    <!--&lt;!&ndash;<a href="/rentals/" th:onclick="${'user.setType(2);'}" class="btn details" >Login</a>&ndash;&gt;-->
-                <!--</p>-->
-            <!--</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td th:text = "${users[3].name}"></td>-->
-            <!--<td th:text = "${users[3].type}"></td>-->
-            <!--<td>-->
-                <!--<p class="row">-->
-                    <!--<a href="/motorhomes/" class="btn details">Login</a>-->
-                <!--</p>-->
-            <!--</td>-->
-        <!--</tr>-->
-        </tbody>
-    </table>
-</div>
 
+<body>
+    <div class="container">
+
+        <div class="login">
+            <div th:each="user : ${users}">
+                <a th:href="@{'/login?type=' + ${user.type}}" th:text = "${user.type}" class="user"></a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

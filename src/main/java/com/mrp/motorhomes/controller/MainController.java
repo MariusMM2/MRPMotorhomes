@@ -32,8 +32,11 @@ public class MainController {
 		else if(currentUser.getType().equals(User.TYPES[2])){
 			return "redirect:/rentals/";
 		}
-		else{
+		else if(currentUser.getType().equals(User.TYPES[1]) || currentUser.getType().equals(User.TYPES[3])){
 			return "redirect:/motorhomes/";
+		} else {
+			return "redirect:/login/";
 		}
+
 	}
 }

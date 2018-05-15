@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static com.mrp.motorhomes.controller.MainController.currentUser;
+
 @Controller
 public class MotorhomeController {
 	private CrudRepository<Motorhome> repository;
@@ -41,7 +43,32 @@ public class MotorhomeController {
 	public String details(@RequestParam("id") int id, Model model) {
 		Motorhome motorhome = repository.read(id);
 		model.addAttribute("moto", motorhome);
+		model.addAttribute("currentUser", currentUser);
 		return "motorhomes/details";
+	}
+
+	@GetMapping("/motorhomes/clean")
+	public String clean(@RequestParam("id") int id) {
+		Motorhome motorhome = repository.read(id);
+		if (motorhome.isCleaned() == true) {
+			motorhome.setCleaned(false);
+		} else {
+			motorhome.setCleaned(true);
+		}
+		repository.update(motorhome);
+		return "redirect:/motorhomes/";
+	}
+
+	@GetMapping("/motorhomes/service")
+	public String service(@RequestParam("id") int id) {
+		Motorhome motorhome = repository.read(id);
+		if (motorhome.isServiced() == true) {
+			motorhome.setServiced(false);
+		} else {
+			motorhome.setServiced(true);
+		}
+		repository.update(motorhome);
+		return "redirect:/motorhomes/";
 	}
 
 	@PostMapping("/motorhomes/update")
