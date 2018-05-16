@@ -16,7 +16,7 @@ public class MainController {
 	public static final String ERROR_RENTAL   = "Start date cannot be before today's " +
 			"date, and end date cannot be before start date.";
     
-    public static User currentUser = null;
+    public static User currentUser = User.ALL_USERS[0];
 	
 	@GetMapping("/")
 	public String login(Model model) {
