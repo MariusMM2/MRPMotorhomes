@@ -15,8 +15,11 @@ public class RentalRepository extends CrudRepository<Rental> {
 		}
 		return instance;
 	}
-
-	/**
+    
+    private RentalRepository(){}
+    
+    
+    /**
 	 * 
 	 * @param item
 	 */

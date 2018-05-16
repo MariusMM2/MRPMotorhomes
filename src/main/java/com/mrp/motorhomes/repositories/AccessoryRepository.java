@@ -16,6 +16,8 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 		return instance;
 	}
 	
+	private AccessoryRepository(){}
+	
 	@Override
 	public void create(ArrayList<Accessory> accessories) {
 		refreshConnection();

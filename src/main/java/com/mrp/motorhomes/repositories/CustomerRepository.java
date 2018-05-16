@@ -15,6 +15,8 @@ public class CustomerRepository extends CrudRepository<Customer> {
 		}
 		return instance;
 	}
+	
+	private CustomerRepository(){}
 
 	/**
 	 * 

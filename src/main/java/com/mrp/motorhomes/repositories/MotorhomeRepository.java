@@ -14,6 +14,8 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		}
 		return instance;
 	}
+	
+	private MotorhomeRepository(){}
 
 	/**
 	 * 
