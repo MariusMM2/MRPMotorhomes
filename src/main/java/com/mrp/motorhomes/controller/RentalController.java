@@ -138,9 +138,12 @@ public class RentalController {
 	
 	private ArrayList<Rental> getActiveRentals(){
 		ArrayList<Rental> rentals = rentalCrudRepository.readAll();
-		for(int i = 0; i < rentals.size(); i++) {
+		for(int i = 0; i < rentals.size();) {
 			if(rentals.get(i).isEnded()) {
 				rentals.remove(i);
+			}
+			else{
+				i++;
 			}
 		}
 		
