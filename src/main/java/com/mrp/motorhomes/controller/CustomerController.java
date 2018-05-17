@@ -18,48 +18,72 @@ public class CustomerController {
 	private CrudRepository<Customer> repository;
 	
 	public CustomerController(){
+		//grabs the instance of the customer database repository
 		repository = CustomerRepository.getInstance();
 	}
 
+	
+	//main page for the customers, showing a table with all the customers
 	@GetMapping("/customers")
 	public String index(Model model){
+		//adds the list of customers to the Model
 		model.addAttribute("customers", repository.readAll());
+		//adds the current user to the Model
 		model.addAttribute("currentUser", currentUser);
 		return "customers/index";
 	}
 
+	//Shows the page to create a new customer
 	@GetMapping("/customers/create")
 	public String create(Model model){
 		//Creates and passes a new customer form to the Model
 		model.addAttribute("customerForm", new CustomerForm());
 		return "customers/create";
 	}
-	
+	//Processes the form
 	@PostMapping("/customers/create")
 	public String create(Model model, @ModelAttribute("customerForm") CustomerForm customerForm){
 		System.out.println(customerForm);
 		
+		//validates the fields entered by the user
 		if(!customerForm.validate()){
+			//some field were invalid, show an error message
 			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE + " " + MainController.ERROR_CUSTOMER);
+			//redirect to the creation page
 			return "customers/create";
 		}
 		else
 		{
+			//all field were valid, convert the form object to Customer
 			Customer customer = customerForm.toCustomer();
 			
+			//add the customer to the database
 			repository.create(customer);
+			//return to the index page for customers
 			return "redirect:/customers/";
 		}
 	}
 	
+	//page that shows details for a customer
 	@GetMapping("/customers/details")
 	public String details(@RequestParam("id") int id, Model model){
+		//reads the customer from the database and adds them to the Model
 		model.addAttribute("customer", repository.read(id));
 		return "customers/details";
 	}
 	
+	//**UNUSED**
+	//updates a customer in the database
+	@PostMapping("/customer/details/update")
+	public String update(@ModelAttribute Customer customer) {
+		repository.update(customer);
+		return "redirect:/rentals/details/";
+	}
+	
+	//deletes a customer from the database
 	@GetMapping("/customers/delete")
 	public String delete(@RequestParam("id") int id){
+		//deletes the customer with the given id
 		repository.delete(id);
 		return "redirect:/customers/";
 	}
