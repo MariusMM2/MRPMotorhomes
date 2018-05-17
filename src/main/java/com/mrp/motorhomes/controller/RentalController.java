@@ -98,7 +98,7 @@ public class RentalController {
 	@GetMapping("/rentals/pay")
 	public String pay(@RequestParam("id") int id) {
 		Rental rental = rentalCrudRepository.read(id);
-		if (rental.isPaid() == true) {
+		if (rental.isPaid()) {
 			rental.setPaid(false);
 		} else {
 			rental.setPaid(true);
