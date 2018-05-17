@@ -33,8 +33,8 @@ public class RentalController {
 	
 	@GetMapping("/rentals/create")
 	public String create(Model model) {
-		RentalForm rentalForm = new RentalForm();
-		model.addAttribute("rentalForm", rentalForm);
+		//Creates and passes a new rental form to the Model
+		model.addAttribute("rentalForm", new RentalForm());
 		prepareForm(model);
 		return "rentals/create";
 	}

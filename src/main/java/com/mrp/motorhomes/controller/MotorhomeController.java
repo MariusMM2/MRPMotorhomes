@@ -30,8 +30,8 @@ public class MotorhomeController {
 
 	@GetMapping("/motorhomes/create")
 	public String create(Model model) {
-		MotorhomeForm motorhomeForm = new MotorhomeForm();
-		model.addAttribute("motorhomeForm", motorhomeForm);
+		//Creates and passes a new motorhome form to the Model
+		model.addAttribute("motorhomeForm", new MotorhomeForm());
 		model.addAttribute("types", Motorhome.TYPES);
 		return "motorhomes/create";
 	}

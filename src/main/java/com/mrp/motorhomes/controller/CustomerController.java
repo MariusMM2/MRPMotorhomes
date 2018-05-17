@@ -30,8 +30,8 @@ public class CustomerController {
 
 	@GetMapping("/customers/create")
 	public String create(Model model){
-		CustomerForm customerForm = new CustomerForm();
-		model.addAttribute("customerForm", customerForm);
+		//Creates and passes a new customer form to the Model
+		model.addAttribute("customerForm", new CustomerForm());
 		return "customers/create";
 	}
 	
