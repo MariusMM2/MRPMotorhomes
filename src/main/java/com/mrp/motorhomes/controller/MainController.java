@@ -25,9 +25,9 @@ public class MainController {
 	}
 	
 	@GetMapping("/login")
-	public String login(@RequestParam("type") String type){
+	public String login(@RequestParam("name") String name){
 		for(User user : User.ALL_USERS) {
-			if(user.getType().equals(type)){
+			if(user.getName().equals(name)){
 				currentUser = user;
 			}
 		}

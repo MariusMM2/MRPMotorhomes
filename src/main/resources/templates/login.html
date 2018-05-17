@@ -10,7 +10,7 @@
 
         <div class="login">
             <div th:each="user : ${users}">
-                <a th:href="@{'/login?type=' + ${user.type}}" th:text = "${user.type}" class="user"></a>
+                <a th:href="@{'/login?name=' + ${user.name}}" th:text = "${user.name} + ' : ' + ${user.type}" class="user"></a>
             </div>
         </div>
     </div>
