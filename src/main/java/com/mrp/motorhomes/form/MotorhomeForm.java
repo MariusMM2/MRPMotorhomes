@@ -4,6 +4,10 @@ import com.mrp.motorhomes.model.Motorhome;
 
 public class MotorhomeForm implements Form {
     
+    private static final int MIN_YEAR = 1950;
+    private static final int MAX_YEAR = 2018;
+    
+    
     private String brand;
     private String type;
     private String model;
@@ -14,7 +18,7 @@ public class MotorhomeForm implements Form {
     public boolean validate() {
         boolean brand 	    = this.brand != null && this.brand.length() > 0;
         boolean model 		= this.model != null && this.model.length() > 0;
-        boolean year        = this.year >= 1950 && this.year <= 2100;
+        boolean year        = this.year >= MIN_YEAR && this.year <= MAX_YEAR;
         boolean basePrice   = this.basePrice > 0;
         return brand && model && year && basePrice;
     }
@@ -72,5 +76,13 @@ public class MotorhomeForm implements Form {
     
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
+    }
+    
+    public static int getMinYear() {
+        return MIN_YEAR;
+    }
+    
+    public static int getMaxYear() {
+        return MAX_YEAR;
     }
 }

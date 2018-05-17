@@ -43,7 +43,7 @@
                 </p>
                 <p class="row">
                     <span class="title">Year</span>
-                    <span class="value"><input type="number" th:field="*{year}" min="1950" max="2018"></span>
+                    <span class="value"><input type="number" th:field="*{year}" th:min="${motorhomeForm.minYear}" th:max="${motorhomeForm.maxYear}"></span>
                 </p>
                 <p class="row">
                     <span class="title">Base Price</span>
