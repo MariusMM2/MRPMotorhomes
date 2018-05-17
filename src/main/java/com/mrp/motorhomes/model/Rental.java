@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
+//#Paul
+//Representation of a rental registered in the database of the system
 public class Rental {
 
 	private int id;
@@ -55,7 +57,41 @@ public class Rental {
 		this.paid = paid;
 		this.accessories = accessories;
 	}
-
+	
+	//Returns true if the end date is before today
+	public boolean isEnded(){
+		return endDate.isBefore(LocalDate.now());
+	}
+	
+	//prints the form to the console, used for debugging
+	@Override
+	public String toString() {
+		return "Rental{" +
+				"id=" + id +
+				", customerId=" + customerId +
+				", motorhomeId=" + motorhomeId +
+				", price=" + price +
+				", startDate=" + startDate +
+				", endDate=" + endDate +
+				", pickUp='" + pickUp + '\'' +
+				", dropOff='" + dropOff + '\'' +
+				", paid='" + paid + '\'' +
+				", accessories=" + accessories +
+				'}';
+	}
+	
+	//returns true if this Rental object matches another Rental object
+	@Override
+	public boolean equals(Object o) {
+		if(this == o) return true;
+		if(o == null || getClass() != o.getClass()) return false;
+		Rental rental = (Rental)o;
+		return customerId == rental.customerId &&
+				startDate.equals(rental.startDate) &&
+				endDate.equals(rental.endDate);
+	}
+	
+	//Getters and Setters
 	public int getId() {
 		return this.id;
 	}
@@ -136,26 +172,6 @@ public class Rental {
 		this.accessories = accessories;
 	}
 	
-	public boolean isEnded(){
-		return endDate.isBefore(LocalDate.now());
-	}
-	
-	@Override
-	public String toString() {
-		return "Rental{" +
-					   "id=" + id +
-					   ", customerId=" + customerId +
-					   ", motorhomeId=" + motorhomeId +
-					   ", price=" + price +
-					   ", startDate=" + startDate +
-					   ", endDate=" + endDate +
-					   ", pickUp='" + pickUp + '\'' +
-						", dropOff='" + dropOff + '\'' +
-						", paid='" + paid + '\'' +
-					   ", accessories=" + accessories +
-					   '}';
-	}
-	
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -170,21 +186,5 @@ public class Rental {
 	
 	public void setMotorhomeName(String motorhomeName) {
 		this.motorhomeName = motorhomeName;
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		if(this == o) return true;
-		if(o == null || getClass() != o.getClass()) return false;
-		Rental rental = (Rental)o;
-		return customerId == rental.customerId &&
-				startDate.equals(rental.startDate) &&
-				endDate.equals(rental.endDate);
-	}
-	
-	@Override
-	public int hashCode() {
-		
-		return Objects.hash(customerId, motorhomeId, price, startDate, endDate, pickUp, dropOff);
 	}
 }

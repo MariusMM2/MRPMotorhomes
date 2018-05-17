@@ -5,8 +5,11 @@ import com.mrp.motorhomes.model.Motorhome;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+//#Razvan
+//Repository connecting to the database of the Motorhome model
 public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	
+	//Singleton Pattern
 	private static MotorhomeRepository instance;
 	public static MotorhomeRepository getInstance(){
 		if(instance == null){
@@ -14,13 +17,9 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		}
 		return instance;
 	}
-	
 	private MotorhomeRepository(){}
-
-	/**
-	 * 
-	 * @param item
-	 */
+	
+	//Add a motorhome in the database
 	@Override
 	public void create(Motorhome item) {
 
@@ -37,13 +36,13 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 
 			preparedStatement.execute();
 
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
 	
+	//Returns the list of all motorhomes in the database
 	@Override
 	public ArrayList<Motorhome> readAll() {
 		refreshConnection();
@@ -69,11 +68,8 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		}
 		return motorhomes;
 	}
-
-	/**
-	 *
-	 * @param id
-	 */
+	
+	//gets a motorhome by its id
 	@Override
 	public Motorhome read(int id) {
 		refreshConnection();
@@ -98,11 +94,8 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		}
 		return null;
 	}
-
-	/**
-	 * 
-	 * @param item
-	 */
+	
+	//Updates a motorhome in the database
 	@Override
 	public void update(Motorhome item) {
 		refreshConnection();
@@ -122,11 +115,8 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * 
-	 * @param id
-	 */
+	
+	//Deletes a motorhome from the database
 	@Override
 	public void delete(int id) {
 		refreshConnection();

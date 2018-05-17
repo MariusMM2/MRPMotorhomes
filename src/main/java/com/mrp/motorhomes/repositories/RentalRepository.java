@@ -6,8 +6,11 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+//#Paul
+//Repository connecting to the database of the Rental model
 public class RentalRepository extends CrudRepository<Rental> {
 	
+	//Singleton Pattern
 	private static RentalRepository instance;
 	public static RentalRepository getInstance(){
 		if(instance == null){
@@ -15,14 +18,9 @@ public class RentalRepository extends CrudRepository<Rental> {
 		}
 		return instance;
 	}
-    
     private RentalRepository(){}
-    
-    
-    /**
-	 * 
-	 * @param item
-	 */
+	
+	//Add a rental in the database
 	@Override
 	public void create(Rental item) {
 		refreshConnection();
@@ -44,6 +42,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 		}
 	}
 	
+	//Returns the list of all rentals in the database
 	@Override
 	public ArrayList<Rental> readAll() {
 		refreshConnection();
@@ -56,7 +55,6 @@ public class RentalRepository extends CrudRepository<Rental> {
 							"INNER JOIN customers ON rentals.customerId=customers.id " +
 							"INNER JOIN motorhomes ON rentals.motorhomeId=motorhomes.id");
 			resultSet = preparedStatement.executeQuery();
-			System.out.println("after prepS");
 			while(resultSet.next()){
 				rentals.add(new Rental(
 						resultSet.getInt("id"),
@@ -77,11 +75,8 @@ public class RentalRepository extends CrudRepository<Rental> {
 			return null;
 		}
 	}
-
-	/**
-	 * 
-	 * @param id
-	 */
+	
+	//gets a rental by its id
 	@Override
 	public Rental read(int id) {
 		refreshConnection();
@@ -109,7 +104,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 						resultSet.getString("pickUp"),
 						resultSet.getString("dropOff"),
 						resultSet.getBoolean("paid"));
-				
+				//since reading a single item is usually used in the details page, add the accessories to the rental
 				rental.setAccessories(AccessoryRepository.getInstance().read(rental.getId()));
 			}
 
@@ -119,11 +114,8 @@ public class RentalRepository extends CrudRepository<Rental> {
 		System.out.println("rental repository - read rental: " + rental);
 		return rental;
 	}
-
-	/**
-	 * 
-	 * @param item
-	 */
+	
+	//Updates a rental in the database
 	@Override
 	public void update(Rental item) {
 		refreshConnection();
@@ -144,11 +136,8 @@ public class RentalRepository extends CrudRepository<Rental> {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * 
-	 * @param id
-	 */
+	
+	//Deletes a rental from the database
 	@Override
 	public void delete(int id) {
 		refreshConnection();

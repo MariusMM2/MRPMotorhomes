@@ -5,23 +5,21 @@ import com.mrp.motorhomes.model.Customer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+//#Marius
+//Repository connecting to the database of the Customer model
 public class CustomerRepository extends CrudRepository<Customer> {
 	
+	//Singleton Pattern
 	private static CustomerRepository instance;
-	
 	public static CustomerRepository getInstance(){
 		if(instance == null){
 			instance = new CustomerRepository();
 		}
 		return instance;
 	}
-	
 	private CustomerRepository(){}
-
-	/**
-	 * 
-	 * @param item
-	 */
+	
+	//Add a customer in the database
 	@Override
 	public void create(Customer item) {
 		refreshConnection();
@@ -40,6 +38,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 		}
 	}
 	
+	//Returns the list of all customers in the database
 	@Override
 	public ArrayList<Customer> readAll() {
 		refreshConnection();
@@ -66,11 +65,8 @@ public class CustomerRepository extends CrudRepository<Customer> {
 			return null;
 		}
 	}
-
-	/**
-	 *
-	 * @param id
-	 */
+	
+	//gets a customer by their id
 	@Override
 	public Customer read(int id) {
 		refreshConnection();
@@ -97,10 +93,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 		return null;
 	}
 
-	/**
-	 * 
-	 * @param item
-	 */
+	//Updates a customer in the database
 	@Override
 	public void update(Customer item) {
 		refreshConnection();
@@ -120,10 +113,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 		}
 	}
 
-	/**
-	 * 
-	 * @param id
-	 */
+	//Deletes a customer from the database
 	@Override
 	public void delete(int id) {
 		refreshConnection();

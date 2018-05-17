@@ -1,8 +1,11 @@
 package com.mrp.motorhomes.model;
 
+//#Constantin
+//Representation of a motorhome registered in the database of the system
 public class Motorhome {
-
+	//All types of motorhomes
 	public static final String[] TYPES = {"Class A", "Class B", "Class C", "Truck Camper", "Popup Camper", "Travel Trailer", "Teardrop Trailer", "Hybrid Trailer"};
+	
 	private int id;
 	private String brand;
     private String type;
@@ -26,6 +29,7 @@ public class Motorhome {
 
     public Motorhome() {}
 
+    //Getters and Setters
     public int getId() {
 		return this.id;
 	}

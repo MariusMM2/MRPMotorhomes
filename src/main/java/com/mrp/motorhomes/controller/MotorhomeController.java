@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import static com.mrp.motorhomes.controller.MainController.currentUser;
 
+//#Constantin
+//Controller responsible for handling operations on the motorhomes
 @Controller
 public class MotorhomeController {
 	private CrudRepository<Motorhome> repository;
@@ -101,6 +103,7 @@ public class MotorhomeController {
 
 	//**UNUSED**
 	//updates a motorhome in the database
+	@Deprecated
 	@PostMapping("/motorhomes/details/update")
 	public String update(@ModelAttribute Motorhome motorhome) {
         repository.update(motorhome);

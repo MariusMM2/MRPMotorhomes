@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 
+//#Marius & Paul & Razvan
+//The main class, used to log into the system
 @Controller
 public class MainController {
 	

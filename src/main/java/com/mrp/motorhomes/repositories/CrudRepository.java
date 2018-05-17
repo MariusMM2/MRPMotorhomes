@@ -7,56 +7,44 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+//#Marius & Paul & Razvan
+//Abstract class representing the structure of a CRUD repository
 public abstract class CrudRepository<T>{
-
-	protected static Connection connection;
-	private   static long lastConnRefresh;
-	protected static PreparedStatement preparedStatement;
-	protected static ResultSet resultSet;
+    
+    //minimum time that should have passed since the last refresh
+    private static final int REFRESH_THRESHOLD = 1000*60*5;
+    //time since last connection refreshing took place
+    private   static long lastConnRefresh;
+    //the Connection used to execute the sql statements
+    static Connection connection;
+	static PreparedStatement preparedStatement;
+	static ResultSet resultSet;
 	
-	protected CrudRepository(){}
+	CrudRepository(){}
 	
-	/**
-	 * Adds a new element in the table
-	 * @param item The element to be added in the table
-	 */
+	//Adds a new element in the table
 	public abstract void create(T item);
 	
-	/**
-	 * Reads all the elements of the table
-	 * @return A list of all the elements
-	 */
+	//Reads all the elements of the table
 	public abstract ArrayList<T> readAll();
 
-	/**
-	 * Reads a specific element from the table
-	 * @param id The id of the element
-	 * @return The element itself
-	 */
+	//Reads a specific element from the table
 	public abstract T read(int id);
 
-	/**
-	 * Updates an existing element in the table
-	 * @param item The element to be placed in the table
-	 */
+    //Updates an existing element in the table
 	public abstract void update(T item);
 
-	/**
-	 * Deletes an element from the table
-	 * @param id The id of the element to be removed
-	 */
+    //Deletes an element from the table
 	public abstract void delete(int id);
 	
-	/**
-	 * Is called each time the application is accessing the database.
-	 * On the first call, creates the connection and stores the time when created.
-	 * Every time the method is called, if the time since the last refresh was more than five minute, rebuilds the
-	 * connection.
-	 */
+	//Is called each time the application is accessing the database.
+	//On the first call, the method creates the connection and stores the time when created in "lastConnRefresh".
+	//Every time the method is called, if the time since the last refresh was more than five minute, rebuilds the
+	//connection.
 	protected static void refreshConnection(){
 		long currentTime = System.currentTimeMillis();
-		//If the time since the last refresh is more than 5 minutes
-		if( currentTime - lastConnRefresh > 1000*60*5){
+		//If the time since the last refresh is more than the threshold
+		if( currentTime - lastConnRefresh > REFRESH_THRESHOLD){
 			lastConnRefresh = currentTime;
 			connection = DBConnection.getConnection();
 		}

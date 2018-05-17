@@ -1,8 +1,12 @@
 package com.mrp.motorhomes.model;
 
+//#Razvan
+//Class representing the user of the system
 public class User {
 	
+	//All types of users
 	public static final String[] TYPES = {"salesAssistant", "mechanic", "bookkeeper", "cleanStaff"};
+	//All users registered in the system
 	public static final User[] ALL_USERS = {
 			new User("Dave", TYPES[0]),
 			new User("Andrew", TYPES[0]),
@@ -21,19 +25,21 @@ public class User {
 		this.type = type;
 	}
 	
+	//prints the form to the console, used for debugging
+	@Override
+	public String toString() {
+		return "User{" +
+				"name='" + name + '\'' +
+				", type='" + type + '\'' +
+				'}';
+	}
+	
+	//Getters and Setters
 	public String getName() {
 		return name;
 	}
 	
 	public String getType() {
 		return type;
-	}
-	
-	@Override
-	public String toString() {
-		return "User{" +
-					   "name='" + name + '\'' +
-					   ", type='" + type + '\'' +
-					   '}';
 	}
 }

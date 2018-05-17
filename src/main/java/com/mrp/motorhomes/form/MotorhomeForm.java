@@ -2,11 +2,11 @@ package com.mrp.motorhomes.form;
 
 import com.mrp.motorhomes.model.Motorhome;
 
+//#Marius
+//Form submitted when adding a new Motorhome to the system
 public class MotorhomeForm implements Form {
-    
     private static final int MIN_YEAR = 1950;
     private static final int MAX_YEAR = 2018;
-    
     
     private String brand;
     private String type;
@@ -14,6 +14,7 @@ public class MotorhomeForm implements Form {
     private int year;
     private double basePrice;
     
+    //validates the fields entered by the user
     @Override
     public boolean validate() {
         boolean brand 	    = this.brand != null && this.brand.length() > 0;
@@ -23,10 +24,12 @@ public class MotorhomeForm implements Form {
         return brand && model && year && basePrice;
     }
     
+    //Returns a new Motorhome based on the fields of the form
     public Motorhome toMotorhome(){
         return new Motorhome(-1, this.brand, this.type, this.model, this.year, this.basePrice, false, false);
     }
     
+    //prints the form to the console, used for debugging
     @Override
     public String toString() {
         return "MotorhomeForm{" +
@@ -36,6 +39,15 @@ public class MotorhomeForm implements Form {
                 ", year=" + year +
                 ", basePrice=" + basePrice +
                 '}';
+    }
+    
+    ///Getters and Setters
+    public static int getMinYear() {
+        return MIN_YEAR;
+    }
+    
+    public static int getMaxYear() {
+        return MAX_YEAR;
     }
     
     public String getBrand() {
@@ -76,13 +88,5 @@ public class MotorhomeForm implements Form {
     
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
-    }
-    
-    public static int getMinYear() {
-        return MIN_YEAR;
-    }
-    
-    public static int getMaxYear() {
-        return MAX_YEAR;
     }
 }

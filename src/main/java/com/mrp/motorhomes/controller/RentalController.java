@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.regex.Pattern;
 
 import static com.mrp.motorhomes.controller.MainController.currentUser;
 
+//#Paul
+//Controller responsible for handling operations on the rentals
 @Controller
 public class RentalController {
 
@@ -155,6 +156,7 @@ public class RentalController {
 	
 	//**UNUSED**
 	//updates a rental in the database
+	@Deprecated
 	@PostMapping("/rentals/details/update")
 	public String update(@ModelAttribute Rental rental) {
 		rentalCrudRepository.update(rental);
@@ -196,14 +198,14 @@ public class RentalController {
 		//for each active rental, look for a motorhome whose id matches the one
 		//stored in that rental, and if found, remove the motorhome from the list
 		//of motorhomes and skip to the next rental
-		for(int i = 0; i < rentals.size(); i++) {
-			for(int j = 0; j < motorhomes.size(); j++) {
-				if(motorhomes.get(j).getId() == rentals.get(i).getMotorhomeId()){
-					motorhomes.remove(j);
-					break;
-				}
-			}
-		}
+        for(Rental rental : rentals) {
+            for(int j = 0; j < motorhomes.size(); j++) {
+                if(motorhomes.get(j).getId() == rental.getMotorhomeId()) {
+                    motorhomes.remove(j);
+                    break;
+                }
+            }
+        }
 		
 		return motorhomes;
 	}

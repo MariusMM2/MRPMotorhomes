@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import static com.mrp.motorhomes.controller.MainController.currentUser;
 
+//#Marius
+//Controller responsible for handling operations on the customers
 @Controller
 public class CustomerController {
 	private CrudRepository<Customer> repository;
@@ -74,6 +76,7 @@ public class CustomerController {
 	
 	//**UNUSED**
 	//updates a customer in the database
+	@Deprecated
 	@PostMapping("/customer/details/update")
 	public String update(@ModelAttribute Customer customer) {
 		repository.update(customer);

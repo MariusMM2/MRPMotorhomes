@@ -1,5 +1,7 @@
 package com.mrp.motorhomes.model;
 
+//#Marius
+//Representation of a customer registered in the database of the system
 public class Customer {
 
 	private int id;
@@ -12,16 +14,6 @@ public class Customer {
 	
 	public Customer() {}
 	
-	/**
-	 *
-	 * @param id Client id
-	 * @param firstName Client's first name
-	 * @param lastName Client's last name
-	 * @param email Client's email address
-	 * @param address Client's physical address
-	 * @param phone Client's phone number
-	 * @param ssn Client's social security number
-	 */
 	public Customer(int id, String firstName, String lastName, String email, String address, String phone,
 					String ssn) {
 		this.id = id;
@@ -32,7 +24,8 @@ public class Customer {
 		this.phone = phone;
 		this.ssn = ssn;
 	}
-
+	
+	//Getters and Setters
 	public int getId() {
 		return this.id;
 	}
