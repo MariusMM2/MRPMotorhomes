@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 	
-	public static final String ERROR_MESSAGE = "All fields are required." ;
-	public static final String ERROR_CUSTOMER = "Email must have an @ and end with .com or .dk. Phone and SSN must " +
-			"contain only digits";
-	public static final String ERROR_MOTORHOME = "";
-	public static final String ERROR_RENTAL   = "Start date cannot be before today's " +
-			"date, and end date cannot be before start date.";
+	static final String ERROR_MESSAGE = "All fields are required." ;
+	static final String ERROR_CUSTOMER = "Email must have an @ and end with .com or .dk. Phone and SSN must " +
+			"contain only digits. Names must contain at least 3 letters.";
+	static final String ERROR_MOTORHOME = "";
+	static final String ERROR_RENTAL   = "Start date cannot be before today's " +
+			"date. End date cannot be before start date.";
     
-    public static User currentUser = User.ALL_USERS[0];
+    static User currentUser = User.ALL_USERS[0];
 	
 	@GetMapping("/")
 	public String login(Model model) {
