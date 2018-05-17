@@ -64,7 +64,7 @@ public class MotorhomeController {
 	@GetMapping("/motorhomes/clean")
 	public String clean(@RequestParam("id") int id) {
 		Motorhome motorhome = repository.read(id);
-		if (motorhome.isCleaned() == true) {
+		if (motorhome.isCleaned()) {
 			motorhome.setCleaned(false);
 		} else {
 			motorhome.setCleaned(true);
@@ -76,7 +76,7 @@ public class MotorhomeController {
 	@GetMapping("/motorhomes/service")
 	public String service(@RequestParam("id") int id) {
 		Motorhome motorhome = repository.read(id);
-		if (motorhome.isServiced() == true) {
+		if (motorhome.isServiced()) {
 			motorhome.setServiced(false);
 		} else {
 			motorhome.setServiced(true);
