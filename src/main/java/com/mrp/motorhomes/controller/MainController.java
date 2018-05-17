@@ -9,26 +9,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 	
+	//static error messages for when submitting forms
 	static final String ERROR_MESSAGE = "All fields are required." ;
 	static final String ERROR_CUSTOMER = "Email must have an @ and end with .com or .dk. Phone and SSN must " +
 			"contain only digits. Names must contain at least 3 letters.";
 	static final String ERROR_MOTORHOME = "";
 	static final String ERROR_RENTAL   = "Start date cannot be before today's " +
 			"date. End date cannot be before start date.";
-    
+   
+	//the current user logged in throughout the system
     static User currentUser = User.ALL_USERS[0];
 	
+    //shows the login page
 	@GetMapping("/")
 	public String login(Model model) {
+		//adds the list of users to the Model, to let the user choose one
 		model.addAttribute("users", User.ALL_USERS);
 		return "login";
 	}
 	
+	//logins with the chosen user
 	@GetMapping("/login")
 	public String login(@RequestParam("name") String name){
+	    //finds the user with the given name and sets them as the current user
 		for(User user : User.ALL_USERS) {
 			if(user.getName().equals(name)){
 				currentUser = user;
+				break;
 			}
 		}
 		
