@@ -77,7 +77,7 @@ public class RentalController {
 			
 			//gets the list of active rentals
 			ArrayList<Rental> rentals = rentalCrudRepository.readAll();
-			//searches for the rental in the list to find the Id that was assigned to that rental
+			//searches for the rental in the list to find the Id that was assigned to it
 			boolean found = false;
 			for(Rental bRental : rentals) {
 				if(bRental.equals(rental)){
