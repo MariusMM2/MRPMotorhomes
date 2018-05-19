@@ -20,8 +20,6 @@ public abstract class CrudRepository<T>{
 	static PreparedStatement preparedStatement;
 	static ResultSet resultSet;
 	
-	CrudRepository(){}
-	
 	//Adds a new element in the table
 	public abstract void create(T item);
 	
