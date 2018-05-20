@@ -68,56 +68,35 @@ public class RentalController {
 			//redirect to the creation page
 			return "rentals/create";
 		}
-		else{
-			//all field were valid, convert the form object to Rental
-			Rental rental = rentalForm.toRental();
-			
-			//add the motorhome to the database
-			rentalCrudRepository.create(rental);
-			
-			//gets the list of active rentals
-			ArrayList<Rental> rentals = rentalCrudRepository.readAll();
-			//searches for the rental in the list to find the Id that was assigned to it
-			boolean found = false;
-			for(Rental bRental : rentals) {
-				if(bRental.equals(rental)){
-					rental.setId(bRental.getId());
-					found = true;
-					break;
-				}
-			}
-			
-			//The rental was found in the database
-			if(found){
-				//sets the rentalId for each accessory added to that rental
-				for(Accessory accessory : rental.getAccessories()) {
-					accessory.setRentalId(rental.getId());
-				}
-			}
-			else{
-				//the rental was not found, show an error message
-				model.addAttribute("errorMessage", MainController.ERROR_MESSAGE);
-				//adds multiple attributes to the model
-				prepareForm(model);
-				//redirects to the creation page
-				return "rentals/create";
-			}
-			
-			//gets the motorhome assigned to the rental
-			Motorhome motorhome = motorhomeCrudRepository.read(rental.getMotorhomeId());
-			//resets the cleaned and serviced attributes to false
-			motorhome.setCleaned(false);
-			motorhome.setServiced(false);
-			//updates the motorhome in the database
-			motorhomeCrudRepository.update(motorhome);
-			
-			//adds the accessories to the database
-			AccessoryRepository.getInstance().create(rental.getAccessories());
-			
-			//returns to the index page for rentals
-			return "redirect:/rentals/";
+		
+		//all field were valid, convert the form object to Rental
+		Rental rental = rentalForm.toModel();
+		
+		//add the motorhome to the database, set the id to the value returned by the repository
+		//and update the "rentalId" field of the accessories with that value
+		rental.setId(rentalCrudRepository.create(rental));
+		
+		if(rental.getId() == -1){
+			//the rental was not recorded in the database, show an error message
+			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE);
+			//adds multiple attributes to the model
+			prepareForm(model);
+			//redirects to the creation page
+			return "rentals/create";
 		}
 		
+		//gets the motorhome assigned to the rental
+		Motorhome motorhome = motorhomeCrudRepository.read(rental.getMotorhomeId());
+		//resets the cleaned and serviced attributes to false
+		motorhome.prepareForRental();
+		//updates the motorhome in the database
+		motorhomeCrudRepository.update(motorhome);
+		
+		//adds the accessories to the database
+		AccessoryRepository.getInstance().create(rental.getAccessories());
+		
+		//returns to the index page for rentals
+		return "redirect:/rentals/";
 	}
 	
 	//page that shows details for a rental

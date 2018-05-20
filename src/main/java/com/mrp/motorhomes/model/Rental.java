@@ -96,8 +96,16 @@ public class Rental {
 		return this.id;
 	}
 
+	//sets the "id" field and the "rentalId" field of the accessories
 	public void setId(int id) {
-		this.id = id;
+		if(id != -1) {
+			this.id = id;
+			if(!accessories.isEmpty()) {
+				for(Accessory accessory : accessories) {
+					accessory.setRentalId(id);
+				}
+			}
+		}
 	}
 
 	public int getCustomerId() {

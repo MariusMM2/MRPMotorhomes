@@ -28,6 +28,11 @@ public class Motorhome {
 	}
 
     public Motorhome() {}
+    
+    public void prepareForRental(){
+		cleaned = false;
+		serviced = false;
+    }
 
     //Getters and Setters
     public int getId() {
