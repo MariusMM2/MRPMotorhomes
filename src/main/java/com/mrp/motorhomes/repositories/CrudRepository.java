@@ -21,7 +21,8 @@ public abstract class CrudRepository<T>{
 	static ResultSet resultSet;
 	
 	//Adds a new element in the table
-	public abstract void create(T item);
+	//and return its database id
+	public abstract int create(T item);
 	
 	//Reads all the elements of the table
 	public abstract ArrayList<T> readAll();

@@ -21,7 +21,7 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 	
 	//Add a motorhome in the database
 	@Override
-	public void create(Motorhome item) {
+	public int create(Motorhome item) {
 
 		refreshConnection();
 		try {
@@ -39,7 +39,8 @@ public class MotorhomeRepository extends CrudRepository<Motorhome> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		//the id of the motorhome is not needed right after it has been added to the database
+		return -1;
 	}
 	
 	//Returns the list of all motorhomes in the database

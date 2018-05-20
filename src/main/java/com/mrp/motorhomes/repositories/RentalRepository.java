@@ -22,7 +22,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 	
 	//Add a rental in the database
 	@Override
-	public void create(Rental item) {
+	public int create(Rental item) {
 		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement(
@@ -40,6 +40,22 @@ public class RentalRepository extends CrudRepository<Rental> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			//sort the records by id, in descending order, then get the first entry, that is,
+			//the last entry added to the database
+			preparedStatement = connection.prepareStatement(
+					"SELECT id FROM rentals ORDER BY id DESC LIMIT 1");
+			preparedStatement.execute();
+			
+			if(resultSet.next()){
+				return resultSet.getInt("id");
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return -1;
 	}
 	
 	//Returns the list of all rentals in the database

@@ -21,7 +21,7 @@ public class CustomerRepository extends CrudRepository<Customer> {
 	
 	//Add a customer in the database
 	@Override
-	public void create(Customer item) {
+	public int create(Customer item) {
 		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement(
@@ -36,6 +36,10 @@ public class CustomerRepository extends CrudRepository<Customer> {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+		
+		//the id of the customer is not needed right after they have been added
+		//to the database
+		return -1;
 	}
 	
 	//Returns the list of all customers in the database

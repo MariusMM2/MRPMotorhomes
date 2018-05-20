@@ -27,7 +27,7 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 	
 	//Add a list of accessories in the database
 	@Override
-	public void create(ArrayList<Accessory> accessories) {
+	public int create(ArrayList<Accessory> accessories) {
 		refreshConnection();
 		try {
 			preparedStatement = connection.prepareStatement(
@@ -41,6 +41,8 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		//the id returning is not available in this repository
+		return -1;
 	}
 	
 	//Returns the list of all accessories in the database
