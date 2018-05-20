@@ -58,11 +58,9 @@ public class MotorhomeController {
 			return "motorhomes/create";
 		}
 		else {
-            //all field were valid, convert the form object to Motorhome
-			Motorhome motorhome = motorhomeForm.toMotorhome();
-            
-            //add the motorhome to the database
-			repository.create(motorhome);
+			//all field were valid, convert the form object to Motorhome
+			//and add it to the database
+			repository.create(motorhomeForm.toModel());
             //return to the index page for motorhomes
 			return "redirect:/motorhomes/";
 		}

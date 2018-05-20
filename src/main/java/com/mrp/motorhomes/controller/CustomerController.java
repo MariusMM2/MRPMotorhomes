@@ -57,10 +57,8 @@ public class CustomerController {
 		else
 		{
 			//all field were valid, convert the form object to Customer
-			Customer customer = customerForm.toCustomer();
-			
-			//add the customer to the database
-			repository.create(customer);
+			//and add them to the database
+			repository.create(customerForm.toModel());
 			//return to the index page for customers
 			return "redirect:/customers/";
 		}
