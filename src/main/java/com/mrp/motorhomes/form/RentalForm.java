@@ -37,8 +37,9 @@ public class RentalForm implements Form {
 		return customerId && motorhomeId && price && startDate && endDate && pickUp && dropOff;
 	}
 	
+	@Override
 	//Returns a new Rental based on the fields of the form
-	public Rental toRental(){
+	public Rental toModel(){
 		ArrayList<Accessory> accessories = new ArrayList<>();
 		for(String accessory: this.accessories) {
 			accessories.add(new Accessory(accessory));

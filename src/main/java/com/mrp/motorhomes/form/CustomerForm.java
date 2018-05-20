@@ -4,7 +4,7 @@ import com.mrp.motorhomes.model.Customer;
 
 //#Marius
 //Form submitted when adding a new Customer to the system
-public class CustomerForm implements Form {
+public class CustomerForm implements Form<Customer> {
     private String firstName;
     private String lastName;
     private String email;
@@ -25,9 +25,9 @@ public class CustomerForm implements Form {
         return firstName && lastName && email && address && phone && ssn;
     }
     
-    
+    @Override
     //Returns a new Customer based on the fields of the form
-    public Customer toCustomer() {
+    public Customer toModel() {
         return new Customer(-1, firstName, lastName, email, address, phone, ssn);
     }
     

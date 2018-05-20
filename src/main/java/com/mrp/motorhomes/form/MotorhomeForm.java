@@ -24,8 +24,9 @@ public class MotorhomeForm implements Form {
         return brand && model && year && basePrice;
     }
     
+    @Override
     //Returns a new Motorhome based on the fields of the form
-    public Motorhome toMotorhome(){
+    public Motorhome toModel(){
         return new Motorhome(-1, this.brand, this.type, this.model, this.year, this.basePrice, false, false);
     }
     
