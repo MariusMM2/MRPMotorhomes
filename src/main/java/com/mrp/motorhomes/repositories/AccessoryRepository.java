@@ -48,7 +48,6 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 	//Returns the list of all accessories in the database
 	//This function is not supported by this class, for the aforementioned reason
 	@Override
-	@Deprecated
 	public ArrayList<ArrayList<Accessory>> readAll() {
 		throw new UnsupportedOperationException();
 	}
@@ -76,7 +75,6 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 	}
 	
 	//**UNUSED**
-	@Deprecated
 	@Override
 	public void update(ArrayList<Accessory> item) {
 		refreshConnection();
@@ -84,7 +82,6 @@ public class AccessoryRepository extends CrudRepository<ArrayList<Accessory>> {
 	}
 	
 	//**UNUSED**
-	@Deprecated
 	@Override
 	public void delete(int id) {
 		refreshConnection();

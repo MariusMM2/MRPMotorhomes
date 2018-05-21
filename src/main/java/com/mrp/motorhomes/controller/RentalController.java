@@ -135,7 +135,6 @@ public class RentalController {
 	
 	//**UNUSED**
 	//updates a rental in the database
-	@Deprecated
 	@PostMapping("/rentals/details/update")
 	public String update(@ModelAttribute Rental rental) {
 		rentalCrudRepository.update(rental);

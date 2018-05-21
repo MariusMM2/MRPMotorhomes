@@ -74,7 +74,6 @@ public class CustomerController {
 	
 	//**UNUSED**
 	//updates a customer in the database
-	@Deprecated
 	@PostMapping("/customer/details/update")
 	public String update(@ModelAttribute Customer customer) {
 		repository.update(customer);

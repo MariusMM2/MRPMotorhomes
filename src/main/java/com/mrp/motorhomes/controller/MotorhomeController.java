@@ -101,7 +101,6 @@ public class MotorhomeController {
 
 	//**UNUSED**
 	//updates a motorhome in the database
-	@Deprecated
 	@PostMapping("/motorhomes/details/update")
 	public String update(@ModelAttribute Motorhome motorhome) {
         repository.update(motorhome);

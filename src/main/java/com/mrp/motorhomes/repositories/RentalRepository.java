@@ -46,7 +46,7 @@ public class RentalRepository extends CrudRepository<Rental> {
 			//the last entry added to the database
 			preparedStatement = connection.prepareStatement(
 					"SELECT id FROM rentals ORDER BY id DESC LIMIT 1");
-			preparedStatement.execute();
+			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()){
 				return resultSet.getInt("id");
