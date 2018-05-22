@@ -55,6 +55,7 @@ public class MotorhomeController {
             //some field were invalid, show an error message
 			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE + " " + MainController.ERROR_MOTORHOME);
 			model.addAttribute("types", Motorhome.TYPES);
+			model.addAttribute("currentUser", currentUser);
             //redirect to the creation page
 			return "motorhomes/create";
 		}

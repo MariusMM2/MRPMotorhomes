@@ -52,6 +52,7 @@ public class CustomerController {
 		if(!customerForm.validate()){
 			//some field were invalid, show an error message
 			model.addAttribute("errorMessage", MainController.ERROR_MESSAGE + " " + MainController.ERROR_CUSTOMER);
+            model.addAttribute("currentUser", currentUser);
 			//redirect to the creation page
 			return "customers/create";
 		}
@@ -79,7 +80,7 @@ public class CustomerController {
 	@PostMapping("/customer/details/update")
 	public String update(@ModelAttribute Customer customer) {
 		repository.update(customer);
-		return "redirect:/rentals/details/";
+		return "redirect:/customer/details/";
 	}
 	
 	//deletes a customer from the database
