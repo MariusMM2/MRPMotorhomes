@@ -128,6 +128,7 @@ public class RentalController {
 	public String history(Model model) {
 		//adds the list of all rentals to the Model
 		model.addAttribute("rentals", rentalCrudRepository.readAll());
+		model.addAttribute("currentUser", currentUser);
 		//adds a "readsAll" attribute so the page does not show the "add new rental" button
 		model.addAttribute("readsAll", true);
 		return "rentals/index";
