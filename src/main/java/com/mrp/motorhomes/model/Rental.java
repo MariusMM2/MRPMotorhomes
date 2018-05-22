@@ -63,7 +63,7 @@ public class Rental {
 		return endDate.isBefore(LocalDate.now());
 	}
 	
-	//prints the form to the console, used for debugging
+	//prints to the console, used for debugging
 	@Override
 	public String toString() {
 		return "Rental{" +

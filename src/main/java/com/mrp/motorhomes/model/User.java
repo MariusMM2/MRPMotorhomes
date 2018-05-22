@@ -25,7 +25,7 @@ public class User {
 		this.type = type;
 	}
 	
-	//prints the form to the console, used for debugging
+	//prints to the console, used for debugging
 	@Override
 	public String toString() {
 		return "User{" +
