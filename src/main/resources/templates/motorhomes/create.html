@@ -22,13 +22,13 @@
             <form th:action="@{/motorhomes/create}" th:object="${motorhomeForm}" method="post">
                 <p class="row">
                     <span class="title">Brand</span>
-                    <span class="value"><input type="text" th:field="*{brand}" minlength="1" maxlength="25"></span>
+                    <span class="value"><input type="text" th:field="*{brand}" minlength="1" maxlength="25" required></span>
                 </p>
 
                 <p class="row">
                     <span class="title">Type:</span>
                     <span class="value">
-                        <select name="type">
+                        <select th:field="*{type}" required>
                             <option value="">--</option>
                             <option th:each="type : ${types}"
                                     th:value="${type}"
@@ -56,15 +56,15 @@
 
                 <p class="row">
                     <span class="title">Model</span>
-                    <span class="value"><input type="text" th:field="*{model}" minlength="1" maxlength="25"></span>
+                    <span class="value"><input type="text" th:field="*{model}" minlength="1" maxlength="25" required></span>
                 </p>
                 <p class="row">
                     <span class="title">Year</span>
-                    <span class="value"><input type="number" th:field="*{year}" th:min="${motorhomeForm.minYear}" th:max="${motorhomeForm.maxYear}"></span>
+                    <span class="value"><input type="number" th:field="*{year}" th:min="${motorhomeForm.minYear}" th:max="${motorhomeForm.maxYear}" required></span>
                 </p>
                 <p class="row">
                     <span class="title">Base Price</span>
-                    <span class="value"><input type="number" th:field="*{basePrice}" min="100"></span>
+                    <span class="value"><input type="number" th:field="*{basePrice}" min="100" required></span>
                 </p>
                 <p class="buttons">
                     <input type="submit" value="Create Motorhome" class="btn create"/>

@@ -78,23 +78,23 @@
 
             <p class="row">
                 <span class="title">Price:</span>
-                <span class="value"><input type="number" th:field="*{price}" min="100"/></span>
+                <span class="value"><input type="number" th:field="*{price}" min="100" required/></span>
             </p>
             <p class="row">
                 <span class="title">Start Date:</span>
-                <span class="value"><input type="date" th:field="*{startDate}" th:min="${minStartDate}"/></span>
+                <span class="value"><input type="date" th:field="*{startDate}" th:min="${minStartDate}" required/></span>
             </p>
             <p class="row">
                 <span class="title">End Date:</span>
-                <span class="value"><input type="date" th:field="*{endDate}" th:min="${minEndDate}"/></span>
+                <span class="value"><input type="date" th:field="*{endDate}" th:min="${minEndDate}" required/></span>
             </p>
             <p class="row">
                 <span class="title">Pick Up:</span>
-                <span class="value"><input type="text" th:field="*{pickUp}" minlength="1" maxlength="20"/></span>
+                <span class="value"><input type="text" th:field="*{pickUp}" minlength="1" maxlength="20" required/></span>
             </p>
             <p class="row">
                 <span class="title">Drop Off:</span>
-                <span class="value"><input type="text" th:field="*{dropOff}" minlength="1" maxlength="20"/></span>
+                <span class="value"><input type="text" th:field="*{dropOff}" minlength="1" maxlength="20" required/></span>
             </p>
             <!--<p class="row">-->
                 <!--<span class="title">Accessories:</span>-->

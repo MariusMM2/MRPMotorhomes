@@ -23,27 +23,27 @@
         <form th:action="@{/customers/create}" th:object="${customerForm}" method="post">
             <p class="row">
                 <span class="title">First Name</span>
-                <span class="value"><input type="text" th:field="*{firstName}" minlength="3" maxlength="20"></span>
+                <span class="value"><input type="text" th:field="*{firstName}" minlength="3" maxlength="20" required></span>
             </p>
             <p class="row">
                 <span class="title">Last Name</span>
-                <span class="value"><input type="text" th:field="*{lastName}" minlength="3" maxlength="20"></span>
+                <span class="value"><input type="text" th:field="*{lastName}" minlength="3" maxlength="20" required></span>
             </p>
             <p class="row">
                 <span class="title">Email</span>
-                <span class="value"><input type="text" th:field="*{email}" minlength="1" maxlength="30"></span>
+                <span class="value"><input type="text" th:field="*{email}" minlength="1" maxlength="30" required></span>
             </p>
             <p class="row">
                 <span class="title">Address</span>
-                <span class="value"><input type="text" th:field="*{address}" minlength="1" maxlength="40"></span>
+                <span class="value"><input type="text" th:field="*{address}" minlength="1" maxlength="40" required></span>
             </p>
             <p class="row">
                 <span class="title">Phone</span>
-                <span class="value"><input type="text" th:field="*{phone}" maxlength="8"></span>
+                <span class="value"><input type="text" th:field="*{phone}" minlength="8" maxlength="8" required></span>
             </p>
             <p class="row">
                 <span class="title">SSN</span>
-                <span class="value"><input type="text" th:field="*{ssn}" maxlength="10"></span>
+                <span class="value"><input type="text" th:field="*{ssn}" minlength="10" maxlength="10" required></span>
             </p>
 
             <p class="buttons">
