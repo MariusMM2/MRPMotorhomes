@@ -10,11 +10,13 @@
 <div class="container">
     <div class="nav-bar">
         <a href="../" class="page"><span>Home</span></a>
+        <a href="../" class="page" th:text="${currentUser.type}"><span></span></a>
         <a href="/customers/" class="page"><span>Customers</span></a>
         <a th:href="@{'/customers/details?id=' + ${customer.id}}"  class="page"><span>Details</span></a>
+        <a href="../" class="page btn-logout"><span>Logout</span></a>
     </div>
     <div class="details">
-        <h1>Customer Details</h1>
+        <h1 class="title">Customer Details</h1>
         <p class="row"><span class="title">Id:</span><span th:text="${customer.id}" class="value"></span></p>
         <p class="row"><span class="title">First Name:</span><span th:text="${customer.firstName}" class="value"></span></p>
         <p class="row"><span class="title">Last Name:</span><span th:text="${customer.lastName}" class="value"></span></p>

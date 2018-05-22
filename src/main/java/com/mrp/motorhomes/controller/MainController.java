@@ -1,9 +1,9 @@
 package com.mrp.motorhomes.controller;
 
 import com.mrp.motorhomes.model.User;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //#Marius & Paul & Razvan
@@ -27,6 +27,7 @@ public class MainController {
 	public String login(Model model) {
 		//adds the list of users to the Model, to let the user choose one
 		model.addAttribute("users", User.ALL_USERS);
+		model.addAttribute("userTypes", User.TYPES);
 		return "login";
 	}
 	

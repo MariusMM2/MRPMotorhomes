@@ -10,19 +10,14 @@
 <div class="container">
     <div class="nav-bar">
         <a href="../" class="page"><span>Home</span></a>
+        <a href="../" class="page" th:text="${currentUser.type}"><span></span></a>
         <a href="/motorhomes/" class="page"><span>Motorhomes</span></a>
         <a href="/customers/" class="page"><span>Customers</span></a>
         <a href="/rentals/" class="page"><span>Rentals</span></a>
+        <a href="../" class="page btn-logout"><span>Logout</span></a>
     </div>
 
-
-    <!--<a href="/login" class="page">Home</a>-->
-    <!--<a href="/motorhomes">Motorhomes</a>-->
-    <!--<a href="/customers">Customers</a>-->
-    <!--<a href="/rentals">Rentals</a>-->
-
-
-    <h1 class="title"> View All Customers</h1>
+    <h1 class="title">View All Customers</h1>
     <table class="mh-table">
         <thead>
             <tr>
@@ -50,7 +45,7 @@
                         <a th:href="@{'../customers/details?id=' + ${customer.id}}">
                             <span class="btn details">Details</span>
                         </a>
-                        <a th:href="@{'../customers/delete?id=' + ${customer.id}}">
+                        <a th:href="@{'../customers/delete?id=' + ${customer.id}}" th:if="${currentUser.getType().equals('Sales Assistant')}">
                             <span class="btn delete">Delete</span>
                         </a>
                     </p>

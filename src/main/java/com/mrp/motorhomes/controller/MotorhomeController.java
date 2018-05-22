@@ -41,6 +41,7 @@ public class MotorhomeController {
 		model.addAttribute("motorhomeForm", new MotorhomeForm());
 		//Adds the motorhome types to the Model, used in the dropdown to choose a type
 		model.addAttribute("types", Motorhome.TYPES);
+		model.addAttribute("currentUser", currentUser);
 		return "motorhomes/create";
 	}
 	

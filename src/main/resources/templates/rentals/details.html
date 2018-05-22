@@ -10,11 +10,13 @@
 <div class="container">
     <div class="nav-bar">
         <a href="../" class="page"><span>Home</span></a>
+        <a href="../" class="page" th:text="${currentUser.type}"><span></span></a>
         <a href="/rentals/" class="page"><span>Rentals</span></a>
         <a th:href="@{'/rentals/details?id=' + ${rental.id}}" class="page"><span>Details</span></a>
+        <a href="../" class="page btn-logout"><span>Logout</span></a>
     </div>
     <div class="details">
-        <h1>Rental Details</h1>
+        <h1 class="title">Rental Details</h1>
         <p class="row"><span class="title">Id:</span><span th:text="${rental.id}" class="value"></span></p>
         <p class="row"><span class="title">Customer:</span><span><a class="value" th:href="@{'../customers/details?id=' + ${rental.customerId}}" th:text="${rental.customerName}"></a></span></p>
         <p class="row"><span class="title">Motorhome:</span><span><a class="value" th:href="@{'../motorhomes/details?id=' + ${rental.motorhomeId}}" th:text="${rental.motorhomeName}"></a></span></p>
@@ -23,14 +25,15 @@
         <p class="row"><span class="title">End Date:</span><span th:text="${rental.endDate}" class="value"></span></p>
         <p class="row"><span class="title">Pick Up:</span><span th:text="${rental.pickUp}" class="value"></span></p>
         <p class="row"><span class="title">Drop Off:</span><span th:text="${rental.dropOff}" class="value"></span></p>
-        <p class="row"><span class="title">Paid:</span><span th:text="${rental.paid}" class="value" th:classappend="${rental.paid} ? green : orange"></span></p>
+        <p class="row"><span class="title">Paid Status:</span><span th:text="${rental.paid} ? 'Paid' : 'Unpaid'" class="value" th:classappend="${rental.paid} ? green : orange"></span></p>
+
         <p class="row"><span class="title">Accessories:</span>
             <th:block  th:each="accessory : ${rental.accessories}">
                 <span th:text="${accessory.title} + ', '"></span>
             </th:block>
         </p>
-        <p class="buttons">
-            <a th:href="@{'../rentals/pay?id=' + ${rental.id}}" th:if="${currentUser.getType().equals('bookkeeper')}" class="btn create">
+        <p class="buttons" th:if="${currentUser.getType().equals('Bookkeeper')}">
+            <a th:href="@{'../rentals/pay?id=' + ${rental.id}}" class="btn create">
                 <span th:if="${rental.isPaid() == false}">Pay Rental</span>
                 <span th:if="${rental.isPaid() == true}">Unpay Rental</span>
             </a>

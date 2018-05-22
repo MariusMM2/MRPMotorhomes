@@ -10,11 +10,13 @@
 <div class="container">
     <div class="nav-bar">
         <a href="../" class="page"><span>Home</span></a>
+        <a href="../" class="page" th:text="${currentUser.type}"><span></span></a>
         <a href="/customers/" class="page"><span>Customers</span></a>
         <a href="/customers/create" class="page"><span>Create</span></a>
+        <a href="../" class="page btn-logout"><span>Logout</span></a>
     </div>
     <div class="create">
-        <h1>Add New Customer</h1>
+        <h1 class="title">Add New Customer</h1>
         <div th:if="${errorMessage}" th:utext="${errorMessage}"
              style="color:red;font-style:italic;">
         </div>

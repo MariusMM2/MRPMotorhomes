@@ -5,7 +5,7 @@ package com.mrp.motorhomes.model;
 public class User {
 	
 	//All types of users
-	public static final String[] TYPES = {"salesAssistant", "mechanic", "bookkeeper", "cleanStaff"};
+	public static final String[] TYPES = {"Sales Assistant", "Auto Mechanic", "Bookkeeper", "Cleaning Staff"};
 	//All users registered in the system
 	public static final User[] ALL_USERS = {
 			new User("Dave", TYPES[0]),

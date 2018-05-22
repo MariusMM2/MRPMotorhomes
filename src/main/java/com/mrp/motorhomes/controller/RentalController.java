@@ -48,6 +48,7 @@ public class RentalController {
 	public String create(Model model) {
 		//Creates and passes a new rental form to the Model
 		model.addAttribute("rentalForm", new RentalForm());
+		model.addAttribute("currentUser", currentUser);
 		//adds multiple attributes to the model
 		prepareForm(model);
 		return "rentals/create";

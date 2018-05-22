@@ -40,6 +40,7 @@ public class CustomerController {
 	public String create(Model model){
 		//Creates and passes a new customer form to the Model
 		model.addAttribute("customerForm", new CustomerForm());
+		model.addAttribute("currentUser", currentUser);
 		return "customers/create";
 	}
 	//Processes the form
@@ -69,6 +70,7 @@ public class CustomerController {
 	public String details(@RequestParam("id") int id, Model model){
 		//reads the customer from the database and adds them to the Model
 		model.addAttribute("customer", repository.read(id));
+		model.addAttribute("currentUser", currentUser);
 		return "customers/details";
 	}
 	

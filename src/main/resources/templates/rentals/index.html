@@ -10,9 +10,11 @@
     <div class="container">
         <div class="nav-bar">
             <a href="../" class="page"><span>Home</span></a>
-            <a href="/motorhomes/" th:if="${!currentUser.getType().equals('bookkeeper')}" class="page"><span>Motorhomes</span></a>
-            <a href="/customers/" th:if="${!currentUser.getType().equals('bookkeeper')}" class="page"><span>Customers</span></a>
+            <a href="../" class="page" th:text="${currentUser.type}"><span></span></a>
+            <a href="/motorhomes/" th:if="${!currentUser.getType().equals('Bookkeeper')}" class="page"><span>Motorhomes</span></a>
+            <a href="/customers/" th:if="${!currentUser.getType().equals('Bookkeeper')}" class="page"><span>Customers</span></a>
             <a href="/rentals/" class="page"><span>Rentals</span></a>
+            <a href="../" class="page btn-logout"><span>Logout</span></a>
         </div>
         <h1 class="title">View All Rentals</h1>
         <table class="mh-table">
@@ -44,7 +46,7 @@
                             <a th:href="@{'../rentals/details?id=' + ${rental.id}}">
                                 <span class="btn details">Details</span>
                             </a>
-                            <a th:href="@{'../rentals/delete?id=' + ${rental.id}}">
+                            <a th:href="@{'../rentals/delete?id=' + ${rental.id}}" th:if="${currentUser.getType().equals('Sales Assistant')}">
                                 <span class="btn delete">Delete</span>
                             </a>
                         </p>
@@ -54,8 +56,8 @@
         </table>
         <div th:if="!${readsAll}">
             <p class="buttons">
-                <a href="/rentals/create" class="btn create">
-                    <span>Create New Rental</span>
+                <a href="/rentals/create" th:if="${currentUser.getType().equals('Sales Assistant')}" class="btn create">
+                    <span>Add New Rental</span>
                 </a>
             </p>
 
