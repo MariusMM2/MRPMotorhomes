@@ -18,10 +18,11 @@ public class MotorhomeForm implements Form {
     @Override
     public boolean validate() {
         boolean brand 	    = this.brand != null && this.brand.length() > 0;
+        boolean type        = this.type != null && this.type.length() > 0;
         boolean model 		= this.model != null && this.model.length() > 0;
         boolean year        = this.year >= MIN_YEAR && this.year <= MAX_YEAR;
         boolean basePrice   = this.basePrice > 0;
-        return brand && model && year && basePrice;
+        return brand && type && model && year && basePrice;
     }
     
     @Override
