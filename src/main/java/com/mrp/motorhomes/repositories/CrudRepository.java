@@ -12,7 +12,8 @@ import java.util.ArrayList;
 public abstract class CrudRepository<T>{
     
     //minimum time that should have passed since the last refresh
-    private static final int REFRESH_THRESHOLD = 1000*60*5;
+	//2 minutes interval
+    private static final int REFRESH_THRESHOLD = 1000*60*2;
     //time since last connection refreshing took place
     private   static long lastConnRefresh;
     //the Connection used to execute the sql statements
