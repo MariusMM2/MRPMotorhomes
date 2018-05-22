@@ -40,6 +40,7 @@ public class RentalController {
 		model.addAttribute("rentals", getActiveRentals());
 		//adds the current user to the Model
 		model.addAttribute("currentUser", currentUser);
+		model.addAttribute("readsAll", false);
 		return "rentals/index";
 	}
 	

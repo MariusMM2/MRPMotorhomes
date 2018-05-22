@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View All Rentals</title>
+    <title th:utext="${readsAll} ? 'History of Rentals' : 'Active Rentals'"></title>
     <link rel="stylesheet" href="/style.css"/>
 </head>
 
@@ -16,7 +16,7 @@
             <a href="/rentals/" class="page"><span>Rentals</span></a>
             <a href="../" class="page btn-logout"><span>Logout</span></a>
         </div>
-        <h1 class="title">View All Rentals</h1>
+        <h1 class="title" th:utext="${readsAll} ? 'History of Rentals' : 'Active Rentals'"></h1>
         <table class="mh-table">
             <thead>
                 <tr>
@@ -54,11 +54,13 @@
                 </tr>
             </tbody>
         </table>
-        <div th:if="!${readsAll}">
+        <div>
             <p class="buttons">
-                <a href="/rentals/create" th:if="${currentUser.getType().equals('Sales Assistant')}" class="btn create">
+                <a href="/rentals/create" th:if="${currentUser.type.equals('Sales Assistant') and !readsAll}" class="btn create">
                     <span>Add New Rental</span>
                 </a>
+                <a  th:href="${readsAll} ? '/rentals/' : '/rentals/history'"
+                   th:utext="${readsAll} ? 'View Active Rentals' : 'View History'" class="btn create"></a>
             </p>
 
         </div>
