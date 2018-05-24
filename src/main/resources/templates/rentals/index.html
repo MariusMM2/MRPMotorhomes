@@ -9,12 +9,10 @@
 <body>
     <div class="container">
         <div class="nav-bar">
-            <a href="../" class="page"><span>Home</span></a>
-            <a href="../" class="page" th:text="${currentUser.type}"><span></span></a>
             <a href="/motorhomes/" th:if="${!currentUser.getType().equals('Bookkeeper')}" class="page"><span>Motorhomes</span></a>
             <a href="/customers/" th:if="${!currentUser.getType().equals('Bookkeeper')}" class="page"><span>Customers</span></a>
-            <a href="/rentals/" class="page"><span>Rentals</span></a>
-            <a href="../" class="page btn-logout"><span>Logout</span></a>
+            <a href="/rentals/" th:if="${!currentUser.getType().equals('Bookkeeper')}" class="page"><span>Rentals</span></a>
+            <a href="../" th:text="'Logout: ' + ${currentUser.type} + ' - ' + ${currentUser.name}" class="page btn-logout"><span>Logout</span></a>
         </div>
         <h1 class="title" th:utext="${readsAll} ? 'History of Rentals' : 'Active Rentals'"></h1>
         <table class="mh-table">
