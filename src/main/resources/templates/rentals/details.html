@@ -10,7 +10,6 @@
 <div class="container">
     <div class="nav-bar">
         <a href="/rentals/" class="page"><span>Rentals</span></a>
-        <!--<a th:href="@{'/rentals/details?id=' + ${rental.id}}" class="page"><span>Details</span></a>-->
         <a href="../" th:text="'Logout: ' + ${currentUser.type} + ' - ' + ${currentUser.name}" class="page btn-logout"><span>Logout</span></a>
     </div>
     <div class="details">
@@ -24,11 +23,10 @@
         <p class="row"><span class="title">Pick Up:</span><span th:text="${rental.pickUp}" class="value"></span></p>
         <p class="row"><span class="title">Drop Off:</span><span th:text="${rental.dropOff}" class="value"></span></p>
         <p class="row"><span class="title">Paid Status:</span><span th:text="${rental.paid} ? 'Paid' : 'Unpaid'" class="value" th:classappend="${rental.paid} ? green : orange"></span></p>
-
-        <p class="row"><span class="title">Accessories:</span>
-            <th:block  th:each="accessory : ${rental.accessories}">
-                <span th:text="${accessory.title} + ', '"></span>
-            </th:block>
+        <p class="row"><span class="title">Accessories:</span></p>
+        <p class="row" th:each="accessory : ${rental.accessories}">
+            <span class="title"></span>
+            <span th:text="${accessory.title}" class="value"></span>
         </p>
         <p class="buttons" th:if="${currentUser.getType().equals('Bookkeeper')}">
             <a th:href="@{'../rentals/pay?id=' + ${rental.id}}" class="btn create">
