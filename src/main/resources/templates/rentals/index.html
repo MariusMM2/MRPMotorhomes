@@ -57,8 +57,11 @@
                 <a href="/rentals/create" th:if="${!readsAll}" class="btn create">
                     <span>Add New Rental</span>
                 </a>
-                <a  th:href="${readsAll} ? '/rentals/' : '/rentals/history'"
-                   th:utext="${readsAll} ? 'View Active Rentals' : 'View History'" class="btn create"></a>
+
+                <a th:href="${readsAll} ? '/rentals/' : '/rentals/history'" th:utext="${readsAll} ? 'View Active Rentals' : 'View History'" class="btn create">
+                    <span></span>
+                </a>
+
             </p>
 
         </div>
