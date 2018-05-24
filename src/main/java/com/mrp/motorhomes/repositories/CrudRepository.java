@@ -39,7 +39,7 @@ public abstract class CrudRepository<T>{
 	
 	//Is called each time the application is accessing the database.
 	//On the first call, the method creates the connection and stores the time when created in "lastConnRefresh".
-	//Every time the method is called, if the time since the last refresh was more than five minute, rebuilds the
+	//Every time the method is called, if the time since the last refresh was more than two minute, rebuilds the
 	//connection.
 	protected static void refreshConnection(){
 		long currentTime = System.currentTimeMillis();
