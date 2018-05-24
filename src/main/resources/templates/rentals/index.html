@@ -55,8 +55,8 @@
             </tbody>
         </table>
         <div>
-            <p class="buttons">
-                <a href="/rentals/create" th:if="${currentUser.type.equals('Sales Assistant') and !readsAll}" class="btn create">
+            <p class="buttons" th:if="${currentUser.type.equals('Sales Assistant')}">
+                <a href="/rentals/create" th:if="${!readsAll}" class="btn create">
                     <span>Add New Rental</span>
                 </a>
                 <a  th:href="${readsAll} ? '/rentals/' : '/rentals/history'"
