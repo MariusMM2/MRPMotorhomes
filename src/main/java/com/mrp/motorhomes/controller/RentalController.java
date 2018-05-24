@@ -73,7 +73,7 @@ public class RentalController {
 		//all field were valid, convert the form object to Rental
 		Rental rental = rentalForm.toModel();
 		
-		//add the motorhome to the database, set the id to the value returned by the repository
+		//add the rental to the database, set the id to the value returned by the repository
 		//and update the "rentalId" field of the accessories with that value
 		rental.setId(rentalCrudRepository.create(rental));
 		
