@@ -28,6 +28,7 @@
             <span class="title"></span>
             <span th:text="${accessory.title}" class="value"></span>
         </p>
+
         <p class="buttons" th:if="${currentUser.getType().equals('Bookkeeper')}">
             <a th:href="@{'../rentals/pay?id=' + ${rental.id}}" class="btn create">
                 <span th:if="${rental.isPaid() == false}">Pay Rental</span>
