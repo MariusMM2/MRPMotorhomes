@@ -10,11 +10,9 @@
 
 <div class="container">
     <div class="nav-bar">
-        <a href="../" class="page"><span>Home</span></a>
-        <a href="../" class="page" th:text="${currentUser.type}"><span></span></a>
         <a href="/rentals/" class="page"><span>Rentals</span></a>
-        <a href="/rentals/create" class="page"><span>Create</span></a>
-        <a href="../" class="page btn-logout"><span>Logout</span></a>
+        <!--<a href="/rentals/create" class="page"><span>Create</span></a>-->
+        <a href="../" th:text="'Logout: ' + ${currentUser.type} + ' - ' + ${currentUser.name}" class="page btn-logout"><span>Logout</span></a>
     </div>
     <div class="create">
         <h1 class="title">Add New Rental</h1>

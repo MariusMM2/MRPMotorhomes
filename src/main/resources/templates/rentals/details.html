@@ -9,11 +9,9 @@
 
 <div class="container">
     <div class="nav-bar">
-        <a href="../" class="page"><span>Home</span></a>
-        <a href="../" class="page" th:text="${currentUser.type}"><span></span></a>
         <a href="/rentals/" class="page"><span>Rentals</span></a>
-        <a th:href="@{'/rentals/details?id=' + ${rental.id}}" class="page"><span>Details</span></a>
-        <a href="../" class="page btn-logout"><span>Logout</span></a>
+        <!--<a th:href="@{'/rentals/details?id=' + ${rental.id}}" class="page"><span>Details</span></a>-->
+        <a href="../" th:text="'Logout: ' + ${currentUser.type} + ' - ' + ${currentUser.name}" class="page btn-logout"><span>Logout</span></a>
     </div>
     <div class="details">
         <h1 class="title">Rental Details</h1>
